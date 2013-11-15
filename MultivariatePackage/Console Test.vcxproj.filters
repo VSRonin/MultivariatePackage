@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Console Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="mvNormSampler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -23,8 +26,5 @@
     <ClInclude Include="mvNormSampler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.markdown" />
   </ItemGroup>
 </Project>

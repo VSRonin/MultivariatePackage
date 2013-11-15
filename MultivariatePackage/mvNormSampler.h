@@ -308,7 +308,10 @@ public:
 	\details This is an overloaded version of  GetDensity(const Eigen::VectorXd&, bool)
 	*/
 	double GetDensity(const std::vector<double>& Coordinates, bool GetLogDensity=false)const;
-//#ifdef mvNormSamplerUnsafeMethods
+
+	double GetCumulativeDesity(const std::vector<double>& Coordinates, unsigned int NumSimul=500000)const;
+	double GetCumulativeDesity(const Eigen::VectorXd& Coordinates, unsigned int NumSimul=500000)const;
+#ifdef mvNormSamplerUnsafeMethods
 	/** \name Unsafe Methods
 	The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.
 
@@ -354,6 +357,6 @@ public:
 	*/
 	double GetDensity(double* Coordinates, bool GetLogDensity=false)const;
 	/// \}
-//#endif
+#endif
 };
 #endif // mvNormSampler_h__

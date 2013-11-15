@@ -1,4 +1,3 @@
-#ifdef ModelNightly
 #include "mvNormSampler.h"
 #include <Eigen/Eigenvalues>
 #include <boost/math/distributions/normal.hpp>
@@ -237,6 +236,29 @@ double mvNormSampler::GetDensity(const std::vector<double>& Coordinates, bool Ge
 	}
 	return GetDensity(TempVector,GetLogDensity);
 }
+double mvNormSampler::GetCumulativeNormal(const std::vector<double>& Coordinates, unsigned int NumSimul)const{
+	if(Coordinates.size()!=Dim) return 0.0;
+	Eigen::VectorXd TempVector(Dim);
+	for(unsigned int i=0;i<Dim;i++){
+		TempVector(i)=Coordinates.at(i);
+	}
+	return GetCumulativeNormal(TempVector,NumSimul);
+}
+double mvNormSampler::GetCumulativeNormal(const Eigen::VectorXd& Coordinates, unsigned int NumSimul)const{
+	if(!AllValid || Coordinates.rows()!=Dim ) return 0.0;
+	Eigen::MatrixXd Samples=ExtractSamples(NumSimul);
+	unsigned int Result=0;
+	bool AllLess;
+	for(unsigned int i=0;i<NumSimul;i++){
+		AllLess=true;
+		for(unsigned int j=0;j<Dim && AllLess;j++){
+			if(Samples(i,j)>=Coordinates(j)) AllLess=false;
+		}
+		if(AllLess) Result++;
+	}
+	return static_cast<double>(Result)/static_cast<double>(NumSimul);
+}
+
 #ifdef mvNormSamplerUnsafeMethods
 void mvNormSampler::SetMeanVector(double* mVect){
 	for(unsigned int i=0;i<Dim;i++){
@@ -273,5 +295,4 @@ double** mvNormSampler::ExtractSamplesMatix(unsigned int NumSamples) const{
 	}
 	return Result;
 }
-#endif
 #endif

@@ -3,6 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultivariatePackage", "MultivariatePackage\MultivariatePackage.vcxproj", "{55450A8B-95B0-499A-BD4E-C7D7E82451EF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D925D060-9447-48B5-8CF9-4A92ADFB04FC}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\DoxygenConfig.doxyfile = Documentation\DoxygenConfig.doxyfile
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Console Test", "MultivariatePackage\Console Test.vcxproj", "{34447B24-3236-4719-A04F-8DF9CAE15DB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +20,10 @@ Global
 		{55450A8B-95B0-499A-BD4E-C7D7E82451EF}.Debug|Win32.Build.0 = Debug|Win32
 		{55450A8B-95B0-499A-BD4E-C7D7E82451EF}.Release|Win32.ActiveCfg = Release|Win32
 		{55450A8B-95B0-499A-BD4E-C7D7E82451EF}.Release|Win32.Build.0 = Release|Win32
+		{34447B24-3236-4719-A04F-8DF9CAE15DB8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{34447B24-3236-4719-A04F-8DF9CAE15DB8}.Debug|Win32.Build.0 = Debug|Win32
+		{34447B24-3236-4719-A04F-8DF9CAE15DB8}.Release|Win32.ActiveCfg = Release|Win32
+		{34447B24-3236-4719-A04F-8DF9CAE15DB8}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

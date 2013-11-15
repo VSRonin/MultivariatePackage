@@ -29,3 +29,5 @@ _ReSharper*/
 html/
 *.sdf
 *.opensdf
+enc_temp_folder/
+ipch/
