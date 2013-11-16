@@ -1,10 +1,64 @@
-#include "mvNormSampler.h"
+#include "NormalDist.h"
 #include <Eigen/Eigenvalues>
+#include <Eigen/Cholesky>
 #include <boost/math/distributions/normal.hpp>
 #include <boost/random/uniform_real_distribution.hpp>
 #include <boost/math/constants/constants.hpp>
 #include <ctime>
-Eigen::MatrixXd mvNormSampler::ExtractSamples(unsigned int NumSamples) const{
+using namespace Multivariate;
+double NormalDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinates, bool UseGenz, unsigned int NumSimul)const{
+	if(!AllValid || Coordinates.rows()!=Dim ) return 0.0;
+	if(Dim==1U){ //Univariate Case
+		boost::math::normal NormalDist(meanVect(0),VarCovMatrix(0,0));
+		return boost::math::cdf(NormalDist,Coordinates(0));
+	}
+	if(UseGenz){
+		const double MonteCarloConfidenceFactor=2.5;
+		boost::random::uniform_real_distribution<double> dist(0.0, 1.0);
+		boost::math::normal StandardNormal(0.0,1.0);
+		Eigen::MatrixXd CholVar = Eigen::LLT<Eigen::MatrixXd>(VarCovMatrix).matrixL(); // compute the Cholesky decomposition of the Var-Cov matrix
+		double IntSum=0.0, VarSum=0.0;
+		double SumCy, delta;
+		unsigned int Counter=0;
+		//The parameter d is always 0.0 since the lower bound is -Infinity
+		double *e=new double[Dim]; *e=boost::math::pdf(StandardNormal,(Coordinates(0)-meanVect(0))/CholVar(0,0));
+		double *f=new double[Dim]; *f=*e;
+		double *y=new double[Dim-1];
+		do{
+			for(unsigned int i=1;i<Dim;i++){
+				y[i-1]=boost::math::quantile(StandardNormal,dist(RandNumGen)*(e[i-1]));
+				SumCy=0.0;
+				for(unsigned int j=0;j<i;j++){
+					SumCy+=CholVar(i,j)*(y[j]);
+				}
+				e[i]=boost::math::pdf(StandardNormal,((Coordinates(i)-meanVect(i))-SumCy)/CholVar(i,i));
+				f[i]=e[i]*(f[i-1]);
+			}
+			Counter++;
+			delta=(f[Dim-1]-IntSum)/static_cast<double>(Counter);
+			IntSum+=delta;
+			VarSum=(static_cast<double>(Counter-2U)*VarSum/static_cast<double>(Counter))+(delta*delta);
+		}while(MonteCarloConfidenceFactor*sqrt(VarSum)>=0.005 && Counter<NumSimul);
+		delete [] e;
+		delete [] f;
+		delete [] y;
+		return IntSum;
+	}
+	else {
+		Eigen::MatrixXd Samples=ExtractSamples(NumSimul);
+		unsigned int Result=0;
+		bool AllLess;
+		for(unsigned int i=0;i<NumSimul;i++){
+			AllLess=true;
+			for(unsigned int j=0;j<Dim && AllLess;j++){
+				if(Samples(i,j)>=Coordinates(j)) AllLess=false;
+			}
+			if(AllLess) Result++;
+		}
+		return static_cast<double>(Result)/static_cast<double>(NumSimul);
+	}
+}
+Eigen::MatrixXd NormalDistribution::ExtractSamples(unsigned int NumSamples) const{
 	if(!AllValid || NumSamples==0) return Eigen::MatrixXd();
 	boost::random::uniform_real_distribution<double> dist(0.0, 1.0);
 	if(Dim==1U){ //Univariate case
@@ -13,6 +67,7 @@ Eigen::MatrixXd mvNormSampler::ExtractSamples(unsigned int NumSamples) const{
 		for(unsigned int j=0;j<NumSamples;j++){
 			UnivariateResults(j)=boost::math::quantile(NormalUnivariateSample,dist(RandNumGen));
 		}
+		return UnivariateResults;
 	}
 	Eigen::EigenSolver<Eigen::MatrixXd> ev(VarCovMatrix);
 	Eigen::EigenSolver<Eigen::MatrixXd>::EigenvalueType ComlexEigVal=ev.eigenvalues();
@@ -42,12 +97,12 @@ Eigen::MatrixXd mvNormSampler::ExtractSamples(unsigned int NumSamples) const{
 	}
 	return NormalExtractions*retval;
 }
-double mvNormSampler::GetDensity(const Eigen::VectorXd& Coordinates, bool GetLogDensity) const{
+double NormalDistribution::GetDensity(const Eigen::VectorXd& Coordinates, bool GetLogDensity) const{
 	if(!AllValid) return 0.0;
 	if(Coordinates.rows()!=Dim) return 0.0;
 	if(Dim==1U){ //Univariate case
 		boost::math::normal NormalUnivariate(meanVect(0),VarCovMatrix(0,0));
-		boost::math::pdf(NormalUnivariate,Coordinates(0));
+		return boost::math::pdf(NormalUnivariate,Coordinates(0));
 	}
 	double distval=(Coordinates-meanVect).transpose()*VarCovMatrix.inverse()*(Coordinates-meanVect);
 	Eigen::EigenSolver<Eigen::MatrixXd>::EigenvalueType ComplexEigVal=VarCovMatrix.eigenvalues();
@@ -57,7 +112,7 @@ double mvNormSampler::GetDensity(const Eigen::VectorXd& Coordinates, bool GetLog
 	if(GetLogDensity) return logretval;
 	return exp(logretval);
 }
-mvNormSampler::mvNormSampler(unsigned int Dimension,const Eigen::VectorXd& mVect,const Eigen::MatrixXd& CovMatr)
+NormalDistribution::NormalDistribution(unsigned int Dimension,const Eigen::VectorXd& mVect,const Eigen::MatrixXd& CovMatr)
 	:Dim(Dimension)
 	,meanVect(mVect)
 	,VarCovMatrix(CovMatr)
@@ -66,7 +121,7 @@ mvNormSampler::mvNormSampler(unsigned int Dimension,const Eigen::VectorXd& mVect
 	CurrentSeed=static_cast<unsigned int>(std::time(NULL));
 	RandNumGen.seed(CurrentSeed);
 }
-mvNormSampler::mvNormSampler(unsigned int Dimension)
+NormalDistribution::NormalDistribution(unsigned int Dimension)
 	:Dim(Dimension)
 	,meanVect(Eigen::VectorXd(Dimension))
 	,VarCovMatrix(Eigen::MatrixXd(Dimension,Dimension))
@@ -84,7 +139,7 @@ mvNormSampler::mvNormSampler(unsigned int Dimension)
 	CurrentSeed=static_cast<unsigned int>(std::time(NULL));
 	RandNumGen.seed(CurrentSeed);
 }
-bool mvNormSampler::CheckValidity(){
+bool NormalDistribution::CheckValidity(){
 	AllValid=true;
 	if(Dim<1U){ //The dimension must be at least one
 		AllValid=false;
@@ -119,18 +174,18 @@ bool mvNormSampler::CheckValidity(){
 	}
 	return AllValid;
 }
-void mvNormSampler::SetRandomSeed(unsigned int NewSeed){
+void NormalDistribution::SetRandomSeed(unsigned int NewSeed){
 	CurrentSeed=NewSeed;
 	RandNumGen.seed(NewSeed);
 }
-bool mvNormSampler::SetMeanVector(const Eigen::VectorXd& mVect){
+bool NormalDistribution::SetMeanVector(const Eigen::VectorXd& mVect){
 	if(mVect.rows()!=Dim) //The mean vector must be as many elements as there are dimensions
 			return false;
 	meanVect=mVect;
 	CheckValidity();
 	return true;
 }
-bool mvNormSampler::SetMeanVector(const std::vector<double>& mVect){
+bool NormalDistribution::SetMeanVector(const std::vector<double>& mVect){
 	if(mVect.size()!=Dim) return false;
 	for(unsigned int i=0;i<Dim;i++){
 		meanVect(i)=mVect.at(i);
@@ -138,7 +193,7 @@ bool mvNormSampler::SetMeanVector(const std::vector<double>& mVect){
 	CheckValidity();
 	return true;
 }
-bool mvNormSampler::SetDimension(unsigned int Dimension){
+bool NormalDistribution::SetDimension(unsigned int Dimension){
 	if(Dimension==0U) return false;
 	Dim=Dimension;
 	for(unsigned int i=0;i<Dim;i++){
@@ -151,7 +206,7 @@ bool mvNormSampler::SetDimension(unsigned int Dimension){
 	CheckValidity();
 	return true;
 }
-bool mvNormSampler::SetVarCovMatrix(const Eigen::MatrixXd& CovMatr){
+bool NormalDistribution::SetVarCovMatrix(const Eigen::MatrixXd& CovMatr){
 	if(CovMatr.rows()!=CovMatr.cols() || CovMatr.rows()!=Dim) //The Var-Cov Matrix must be squared and have as many rows as there are dimensions
 		return false;
 	if(CovMatr!=CovMatr.transpose()) //The Var-Cov Matrix must be symmetric
@@ -170,7 +225,7 @@ bool mvNormSampler::SetVarCovMatrix(const Eigen::MatrixXd& CovMatr){
 	CheckValidity();
 	return true;
 }
-bool mvNormSampler::SetVarCovMatrix(const std::vector<double>& mVect, bool RowWise){
+bool NormalDistribution::SetVarCovMatrix(const std::vector<double>& mVect, bool RowWise){
 	if(mVect.size()!=Dim*Dim) return false;
 	Eigen::MatrixXd TempMatrix(Dim,Dim);
 	for(unsigned int i=0;i<mVect.size();i++){
@@ -179,7 +234,7 @@ bool mvNormSampler::SetVarCovMatrix(const std::vector<double>& mVect, bool RowWi
 	if(!RowWise) TempMatrix.transposeInPlace();
 	return SetVarCovMatrix(TempMatrix);
 }
-bool mvNormSampler::SetVarCovMatrix(const Eigen::MatrixXd& CorrelationMatrix,const Eigen::VectorXd& Variances){
+bool NormalDistribution::SetVarCovMatrix(const Eigen::MatrixXd& CorrelationMatrix,const Eigen::VectorXd& Variances){
 	if(CorrelationMatrix.rows()!=CorrelationMatrix.cols() || CorrelationMatrix.rows()!=Dim) return false;
 	if(!CorrelationMatrix.diagonal().isOnes()) return false;
 	if(Variances.rows()!=Dim) return false;
@@ -195,7 +250,7 @@ bool mvNormSampler::SetVarCovMatrix(const Eigen::MatrixXd& CorrelationMatrix,con
 	}
 	return SetVarCovMatrix(TestVariance);
 }
-Eigen::MatrixXd mvNormSampler::GetCorrelationMatrix() const{
+Eigen::MatrixXd NormalDistribution::GetCorrelationMatrix() const{
 	if(!AllValid) return Eigen::MatrixXd();
 	Eigen::MatrixXd Result(Dim,Dim);
 	for(unsigned int i=0;i<Dim;i++){
@@ -206,7 +261,7 @@ Eigen::MatrixXd mvNormSampler::GetCorrelationMatrix() const{
 	}
 	return Result;
 }
-std::vector<double> mvNormSampler::ExtractSampleVector() const{
+std::vector<double> NormalDistribution::ExtractSampleVector() const{
 	std::vector<double> Result(Dim);
 	if(!AllValid) return Result;
 	Eigen::RowVectorXd TempVector=ExtractSample();
@@ -215,7 +270,7 @@ std::vector<double> mvNormSampler::ExtractSampleVector() const{
 	}
 	return Result;
 }
-std::map<unsigned int,std::vector<double> > mvNormSampler::ExtractSamplesMap(unsigned int NumSamples) const{
+std::map<unsigned int,std::vector<double> > NormalDistribution::ExtractSamplesMap(unsigned int NumSamples) const{
 	if(!AllValid || NumSamples==0) return std::map<unsigned int,std::vector<double> >();
 	std::map<unsigned int,std::vector<double> > Result;
 	std::vector<double> Series(NumSamples);
@@ -228,7 +283,7 @@ std::map<unsigned int,std::vector<double> > mvNormSampler::ExtractSamplesMap(uns
 	}
 	return Result;
 }
-double mvNormSampler::GetDensity(const std::vector<double>& Coordinates, bool GetLogDensity)const{
+double NormalDistribution::GetDensity(const std::vector<double>& Coordinates, bool GetLogDensity)const{
 	if(Coordinates.size()!=Dim) return 0.0;
 	Eigen::VectorXd TempVector(Dim);
 	for(unsigned int i=0;i<Dim;i++){
@@ -236,36 +291,22 @@ double mvNormSampler::GetDensity(const std::vector<double>& Coordinates, bool Ge
 	}
 	return GetDensity(TempVector,GetLogDensity);
 }
-double mvNormSampler::GetCumulativeNormal(const std::vector<double>& Coordinates, unsigned int NumSimul)const{
+double NormalDistribution::GetCumulativeDesity(const std::vector<double>& Coordinates, bool UseGenz, unsigned int NumSimul)const{
 	if(Coordinates.size()!=Dim) return 0.0;
 	Eigen::VectorXd TempVector(Dim);
 	for(unsigned int i=0;i<Dim;i++){
 		TempVector(i)=Coordinates.at(i);
 	}
-	return GetCumulativeNormal(TempVector,NumSimul);
-}
-double mvNormSampler::GetCumulativeNormal(const Eigen::VectorXd& Coordinates, unsigned int NumSimul)const{
-	if(!AllValid || Coordinates.rows()!=Dim ) return 0.0;
-	Eigen::MatrixXd Samples=ExtractSamples(NumSimul);
-	unsigned int Result=0;
-	bool AllLess;
-	for(unsigned int i=0;i<NumSimul;i++){
-		AllLess=true;
-		for(unsigned int j=0;j<Dim && AllLess;j++){
-			if(Samples(i,j)>=Coordinates(j)) AllLess=false;
-		}
-		if(AllLess) Result++;
-	}
-	return static_cast<double>(Result)/static_cast<double>(NumSimul);
+	return GetCumulativeDesity(TempVector,UseGenz,NumSimul);
 }
 
 #ifdef mvNormSamplerUnsafeMethods
-void mvNormSampler::SetMeanVector(double* mVect){
+void NormalDistribution::SetMeanVector(double* mVect){
 	for(unsigned int i=0;i<Dim;i++){
 		meanVect(i)=mVect[i];
 	}
 }
-bool mvNormSampler::SetVarCovMatrix(double** mVect){
+bool NormalDistribution::SetVarCovMatrix(double** mVect){
 	Eigen::MatrixXd TempMatrix(Dim,Dim);
 	for(unsigned int i=0;i<Dim;i++){
 		for(unsigned int j=0;j<Dim;j++){
@@ -274,7 +315,7 @@ bool mvNormSampler::SetVarCovMatrix(double** mVect){
 	}
 	return SetVarCovMatrix(TempMatrix);
 }
-double* mvNormSampler::ExtractSampleArray()const{
+double* NormalDistribution::ExtractSampleArray()const{
 	if(!AllValid) return NULL;
 	Eigen::RowVectorXd TempVector=ExtractSample();
 	double* Result=new double[Dim];
@@ -283,7 +324,7 @@ double* mvNormSampler::ExtractSampleArray()const{
 	}
 	return Result;
 }
-double** mvNormSampler::ExtractSamplesMatix(unsigned int NumSamples) const{
+double** NormalDistribution::ExtractSamplesMatix(unsigned int NumSamples) const{
 	if(NumSamples==0 || !AllValid) return NULL;
 	Eigen::MatrixXd TempMatrix=ExtractSamples(NumSamples);
 	double** Result=new double*[NumSamples];
@@ -294,5 +335,12 @@ double** mvNormSampler::ExtractSamplesMatix(unsigned int NumSamples) const{
 		}
 	}
 	return Result;
+}
+double NormalDistribution::GetCumulativeDesity(double* Coordinates, bool UseGenz, unsigned int NumSimul)const{
+	Eigen::VectorXd TempVector(Dim);
+	for(unsigned int i=0;i<Dim;i++){
+		TempVector(i)=Coordinates[i];
+	}
+	return GetCumulativeDesity(TempVector,UseGenz,NumSimul);
 }
 #endif

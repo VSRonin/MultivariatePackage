@@ -18,12 +18,12 @@
     <ClCompile Include="Console Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mvNormSampler.cpp">
+    <ClCompile Include="NormalDist.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="mvNormSampler.h">
+    <ClInclude Include="NormalDist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

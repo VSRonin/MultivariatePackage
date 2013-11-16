@@ -1,90 +1,40 @@
-#ifndef mvNormSampler_h__
-#define mvNormSampler_h__
+#ifndef NormalDist_h__
+#define NormalDist_h__
 #include <Eigen/Dense>
 #include <vector>
 #include <map>
 #include <boost/random/mersenne_twister.hpp>
+//! Namespace where all the classes of the library are defined
+namespace Multivariate{
 //! Multivariate Normal Distribution
 /*!
 \details This class provides the functionality of calculating the probability density value and generate random samples from a multivariate normal.
 
 It uses the [Eigen](http://eigen.tuxfamily.org) libraries for linear algebra computation and [Boost](http://www.boost.org/) libraries for statistical distribution and random number generation.
 
-The analytical process is based upon the [mvtnorm package](http://cran.r-project.org/web/packages/mvtnorm/index.html) for [R](http://www.r-project.org/) by Alan Genz, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, Friedrich Leisch, Fabian Scheipl, Bjoern Bornkamp, Torsten Hothorn
+The analytical process for computing pdf and simulate from the distribution is based upon the [mvtnorm package](http://cran.r-project.org/web/packages/mvtnorm/index.html) for [R](http://www.r-project.org/) by Alan Genz, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, Friedrich Leisch, Fabian Scheipl, Bjoern Bornkamp, Torsten Hothorn
+The algorithm for cdf calculation is based on [A. Genz (1992)](http://www.math.wsu.edu/faculty/genz/homepage)
 
 To generate samples a [boost::random::mt19937](http://www.boost.org/doc/libs/1_55_0/doc/html/boost/random/mt19937.html) random number generator is used and seeded with [std::time(NULL)](http://www.cplusplus.com/reference/ctime/time/).<br>
-If you construct multiple instances of this class, to avoid the generated samples to be the same you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
+If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
 
-Example Usage:<br>
-Create a bivariate normal with mean \f$ \begin{bmatrix}
-1 \\
-0
-\end{bmatrix}
-\f$ and variance-covariance matrix \f$ \begin{bmatrix}
-3 & 1 \\
-1 & 3
-\end{bmatrix}
-\f$:
-
-\code
-std::vector<double> MeanVector;
-MeanVector.push_back(1.0);
-MeanVector.push_back(0.0);
-std::vector<double> VarMatrix(4);
-VarMatrix[0]=3;
-VarMatrix[1]=1;
-VarMatrix[2]=1;
-VarMatrix[3]=3;
-mvNormSampler BivNorm(2); //A Bivariate standard normal 
-BivNorm.SetMeanVector(MeanVector); //Set the Mean Vector
-BivNorm.SetVarCovMatrix(VarMatrix); //Set the Var-Cov Matrix
-\endcode
-
-Calculate the density of the distribution corresponding to the values \f$ \begin{bmatrix} 
-0.5 \\
--0.3
-\end{bmatrix}
-\f$ and print it to the console:
-
-\code
-std::vector<double> Values;
-Values.push_back(0.5);
-Values.push_back(-0.3);
-double densityValue=BivNorm.GetDensity(Values);
-cout << endl << "Desity for [0.5;-0.3]: " << densityValue;
-\endcode
-
-Generate 1000 random samples from this distribution and print them to the console
-
-\code
-std::map<unsigned int,std::vector<double> > Samples=BivNorm.ExtractSamples(1000);
-cout << "Var 1\tVar2";
-for(int j=0;j<1000;j++){
-	cout << endl;
-	for(unsigned int i=0;i<BivNorm.GetDimension();i++){
-		cout << Samples.at(i).at(j) << '\t'
-	}
-}
-\endcode
+Please refer to the \ref Examples page for usage examples.
 
 \remark This class is re-entrant
 \author Luca Beldi
 \date November 2013
 \license This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
+it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
+(at your option) any later version.<br><br>
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
+GNU Lesser General Public License for more details.<br><br>
+You should have received a copy of the GNU Lesser General Public License
 along with this program.  If not, see [gnu.org](http://www.gnu.org/licenses/).
 */
-
-class mvNormSampler{
+class NormalDistribution{
 private:
 	mutable boost::random::mt19937 RandNumGen;
 	unsigned int Dim;
@@ -92,8 +42,8 @@ private:
 	Eigen::MatrixXd VarCovMatrix;
 	bool AllValid;
 	bool CheckValidity();
-	mvNormSampler(const mvNormSampler& a);
-	mvNormSampler& operator=(const mvNormSampler& a);
+	NormalDistribution(const NormalDistribution& a);
+	NormalDistribution& operator=(const NormalDistribution& a);
 	unsigned int CurrentSeed;
 public:
 	//! Construct a multivariate normal with the given parameters
@@ -113,7 +63,7 @@ public:
 	
 	The class will be considered invalid (it can be checked using `IsValid()`) and won't produce any result until the problem is fixed.
 	*/
-	mvNormSampler(unsigned int Dimension,const Eigen::VectorXd& mVect,const Eigen::MatrixXd& CovMatr);
+	NormalDistribution(unsigned int Dimension,const Eigen::VectorXd& mVect,const Eigen::MatrixXd& CovMatr);
 	//! Construct a multivariate standard normal
 	/*!
 	\param Dimension The dimensionality of the multivariate normal (supports also univariate Gaussian distributions in case this is 1)
@@ -123,7 +73,7 @@ public:
 
 	If dimension is unspecified, a univariate standard normal is constructed
 	*/
-	mvNormSampler(unsigned int Dimension=1U);
+	NormalDistribution(unsigned int Dimension=1U);
 	//! Check if the distribution is valid
 	/*!
 	\return A boolean determining if the structure of the distribution is valid
@@ -308,9 +258,28 @@ public:
 	\details This is an overloaded version of  GetDensity(const Eigen::VectorXd&, bool)
 	*/
 	double GetDensity(const std::vector<double>& Coordinates, bool GetLogDensity=false)const;
+	//! Computes the cumulative density function of the distribution in correspondence of the supplied coordinates
+	/*!
+	\param Coordinates A vector containing the coordinates of the point for which the cdf should be computed
+	\param UseGenz If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower)
+	\param NumSimul The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo
+	\return The value of the cumulative density function
+	\details This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd&, bool, unsigned int)
+	*/
+	double GetCumulativeDesity(const std::vector<double>& Coordinates, bool UseGenz=true, unsigned int NumSimul=500000)const;
+	//! Computes the cumulative density function of the distribution in correspondence of the supplied coordinates
+	/*!
+	\param Coordinates A vector containing the coordinates of the point for which the cdf should be computed
+	\param UseGenz If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower)
+	\param NumSimul The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo
+	\return The value of the cumulative density function
+	\details This function computes the cumulative density function of the current distribution associated with the given coordinates.
 
-	double GetCumulativeDesity(const std::vector<double>& Coordinates, unsigned int NumSimul=500000)const;
-	double GetCumulativeDesity(const Eigen::VectorXd& Coordinates, unsigned int NumSimul=500000)const;
+	If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, 0 is returned.
+
+	If UseGenz is true, the algorithm used is the one described in [Alan Genz - "Numerical Computation of Multivariate Normal Probabilities", Journal of Computational and Graphical Statistics, 1(1992), pp. 141-149](http://www.math.wsu.edu/faculty/genz/papers/mvn.pdf)
+	*/
+	double GetCumulativeDesity(const Eigen::VectorXd& Coordinates, bool UseGenz=true, unsigned int NumSimul=500000)const;
 #ifdef mvNormSamplerUnsafeMethods
 	/** \name Unsafe Methods
 	The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.
@@ -356,7 +325,18 @@ public:
 	\warning This function will search for a number of elements equal to the dimensionality of the distribution in the array. This may mean accessing unallocated memory blocks if the supplied array is not big enough
 	*/
 	double GetDensity(double* Coordinates, bool GetLogDensity=false)const;
+	//! Computes the cumulative density function of the distribution in correspondence of the supplied coordinates
+	/*!
+	\param Coordinates A vector containing the coordinates of the point for which the cdf should be computed
+	\param UseGenz If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower)
+	\param NumSimul The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo
+	\return The value of the cumulative density function
+	\details This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd&, bool, unsigned int)
+	\warning This function will search for a number of elements equal to the dimensionality of the distribution in the array. This may mean accessing unallocated memory blocks if the supplied array is not big enough
+	*/
+	double GetCumulativeDesity(double* Coordinates, bool UseGenz=true, unsigned int NumSimul=500000)const;
 	/// \}
 #endif
 };
-#endif // mvNormSampler_h__
+} //namespace Multivariate
+#endif // NormalDist_h__
