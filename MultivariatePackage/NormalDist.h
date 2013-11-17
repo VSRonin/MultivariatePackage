@@ -255,7 +255,7 @@ public:
 	\param Coordinates  A vector containing the coordinates of the point for which the pdf should be computed
 	\param GetLogDensity If set to true the log density is returned instead of the actual density
 	\return The value of the probability density function
-	\details This is an overloaded version of  GetDensity(const Eigen::VectorXd&, bool)
+	\details This is an overloaded version of GetDensity(const Eigen::VectorXd& Coordinates, bool GetLogDensity)const
 	*/
 	double GetDensity(const std::vector<double>& Coordinates, bool GetLogDensity=false)const;
 	//! Computes the cumulative density function of the distribution in correspondence of the supplied coordinates
@@ -264,7 +264,7 @@ public:
 	\param UseGenz If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower)
 	\param NumSimul The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo
 	\return The value of the cumulative density function
-	\details This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd&, bool, unsigned int)
+	\details This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd& Coordinates, bool UseGenz, unsigned int NumSimul)const
 	*/
 	double GetCumulativeDesity(const std::vector<double>& Coordinates, bool UseGenz=true, unsigned int NumSimul=500000)const;
 	//! Computes the cumulative density function of the distribution in correspondence of the supplied coordinates
@@ -331,7 +331,7 @@ public:
 	\param UseGenz If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower)
 	\param NumSimul The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo
 	\return The value of the cumulative density function
-	\details This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd&, bool, unsigned int)
+	\details This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd& Coordinates, bool UseGenz, unsigned int NumSimul)
 	\warning This function will search for a number of elements equal to the dimensionality of the distribution in the array. This may mean accessing unallocated memory blocks if the supplied array is not big enough
 	*/
 	double GetCumulativeDesity(double* Coordinates, bool UseGenz=true, unsigned int NumSimul=500000)const;

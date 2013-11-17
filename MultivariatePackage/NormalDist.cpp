@@ -21,17 +21,19 @@ double NormalDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinate
 		double SumCy, delta;
 		unsigned int Counter=0;
 		//The parameter d is always 0.0 since the lower bound is -Infinity
-		double *e=new double[Dim]; *e=boost::math::pdf(StandardNormal,(Coordinates(0)-meanVect(0))/CholVar(0,0));
+		double *e=new double[Dim]; *e=boost::math::cdf(StandardNormal,(Coordinates(0)-meanVect(0))/CholVar(0,0));
 		double *f=new double[Dim]; *f=*e;
 		double *y=new double[Dim-1];
 		do{
 			for(unsigned int i=1;i<Dim;i++){
-				y[i-1]=boost::math::quantile(StandardNormal,dist(RandNumGen)*(e[i-1]));
+				if(e[i-1]>0.0 && e[i-1]<1.0) y[i-1]=boost::math::quantile(StandardNormal,dist(RandNumGen)*(e[i-1]));
+				else if(e[i-1]>0.0) y[i-1]=DBL_MAX;
+				else if(e[i-1]<1.0)	y[i-1]=-DBL_MAX;
 				SumCy=0.0;
 				for(unsigned int j=0;j<i;j++){
 					SumCy+=CholVar(i,j)*(y[j]);
 				}
-				e[i]=boost::math::pdf(StandardNormal,((Coordinates(i)-meanVect(i))-SumCy)/CholVar(i,i));
+				e[i]=boost::math::cdf(StandardNormal,((Coordinates(i)-meanVect(i))-SumCy)/CholVar(i,i));
 				f[i]=e[i]*(f[i-1]);
 			}
 			Counter++;

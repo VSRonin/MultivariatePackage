@@ -6,20 +6,18 @@ int main(int argc, char* argv[])
 {
 	std::cout.precision(4); //Set the output to have 4 decimal digits
 
-	//Construct the mean vector with values [1 ; -1]
-	Eigen::Vector2d MeanVector;
-	MeanVector(0)=0.0;
-	MeanVector(1)=0.0;
-
+	Eigen::Vector2d MeanVect;
+	MeanVect(0)=1;
+	MeanVect(1)=1;
 	//Construct the Var-Cov matrix so that the variance of both margins is 3 and the covariance is 1
 	Eigen::Matrix2d VarMatrix;
-	VarMatrix(0,0)=3;
-	VarMatrix(0,1)=1;
-	VarMatrix(1,0)=1;
-	VarMatrix(1,1)=3;
+	VarMatrix(0,0)=3.0;
+	VarMatrix(0,1)=1.0;
+	VarMatrix(1,0)=1.0;
+	VarMatrix(1,1)=3.0;
 
 	//Construct a Bivariate Normal with the above parameters
-	Multivariate::NormalDistribution BivarNorm(2,MeanVector,VarMatrix);
+	Multivariate::NormalDistribution BivarNorm(2,MeanVect,VarMatrix);
 
 	//Set the random number generator seed so that results are 100% reproducible
 	BivarNorm.SetRandomSeed(99);
