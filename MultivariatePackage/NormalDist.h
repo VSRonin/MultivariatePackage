@@ -18,7 +18,7 @@ The algorithm for cdf calculation is based on [A. Genz (1992)](http://www.math.w
 To generate samples a [boost::random::mt19937](http://www.boost.org/doc/libs/1_55_0/doc/html/boost/random/mt19937.html) random number generator is used and seeded with [std::time(NULL)](http://www.cplusplus.com/reference/ctime/time/).<br>
 If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
 
-Please refer to the \ref Examples page for usage examples.
+Please refer to the \ref examples page for usage examples.
 
 \remark This class is re-entrant
 \author Luca Beldi
@@ -45,6 +45,7 @@ private:
 	NormalDistribution(const NormalDistribution& a);
 	NormalDistribution& operator=(const NormalDistribution& a);
 	unsigned int CurrentSeed;
+	std::vector<unsigned int> FillOrder(const Eigen::VectorXd& source)const;
 public:
 	//! Construct a multivariate normal with the given parameters
 	/*!

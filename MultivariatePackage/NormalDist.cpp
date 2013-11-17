@@ -13,15 +13,28 @@ double NormalDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinate
 		return boost::math::cdf(NormalDist,Coordinates(0));
 	}
 	if(UseGenz){
+		//Sort the variables based on the coordinates to speed up the calculations
+		std::vector<unsigned int> VariablesOrder=FillOrder(Coordinates);
+		Eigen::VectorXd AdjCoordinates(Dim);
+		Eigen::VectorXd AdjMean(Dim);
+		Eigen::MatrixXd AdjVarCoV(Dim,Dim);
+		for(unsigned int i=0;i<Dim;i++){
+			AdjCoordinates(VariablesOrder[i])=Coordinates(i);
+			AdjMean(VariablesOrder[i])=meanVect(i);
+			for(unsigned int j=0;j<Dim;j++){
+				AdjVarCoV(VariablesOrder[i],VariablesOrder[j])=VarCovMatrix(i,j);
+			}
+		}
+		//Run the quasi monte-carlo simulation
 		const double MonteCarloConfidenceFactor=2.5;
 		boost::random::uniform_real_distribution<double> dist(0.0, 1.0);
 		boost::math::normal StandardNormal(0.0,1.0);
-		Eigen::MatrixXd CholVar = Eigen::LLT<Eigen::MatrixXd>(VarCovMatrix).matrixL(); // compute the Cholesky decomposition of the Var-Cov matrix
+		Eigen::MatrixXd CholVar = Eigen::LLT<Eigen::MatrixXd>(AdjVarCoV).matrixL(); // compute the Cholesky decomposition of the Var-Cov matrix
 		double IntSum=0.0, VarSum=0.0;
 		double SumCy, delta;
 		unsigned int Counter=0;
 		//The parameter d is always 0.0 since the lower bound is -Infinity
-		double *e=new double[Dim]; *e=boost::math::cdf(StandardNormal,(Coordinates(0)-meanVect(0))/CholVar(0,0));
+		double *e=new double[Dim]; *e=boost::math::cdf(StandardNormal,(AdjCoordinates(0)-AdjMean(0))/CholVar(0,0));
 		double *f=new double[Dim]; *f=*e;
 		double *y=new double[Dim-1];
 		do{
@@ -33,7 +46,7 @@ double NormalDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinate
 				for(unsigned int j=0;j<i;j++){
 					SumCy+=CholVar(i,j)*(y[j]);
 				}
-				e[i]=boost::math::cdf(StandardNormal,((Coordinates(i)-meanVect(i))-SumCy)/CholVar(i,i));
+				e[i]=boost::math::cdf(StandardNormal,((AdjCoordinates(i)-AdjMean(i))-SumCy)/CholVar(i,i));
 				f[i]=e[i]*(f[i-1]);
 			}
 			Counter++;
@@ -301,7 +314,40 @@ double NormalDistribution::GetCumulativeDesity(const std::vector<double>& Coordi
 	}
 	return GetCumulativeDesity(TempVector,UseGenz,NumSimul);
 }
-
+std::vector<unsigned int> NormalDistribution::FillOrder(const Eigen::VectorXd& source)const{
+	if(source.rows()==0 || Dim!=source.rows()) return std::vector<unsigned int>();
+	std::vector<unsigned int> Result(source.rows());
+	unsigned int CurrentCount;
+	for(unsigned int i=0;i<Dim;i++){
+		CurrentCount=0;
+		for(unsigned int j=0;j<Dim;j++){
+			if(source(j)<source(i)) CurrentCount++;
+		}
+		Result[i]=CurrentCount;
+	}
+	for(unsigned int i=0;i<Dim;i++){
+		for(unsigned int j=0;j<i;j++){
+			if(Result[i]==Result[j]) Result[i]++;
+		}
+	}
+	return Result;
+}
+NormalDistribution::NormalDistribution(const NormalDistribution& a)
+	:AllValid(a.AllValid)
+	,Dim(a.Dim)
+	,meanVect(a.meanVect)
+	,VarCovMatrix(a.VarCovMatrix)
+{
+	CurrentSeed=static_cast<unsigned int>(std::time(NULL));
+	RandNumGen.seed(CurrentSeed);
+}
+NormalDistribution& NormalDistribution::operator=(const NormalDistribution& a){
+	AllValid=(a.AllValid);
+	Dim=(a.Dim);
+	meanVect=(a.meanVect);
+	VarCovMatrix=(a.VarCovMatrix);
+	return *this;
+}
 #ifdef mvNormSamplerUnsafeMethods
 void NormalDistribution::SetMeanVector(double* mVect){
 	for(unsigned int i=0;i<Dim;i++){

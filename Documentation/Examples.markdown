@@ -1,3 +1,5 @@
+Examples {#examples}
+========
 \brief Example usage code
 
 This page contains examples of how to use the library in your code.
@@ -52,19 +54,19 @@ The output produced will be:
 
 <DFN>
 Density in [1 ; 0.5] = 0.0369<br>
-Cumulative Density in [1 ; 0.5] = 0.3778<br>
+Cumulative Density in [1 ; 0.5] = 0.4390<br>
 Simulation Results:<br>
 Var 1	 Var2<br>
-   1.1010   -3.4021<br>
-   3.4808   -0.7299<br>
-   0.4872   -2.3817<br>
-  -1.2013   -0.2538<br>
-   1.6614   -1.0759<br>
-   2.4040   -3.2332<br>
-   3.1768   -1.2504<br>
-   0.0226   -3.3594<br>
-   0.4933   -1.2479<br>
-   2.7354   -0.1122<br>
+   2.7742   -0.7284<br>
+   0.6430   -3.0028<br>
+   4.3652    1.1009<br>
+   1.2452   -1.2843<br>
+   1.2112   -0.4647<br>
+   1.2562    1.1469<br>
+   6.0257    2.0565<br>
+   4.2924   -0.5663<br>
+   1.2785   -0.5571<br>
+   2.9207   -2.2104<br>
 </DFN>
 
 \subsection NormalSTL Using STL containers
@@ -126,19 +128,19 @@ The output produced will be:
 
 <DFN>
 Density in [1 ; 0.5] = 0.0369<br>
-Cumulative Density in [1 ; 0.5] = 0.3773<br>
+Cumulative Density in [1 ; 0.5] = 0.4431<br>
 Simulation Results:<br>
 Var 1	| Var2<br>
 _________________<br>
-2.0342	| -2.7569<br>
--0.8586	| -0.4041<br>
-1.2382	| -2.8339<br>
-1.9431	| -3.0771<br>
-1.2090	| -1.9328<br>
-4.0300	| -1.9376<br>
-1.7155	| -1.8997<br>
--0.7756	| -2.4315<br>
--2.8239	| -1.5028<br>
--1.7615	| -1.6717<br>
+4.3795	| -0.0478<br>
+3.7745	| -3.0145<br>
+-0.7895	| -2.9816<br>
+-0.1412	| -0.4594<br>
+1.9040	| -2.3109<br>
+3.2947	| 1.9221<br>
+0.4840	| -3.7591<br>
+0.5675	| -1.0132<br>
+0.4181	| -1.6335<br>
+1.8001	| -4.1868<br>
 </DFN>
 
