@@ -208,8 +208,8 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <p>It uses the <a href="http://eigen.tuxfamily.org">Eigen</a> libraries for linear algebra computation and <a href="http://www.boost.org/">Boost</a> libraries for statistical distribution and random number generation.</p>
 <p>The analytical process for computing pdf and simulate from the distribution is based upon the <a href="http://cran.r-project.org/web/packages/mvtnorm/index.html">mvtnorm package</a> for <a href="http://www.r-project.org/">R</a> by Alan Genz, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, Friedrich Leisch, Fabian Scheipl, Bjoern Bornkamp, Torsten Hothorn The algorithm for cdf calculation is based on <a href="http://www.math.wsu.edu/faculty/genz/homepage">A. Genz (1992)</a></p>
 <p>To generate samples a <a href="http://www.boost.org/doc/libs/1_55_0/doc/html/boost/random/mt19937.html">boost::random::mt19937</a> random number generator is used and seeded with <a href="http://www.cplusplus.com/reference/ctime/time/">std::time(NULL)</a>.<br/>
- If you construct multiple instances of this class, to avoid the generated samples to be the same you should supply a different seed. To do so, for example, you can call <code>MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);</code></p>
-<p>Please refer to the Examples page for usage examples.</p>
+ If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call <code>MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);</code></p>
+<p>Please refer to the <a class="el" href="examples.html">Examples</a> page for usage examples.</p>
 <dl class="section remark"><dt>Remarks</dt><dd>This class is re-entrant </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Luca Beldi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>November 2013 </dd></dl>
@@ -508,7 +508,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the cumulative density function</dd></dl>
-<p>This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd&amp;, bool, unsigned int) </p>
+<p>This is an overloaded version of <a class="el" href="class_multivariate_1_1_normal_distribution.html#a1a07c550354b70f5a5185735f3af70d4" title="Computes the cumulative density function of the distribution in correspondence of the supplied coordi...">GetCumulativeDesity(const Eigen::VectorXd&amp; Coordinates, bool UseGenz, unsigned int NumSimul)const</a> </p>
 
 </div>
 </div>
@@ -598,7 +598,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the cumulative density function</dd></dl>
-<p>This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd&amp;, bool, unsigned int) </p>
+<p>This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd&amp; Coordinates, bool UseGenz, unsigned int NumSimul) </p>
 <dl class="section warning"><dt>Warning</dt><dd>This function will search for a number of elements equal to the dimensionality of the distribution in the array. This may mean accessing unallocated memory blocks if the supplied array is not big enough </dd></dl>
 
 </div>
@@ -703,7 +703,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the probability density function</dd></dl>
-<p>This is an overloaded version of GetDensity(const Eigen::VectorXd&amp;, bool) </p>
+<p>This is an overloaded version of <a class="el" href="class_multivariate_1_1_normal_distribution.html#a5d2382bc4d1f271b19759abab8223da9" title="Computes the probability density function of the distribution in correspondence of the supplied coord...">GetDensity(const Eigen::VectorXd&amp; Coordinates, bool GetLogDensity)const</a> </p>
 
 </div>
 </div>
@@ -1145,7 +1145,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 16 2013 18:29:07 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 17 2013 21:45:14 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
