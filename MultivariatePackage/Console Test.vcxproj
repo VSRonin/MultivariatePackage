@@ -77,9 +77,11 @@
   <ItemGroup>
     <ClCompile Include="Console Test.cpp" />
     <ClCompile Include="NormalDist.cpp" />
+    <ClCompile Include="tDist.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NormalDist.h" />
+    <ClInclude Include="tDist.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

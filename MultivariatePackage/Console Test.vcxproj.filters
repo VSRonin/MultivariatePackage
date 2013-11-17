@@ -21,9 +21,15 @@
     <ClCompile Include="NormalDist.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tDist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NormalDist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tDist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
