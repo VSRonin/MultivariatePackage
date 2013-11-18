@@ -5,7 +5,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultivariatePackage", "Mult
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D925D060-9447-48B5-8CF9-4A92ADFB04FC}"
 	ProjectSection(SolutionItems) = preProject
+		Documentation\DOCMAIN.markdown = Documentation\DOCMAIN.markdown
 		Documentation\DoxygenConfig.doxyfile = Documentation\DoxygenConfig.doxyfile
+		Documentation\Examples.markdown = Documentation\Examples.markdown
+		MultivariatePackage\README.markdown = MultivariatePackage\README.markdown
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Console Test", "MultivariatePackage\Console Test.vcxproj", "{34447B24-3236-4719-A04F-8DF9CAE15DB8}"

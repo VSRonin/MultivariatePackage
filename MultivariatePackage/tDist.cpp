@@ -7,6 +7,8 @@
 #include "SpecialFunctions.hpp"
 using namespace Multivariate;
 double tDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinates, bool UseGenz, unsigned int NumSimul)const{
+	//! \todo Add the Genz algorithm
+	if(!AllValid || Coordinates.rows()!=Dim) return -1.0;
 	Eigen::MatrixXd Samples=ExtractSamples(NumSimul);
 	unsigned int Result=0;
 	bool AllLess;
@@ -36,7 +38,7 @@ Eigen::MatrixXd tDistribution::ExtractSamples(unsigned int NumSamples) const{
 	return Result;
 }
 double tDistribution::GetDensity(const Eigen::VectorXd& Coordinates, bool GetLogDensity)const{
-	if(!AllValid) return 0.0;
+	if(!AllValid) return -1.0;
 	if(Coordinates.rows()!=Dim) return 0.0;
 	double Result;
 	if(Dim==1U){ //Univariate case
@@ -77,6 +79,7 @@ tDistribution::tDistribution(unsigned int Dimension,unsigned int DegFreedom,cons
 	,DegreesOfFreedom(DegFreedom)
 	,LocationVect(locVect)
 	,ScaleMatrix(ScaleMatr)
+	,ProbToFind(0.0)
 {
 	CheckValidity();
 	CurrentSeed=static_cast<unsigned int>(std::time(NULL));
@@ -87,6 +90,7 @@ tDistribution::tDistribution(unsigned int Dimension,unsigned int DegFreedom)
 	,DegreesOfFreedom(DegFreedom)
 	,LocationVect(Eigen::VectorXd(Dimension))
 	,ScaleMatrix(Eigen::MatrixXd(Dimension,Dimension))
+	,ProbToFind(0.0)
 {
 	if(Dimension>0U){
 		for(unsigned int i=0;i<Dim;i++){
@@ -107,8 +111,9 @@ tDistribution::tDistribution(const tDistribution& a)
 	,LocationVect(a.LocationVect)
 	,ScaleMatrix(a.ScaleMatrix)
 	,AllValid(a.AllValid)
+	,ProbToFind(a.ProbToFind)
 {
-	CurrentSeed=static_cast<unsigned int>(std::time(NULL));
+	CurrentSeed=a.CurrentSeed;
 	RandNumGen.seed(CurrentSeed);
 }
 tDistribution& tDistribution::operator=(const tDistribution& a){
@@ -117,6 +122,7 @@ tDistribution& tDistribution::operator=(const tDistribution& a){
 	LocationVect=a.LocationVect;
 	ScaleMatrix=a.ScaleMatrix;
 	AllValid=a.AllValid;
+	ProbToFind=a.ProbToFind;
 	return *this;
 }
 void tDistribution::SetRandomSeed(unsigned int NewSeed){
@@ -187,22 +193,22 @@ bool tDistribution::SetDimension(unsigned int Dimension){
 	CheckValidity();
 	return true;
 }
-bool tDistribution::SetScaleMatrix(const Eigen::MatrixXd& CovMatr){
-	if(CovMatr.rows()!=CovMatr.cols() || CovMatr.rows()!=Dim) //The Scale Matrix must be squared and have as many rows as there are dimensions
+bool tDistribution::SetScaleMatrix(const Eigen::MatrixXd& SclMatr){
+	if(SclMatr.rows()!=SclMatr.cols() || SclMatr.rows()!=Dim) //The Scale Matrix must be squared and have as many rows as there are dimensions
 		return false;
-	if(CovMatr!=CovMatr.transpose()) //The Scale Matrix must be symmetric
+	if(SclMatr!=SclMatr.transpose()) //The Scale Matrix must be symmetric
 		return false;
 	//The Scale matrix must be positive definite
-	if(CovMatr.determinant()<0.0)
+	if(SclMatr.determinant()<0.0)
 		return false;
 
-	Eigen::VectorXcd RelatedEigen=CovMatr.eigenvalues();
+	Eigen::VectorXcd RelatedEigen=SclMatr.eigenvalues();
 	for (unsigned int i=0;i<Dim;i++){
 		if(RelatedEigen(i).real()<0.0){ 
 			return false;
 		}
 	}
-	ScaleMatrix=CovMatr;
+	ScaleMatrix=SclMatr;
 	CheckValidity();
 	return true;
 }
@@ -252,4 +258,36 @@ double tDistribution::GetCumulativeDesity(const std::vector<double>& Coordinates
 		TempVector(i)=Coordinates.at(i);
 	}
 	return GetCumulativeDesity(TempVector,UseGenz,NumSimul);
+}
+Eigen::VectorXd tDistribution::GetQuantile(double Prob){
+	if(!AllValid || abs(Prob)>1.0) return Eigen::VectorXd();
+	if(abs(Prob)==1.0){
+		Eigen::VectorXd TempVector(Dim);
+		for(unsigned int i=0;i<Dim;i++){
+			TempVector(i)= Prob<0.0 ? -DBL_MAX : DBL_MAX;
+		}
+		return TempVector;
+	}
+	tDistribution CentralDistr(Dim,DegreesOfFreedom);
+	CentralDistr.SetScaleMatrix(ScaleMatrix);
+	CentralDistr.SetRandomSeed(CurrentSeed);
+	CentralDistr.ProbToFind=Prob;
+	double CenteredQuantile =  boost::math::tools::newton_raphson_iterate(CentralDistr,0.0,-DBL_MAX,DBL_MAX,8);
+	Eigen::VectorXd CoordinatesVector(Dim);
+	for(unsigned i=0;i<Dim;i++){
+		if(LocationVect(i)>0.0){
+			if(CenteredQuantile>DBL_MAX-LocationVect(i)) CoordinatesVector(i)=DBL_MAX;
+			else CoordinatesVector(i)= CenteredQuantile+LocationVect(i);
+		}
+		else {
+			if(CenteredQuantile<-DBL_MAX-LocationVect(i)) CoordinatesVector(i)=-DBL_MAX;
+			else CoordinatesVector(i)= CenteredQuantile+LocationVect(i);
+		}
+	}
+	return CoordinatesVector;
+}
+boost::math::tuple<double, double> tDistribution::operator()(double x){
+	Eigen::VectorXd CoordinatesVector(Dim);
+	for(unsigned i=0;i<Dim;i++) CoordinatesVector(i)=x;
+	return boost::math::make_tuple(GetCumulativeDesity(CoordinatesVector)-ProbToFind,GetDensity(CoordinatesVector));
 }

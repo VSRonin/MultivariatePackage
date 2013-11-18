@@ -6,8 +6,35 @@
 #include <boost/math/constants/constants.hpp>
 #include <ctime>
 using namespace Multivariate;
+Eigen::VectorXd NormalDistribution::GetQuantile(double Prob){
+	if(!AllValid || abs(Prob)>1.0) return Eigen::VectorXd();
+	if(abs(Prob)==1.0){
+		Eigen::VectorXd TempVector(Dim);
+		for(unsigned int i=0;i<Dim;i++){
+			TempVector(i)= Prob<0.0 ? -DBL_MAX : DBL_MAX;
+		}
+		return TempVector;
+	}
+	NormalDistribution CentralDistr(Dim);
+	CentralDistr.SetVarCovMatrix(VarCovMatrix);
+	CentralDistr.SetRandomSeed(CurrentSeed);
+	CentralDistr.ProbToFind=Prob;
+	double CenteredQuantile =  boost::math::tools::newton_raphson_iterate(CentralDistr,0.0,-DBL_MAX,DBL_MAX,8);
+	Eigen::VectorXd CoordinatesVector(Dim);
+	for(unsigned i=0;i<Dim;i++){
+		if(meanVect(i)>0.0){
+			if(CenteredQuantile>DBL_MAX-meanVect(i)) CoordinatesVector(i)=DBL_MAX;
+			else CoordinatesVector(i)= CenteredQuantile+meanVect(i);
+		}
+		else {
+			if(CenteredQuantile<-DBL_MAX-meanVect(i)) CoordinatesVector(i)=-DBL_MAX;
+			else CoordinatesVector(i)= CenteredQuantile+meanVect(i);
+		}
+	}
+	return CoordinatesVector;
+}
 double NormalDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinates, bool UseGenz, unsigned int NumSimul)const{
-	if(!AllValid || Coordinates.rows()!=Dim || NumSimul<1U) return 0.0;
+	if(!AllValid || Coordinates.rows()!=Dim || NumSimul<1U) return -1.0;
 	if(Dim==1U){ //Univariate Case
 		boost::math::normal NormalDist(meanVect(0),VarCovMatrix(0,0));
 		return boost::math::cdf(NormalDist,Coordinates(0));
@@ -113,8 +140,7 @@ Eigen::MatrixXd NormalDistribution::ExtractSamples(unsigned int NumSamples) cons
 	return NormalExtractions*retval;
 }
 double NormalDistribution::GetDensity(const Eigen::VectorXd& Coordinates, bool GetLogDensity) const{
-	if(!AllValid) return 0.0;
-	if(Coordinates.rows()!=Dim) return 0.0;
+	if(!AllValid || Coordinates.rows()!=Dim) return -1.0;
 	if(Dim==1U){ //Univariate case
 		boost::math::normal NormalUnivariate(meanVect(0),VarCovMatrix(0,0));
 		return boost::math::pdf(NormalUnivariate,Coordinates(0));
@@ -131,6 +157,7 @@ NormalDistribution::NormalDistribution(unsigned int Dimension,const Eigen::Vecto
 	:Dim(Dimension)
 	,meanVect(mVect)
 	,VarCovMatrix(CovMatr)
+	,ProbToFind(0.0)
 {
 	CheckValidity();
 	CurrentSeed=static_cast<unsigned int>(std::time(NULL));
@@ -140,6 +167,7 @@ NormalDistribution::NormalDistribution(unsigned int Dimension)
 	:Dim(Dimension)
 	,meanVect(Eigen::VectorXd(Dimension))
 	,VarCovMatrix(Eigen::MatrixXd(Dimension,Dimension))
+	,ProbToFind(0.0)
 {
 	if(Dimension>0U){
 		for(unsigned int i=0;i<Dim;i++){
@@ -334,8 +362,9 @@ NormalDistribution::NormalDistribution(const NormalDistribution& a)
 	,Dim(a.Dim)
 	,meanVect(a.meanVect)
 	,VarCovMatrix(a.VarCovMatrix)
+	,ProbToFind(a.ProbToFind)
 {
-	CurrentSeed=static_cast<unsigned int>(std::time(NULL));
+	CurrentSeed=a.CurrentSeed;
 	RandNumGen.seed(CurrentSeed);
 }
 NormalDistribution& NormalDistribution::operator=(const NormalDistribution& a){
@@ -343,9 +372,72 @@ NormalDistribution& NormalDistribution::operator=(const NormalDistribution& a){
 	Dim=(a.Dim);
 	meanVect=(a.meanVect);
 	VarCovMatrix=(a.VarCovMatrix);
+	ProbToFind=a.ProbToFind;
 	return *this;
 }
+boost::math::tuple<double, double> NormalDistribution::operator()(double x){
+	Eigen::VectorXd CoordinatesVector(Dim);
+	for(unsigned i=0;i<Dim;i++) CoordinatesVector(i)=x;
+	return boost::math::make_tuple(GetCumulativeDesity(CoordinatesVector)-ProbToFind,GetDensity(CoordinatesVector));
+}
+std::vector<double> NormalDistribution::GetQuantileVector(double Prob){
+	if(!AllValid || abs(Prob)>1.0) return std::vector<double>();
+	Eigen::VectorXd TempVector=GetQuantile(Prob);
+	std::vector<double> Result(Dim);
+	for(unsigned int i=0;i<Dim;i++) Result[i]=TempVector(i);
+	return Result;
+}
+Eigen::MatrixXd NormalDistribution::ExtractSamplesCDF(unsigned int NumSamples) const{
+	if(!AllValid || NumSamples<1U) return Eigen::MatrixXd();
+	Eigen::MatrixXd Result=ExtractSamples(NumSamples);
+	for(unsigned int j=0;j<Dim;j++){
+		boost::math::normal NormalDist(meanVect(j),VarCovMatrix(j,j));
+		for(unsigned int i=0;i<Dim;i++){
+			Result(i,j)=boost::math::cdf(NormalDist,Result(i,j));
+		}
+	}
+	return Result;
+}
+std::map<unsigned int,std::vector<double> > NormalDistribution::ExtractSamplesCDFMap(unsigned int NumSamples) const{
+	if(!AllValid || NumSamples<1U) return std::map<unsigned int,std::vector<double> >();
+	std::map<unsigned int,std::vector<double> > Result;
+	std::vector<double> Series(NumSamples);
+	Eigen::MatrixXd TempMatrix=ExtractSamplesCDF(NumSamples);
+	for(unsigned int i=0;i<Dim;i++){
+		for(unsigned int j=0;j<NumSamples;j++){
+			Series[j]=TempMatrix(j,i);
+		}
+		Result.insert(std::pair<unsigned int,std::vector<double> >(i,Series));
+	}
+	return Result;
+}
+std::vector<double> NormalDistribution::ExtractSampleCDFVect() const{
+	if(!AllValid) return std::vector<double>();
+	Eigen::RowVectorXd TempVect=ExtractSampleCDF();
+	std::vector<double> Result(Dim);
+	for(unsigned int i=0;i<Dim;i++) Result[i]=TempVect(i);
+	return Result;
+}
 #ifdef mvNormSamplerUnsafeMethods
+double* NormalDistribution::ExtractSampleCDFArray() const{
+	if(!AllValid) return NULL;
+	Eigen::RowVectorXd TempVect=ExtractSampleCDF();
+	double* Result=new double[Dim];
+	for(unsigned int i=0;i<Dim;i++) Result[i]=TempVect(i);
+	return Result;
+}
+double** NormalDistribution::ExtractSamplesCDFMatix(unsigned int NumSamples) const{
+	if(!AllValid || NumSamples<1U) return NULL;
+	double** Result=new double*[NumSamples];
+	Eigen::MatrixXd TempMatrix=ExtractSamplesCDF(NumSamples);
+	for(unsigned int j=0;j<NumSamples;j++){
+		Result[j]=new double[Dim];
+		for(unsigned int i=0;i<Dim;i++){
+			Result[j][i]=TempMatrix(j,i);
+		}
+	}
+	return Result;
+}
 void NormalDistribution::SetMeanVector(double* mVect){
 	for(unsigned int i=0;i<Dim;i++){
 		meanVect(i)=mVect[i];
@@ -387,5 +479,12 @@ double NormalDistribution::GetCumulativeDesity(double* Coordinates, bool UseGenz
 		TempVector(i)=Coordinates[i];
 	}
 	return GetCumulativeDesity(TempVector,UseGenz,NumSimul);
+}
+double* NormalDistribution::GetQuantileArray(double Prob){
+	if(!AllValid || abs(Prob)>1.0) return NULL;
+	Eigen::VectorXd TempVector=GetQuantile(Prob);
+	double* Result=new double[Dim];
+	for(unsigned int i=0;i<Dim;i++) Result[i]=TempVector(i);
+	return Result;
 }
 #endif
