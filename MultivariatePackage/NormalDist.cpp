@@ -7,7 +7,7 @@
 #include <ctime>
 using namespace Multivariate;
 double NormalDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinates, bool UseGenz, unsigned int NumSimul)const{
-	if(!AllValid || Coordinates.rows()!=Dim ) return 0.0;
+	if(!AllValid || Coordinates.rows()!=Dim || NumSimul<1U) return 0.0;
 	if(Dim==1U){ //Univariate Case
 		boost::math::normal NormalDist(meanVect(0),VarCovMatrix(0,0));
 		return boost::math::cdf(NormalDist,Coordinates(0));
@@ -161,11 +161,8 @@ bool NormalDistribution::CheckValidity(){
 		return AllValid;
 	}
 	if(meanVect.rows()!=Dim){ //The mean vector must be as many elements as there are dimensions
-		meanVect.transposeInPlace();
-		if(meanVect.rows()!=Dim){
-			AllValid=false;
-			return AllValid;
-		}
+		AllValid=false;
+		return AllValid;
 	}
 	if(VarCovMatrix.rows()!=VarCovMatrix.cols() || VarCovMatrix.rows()!=Dim){ //The Var-Cov Matrix must be squared and have as many rows as there are dimensions
 		AllValid=false;

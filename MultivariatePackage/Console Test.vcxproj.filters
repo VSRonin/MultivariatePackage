@@ -32,5 +32,8 @@
     <ClInclude Include="tDist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SpecialFunctions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

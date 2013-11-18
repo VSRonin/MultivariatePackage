@@ -1,25 +1,25 @@
 #include <iostream>
 #include <vector>
-#include "NormalDist.h"
+#include "tDist.h"
 int main(int argc, char* argv[])
 {
 	std::cout.precision(4); //Set the output to have 4 decimal digits
 	//Construct a Bivariate Normal Distribution
-	Multivariate::NormalDistribution BivarNorm(2);
+	Multivariate::tDistribution BivarNorm(2);
 	//Set the random number generator seed so that results are 100% reproducible
 	BivarNorm.SetRandomSeed(88);
 	// Set the mean vector to [1 ; -1]
 	std::vector<double> MeanVector(2);
 	MeanVector[0]=1.0;
 	MeanVector[1]=-1.0;
-	BivarNorm.SetMeanVector(MeanVector);
+	BivarNorm.SetLocationVector(MeanVector);
 	//Set the variance of both margins to 3 and the covariance to 1
 	std::vector<double> VarMatrix(4);
 	VarMatrix[0]=3.0;
 	VarMatrix[1]=1.0;
 	VarMatrix[2]=1.0;
 	VarMatrix[3]=3.0;
-	BivarNorm.SetVarCovMatrix(VarMatrix);
+	BivarNorm.SetScaleMatrix(VarMatrix);
 	//Compute and print the density and the cumulative density of the distribution in the point [1 ; 0.5]
 	std::vector<double> TempCoords;
 	TempCoords.push_back(1.0);
