@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Multivariate Analysis Package
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">0.2</span>
    </div>
    <div id="projectbrief">A multivariate distributions analysis package</div>
   </td>
@@ -70,6 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
+      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -89,7 +90,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Multivariate Namespace Reference</div>  </div>
 </div><!--header-->
@@ -103,13 +105,50 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html">NormalDistribution</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_multivariate.html" title="Namespace where all the classes of the library are defined. ">Multivariate</a> Normal Distribution.  <a href="class_multivariate_1_1_normal_distribution.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1t_distribution.html">tDistribution</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_multivariate.html" title="Namespace where all the classes of the library are defined. ">Multivariate</a> Student's t Distribution.  <a href="class_multivariate_1_1t_distribution.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a5a525e4bfddadad32c95cec146d28aec"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_multivariate.html#a5a525e4bfddadad32c95cec146d28aec">GammaFunction</a> (double t)</td></tr>
+<tr class="memdesc:a5a525e4bfddadad32c95cec146d28aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Gamma function.  <a href="#a5a525e4bfddadad32c95cec146d28aec">More...</a><br/></td></tr>
+<tr class="separator:a5a525e4bfddadad32c95cec146d28aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Namespace where all the classes of the library are defined. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a5a525e4bfddadad32c95cec146d28aec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Multivariate::GammaFunction </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the Gamma function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>The point in which the function should be evaluated </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the gamma function</dd></dl>
+<p>Evaluates the \( \Gamma \) function as \( \Gamma(t) = \int_0^\infty x^{t-1} e^{-x}\,{\rm d}x. \)</p>
+<p>For more information, please refer to <a href="http://en.wikipedia.org/wiki/Gamma_function">Wikipedia</a> </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 17 2013 21:45:14 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 18 2013 16:53:08 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
