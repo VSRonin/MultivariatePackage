@@ -6,12 +6,12 @@
 #include <boost/math/constants/constants.hpp>
 #include <ctime>
 using namespace Multivariate;
-Eigen::VectorXd NormalDistribution::GetQuantile(double Prob){
-	if(!AllValid || abs(Prob)>1.0) return Eigen::VectorXd();
-	if(abs(Prob)==1.0){
+Eigen::VectorXd NormalDistribution::GetQuantile(double Prob)const{
+	if(!AllValid || Prob>1.0 || Prob<0.0) return Eigen::VectorXd();
+	if(Prob==1.0 || Prob==0.0){
 		Eigen::VectorXd TempVector(Dim);
 		for(unsigned int i=0;i<Dim;i++){
-			TempVector(i)= Prob<0.0 ? -DBL_MAX : DBL_MAX;
+			TempVector(i)= Prob>0.0 ? DBL_MAX : -DBL_MAX;
 		}
 		return TempVector;
 	}
@@ -380,7 +380,7 @@ boost::math::tuple<double, double> NormalDistribution::operator()(double x){
 	for(unsigned i=0;i<Dim;i++) CoordinatesVector(i)=x;
 	return boost::math::make_tuple(GetCumulativeDesity(CoordinatesVector)-ProbToFind,GetDensity(CoordinatesVector));
 }
-std::vector<double> NormalDistribution::GetQuantileVector(double Prob){
+std::vector<double> NormalDistribution::GetQuantileVector(double Prob)const{
 	if(!AllValid || abs(Prob)>1.0) return std::vector<double>();
 	Eigen::VectorXd TempVector=GetQuantile(Prob);
 	std::vector<double> Result(Dim);

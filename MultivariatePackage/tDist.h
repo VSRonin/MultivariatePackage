@@ -194,8 +194,8 @@ namespace Multivariate{
 		double GetDensity(const std::vector<double>& Coordinates, bool GetLogDensity=false)const;
 		double GetCumulativeDesity(const std::vector<double>& Coordinates, bool UseGenz=true, unsigned int NumSimul=500000)const;
 		double GetCumulativeDesity(const Eigen::VectorXd& Coordinates, bool UseGenz=true, unsigned int NumSimul=500000)const;
-		Eigen::VectorXd GetQuantile(double Prob);
-		std::vector<double> GetQuantileVector(double Prob);
+		Eigen::VectorXd GetQuantile(double Prob) const;
+		std::vector<double> GetQuantileVector(double Prob) const;
 #ifdef mvNormSamplerUnsafeMethods
 
 #endif

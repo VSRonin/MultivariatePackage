@@ -259,12 +259,12 @@ double tDistribution::GetCumulativeDesity(const std::vector<double>& Coordinates
 	}
 	return GetCumulativeDesity(TempVector,UseGenz,NumSimul);
 }
-Eigen::VectorXd tDistribution::GetQuantile(double Prob){
-	if(!AllValid || abs(Prob)>1.0) return Eigen::VectorXd();
-	if(abs(Prob)==1.0){
+Eigen::VectorXd tDistribution::GetQuantile(double Prob)const{
+	if(!AllValid || Prob>1.0 || Prob<0.0) return Eigen::VectorXd();
+	if(Prob==1.0 || Prob==0.0){
 		Eigen::VectorXd TempVector(Dim);
 		for(unsigned int i=0;i<Dim;i++){
-			TempVector(i)= Prob<0.0 ? -DBL_MAX : DBL_MAX;
+			TempVector(i)= Prob>0.0 ? DBL_MAX : -DBL_MAX;
 		}
 		return TempVector;
 	}
@@ -285,6 +285,13 @@ Eigen::VectorXd tDistribution::GetQuantile(double Prob){
 		}
 	}
 	return CoordinatesVector;
+}
+std::vector<double> tDistribution::GetQuantileVector(double Prob)const{
+	if(!AllValid || Prob>1.0 || Prob<0.0) return std::vector<double>();
+	Eigen::VectorXd TempVector=GetQuantile(Prob);
+	std::vector<double> Result(Dim);
+	for(unsigned int i=0;i<Dim;i++) Result[i]=TempVector(i);
+	return Result;
 }
 boost::math::tuple<double, double> tDistribution::operator()(double x){
 	Eigen::VectorXd CoordinatesVector(Dim);

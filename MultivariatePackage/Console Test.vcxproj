@@ -49,7 +49,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;mvNormSamplerUnsafeMethods;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\boost_1_54_0;C:\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -75,12 +75,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractDistribution.cpp" />
     <ClCompile Include="Console Test.cpp" />
     <ClCompile Include="NormalDist.cpp" />
     <ClCompile Include="tDist.cpp" />
     <ClCompile Include="UniformDistribution.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractDistribution.h" />
     <ClInclude Include="NormalDist.h" />
     <ClInclude Include="SpecialFunctions.hpp" />
     <ClInclude Include="tDist.h" />

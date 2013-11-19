@@ -1,42 +1,45 @@
 #ifndef UniformDistribution_h__
 #define UniformDistribution_h__
-#include <Eigen/Dense>
-#include <vector>
-#include <map>
-#include <boost/random/mersenne_twister.hpp>
+#include "AbstractDistribution.h"
 namespace Multivariate{
-	class UniformDistribution{
+	class UniformDistribution : public AbstarctDistribution{
 	private:
-		mutable boost::random::mt19937 RandNumGen;
-		Eigen::Matrix<double,-1,2> Limits;
-		unsigned int Dim;
-		bool AllValid;
-		unsigned int CurrentSeed;
+		Eigen::MatrixX2d Limits;
 	public:
 		UniformDistribution(unsigned int Dimension=1U);
-		UniformDistribution(unsigned int Dimension, const Eigen::Matrix<double,-1,2>& MinMax);
-		bool IsValid() const {return AllValid;}
-		void SetRandomSeed(unsigned int NewSeed);
-		unsigned int GetCurrentSeed()const{return CurrentSeed;}
+		UniformDistribution(unsigned int Dimension, const Eigen::MatrixX2d& MinMax);
 		bool SetDimension(unsigned int Dimension);
-		unsigned int GetDimension() const {return Dim;}
-		const Eigen::Matrix<double,-1,2>& GetLimits() const {return Limits;}
-		bool SetLimits(const Eigen::Matrix<double,-1,2>& MinMax);
-		Eigen::RowVectorXd ExtractSample() const{return ExtractSamples(1U);}
-		std::vector<double> ExtractSampleVector() const;
+		const Eigen::MatrixX2d& GetLimits() const {return Limits;}
+		virtual bool SetLimits(const Eigen::MatrixX2d& MinMax);
 		Eigen::MatrixXd ExtractSamples(unsigned int NumSamples) const;
-		std::map<unsigned int,std::vector<double> > ExtractSamplesMap(unsigned int NumSamples) const;
-		double GetDensity(bool GetLogDensity=false)const;
-		double GetDensity(bool GetLogDensity=false)const;
-		double GetCumulativeDesity(const std::vector<double>& Coordinates)const;
+		double GetDensity()const;
+		double GetDensity(const Eigen::VectorXd& Coordinates)const {return GetDensity();}
+		virtual double GetDensity(const std::vector<double>& Coordinates)const {return GetDensity();}
 		double GetCumulativeDesity(const Eigen::VectorXd& Coordinates)const;
-		Eigen::VectorXd GetQuantile(double Prob);
-		std::vector<double> GetQuantileVector(double Prob);
+		Eigen::VectorXd GetQuantile(double Prob)const;
+		Eigen::MatrixXd ExtractSamplesCDF(unsigned int NumSamples) const;
+
+		using Multivariate::AbstarctDistribution::ExtractSample;
+		using Multivariate::AbstarctDistribution::ExtractSampleVector;
+		using Multivariate::AbstarctDistribution::ExtractSamplesMap;
+		using Multivariate::AbstarctDistribution::GetDensity;
+		using Multivariate::AbstarctDistribution::GetCumulativeDesity;
+		using Multivariate::AbstarctDistribution::GetQuantileVector;
+		using Multivariate::AbstarctDistribution::ExtractSampleCDF;
+		using Multivariate::AbstarctDistribution::ExtractSampleCDFVect;
+		using Multivariate::AbstarctDistribution::ExtractSamplesCDFMap;
+#ifdef mvNormSamplerUnsafeMethods
+		using Multivariate::AbstarctDistribution::GetQuantileArray;
+		using Multivariate::AbstarctDistribution::ExtractSampleArray;
+		using Multivariate::AbstarctDistribution::ExtractSamplesMatix;
+		using Multivariate::AbstarctDistribution::ExtractSampleCDFArray;
+		using Multivariate::AbstarctDistribution::ExtractSamplesCDFMatix;
+#endif
 	};
 	class IndependenceCopula : public UniformDistribution{
 		private:
-			IndependenceCopula(unsigned int Dimension, const Eigen::Matrix<double,-1,2>& MinMax) : UniformDistribution(Dimension,MinMax){}
-			bool SetLimits(const Eigen::Matrix<double,-1,2>& MinMax){return UniformDistribution::SetLimits(MinMax);}
+			IndependenceCopula(unsigned int Dimension, const Eigen::MatrixX2d& MinMax) : UniformDistribution(Dimension,MinMax){}
+			bool SetLimits(const Eigen::MatrixX2d& MinMax){return UniformDistribution::SetLimits(MinMax);}
 		public:
 			IndependenceCopula(unsigned int Dimension=1U) : UniformDistribution(Dimension){}
 	};

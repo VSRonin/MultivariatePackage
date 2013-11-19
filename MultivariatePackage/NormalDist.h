@@ -1,6 +1,5 @@
 #ifndef NormalDist_h__
 #define NormalDist_h__
-#define mvNormSamplerUnsafeMethods
 #include <Eigen/Dense>
 #include <vector>
 #include <map>
@@ -343,13 +342,13 @@ public:
 
 	If the probability supplied is greater, in absolute value, than 1 or the distribution is invalid, an empty vector is returned.
 	*/
-	Eigen::VectorXd GetQuantile(double Prob);
+	Eigen::VectorXd GetQuantile(double Prob)const;
 	//! Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability
 	/*!
 	\return A vector containing the coordinates of the quantile
 	\details This is equivalent to GetQuantile() but returns an std::vector intead of an Eigen::VectorXd
 	*/
-	std::vector<double> GetQuantileVector(double Prob);
+	std::vector<double> GetQuantileVector(double Prob)const;
 #ifdef mvNormSamplerUnsafeMethods
 	/** \name Unsafe Methods
 	The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.
