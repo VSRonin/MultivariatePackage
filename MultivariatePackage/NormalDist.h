@@ -41,7 +41,7 @@ Here, you can find a copy of the \ref LicensePage.
 Alternatively, see [gnu.org](http://www.gnu.org/licenses/).
 */
 class NormalDistribution : public AbstarctDistribution{
-private:
+protected:
 	Eigen::VectorXd meanVect;
 	Eigen::MatrixXd VarCovMatrix;
 	bool CheckValidity();
@@ -168,7 +168,7 @@ public:
 
 	\sa GetVarCovMatrix()
 	*/
-	bool SetVarCovMatrix(const Eigen::MatrixXd& CovMatr);
+	virtual bool SetVarCovMatrix(const Eigen::MatrixXd& CovMatr);
 	//! Set the Var-Cov matrix of the distribution
 	/*!
 	\param mVect a vector containing the elements of the new variance covariance matrix of the distribution
@@ -188,7 +188,7 @@ public:
 
 	\sa GetVarCovMatrix()
 	*/
-	bool SetVarCovMatrix(const std::vector<double>& mVect, bool RowWise=true);
+	virtual bool SetVarCovMatrix(const std::vector<double>& mVect, bool RowWise=true);
 	//! Set the Var-Cov matrix of the distribution
 	/*!
 	\param CorrelationMatrix The correlation coefficients matrix
@@ -210,14 +210,14 @@ public:
 
 	\sa GetVarCovMatrix()
 	*/
-	bool SetVarCovMatrix(const Eigen::MatrixXd& CorrelationMatrix, const Eigen::VectorXd& Variances);
+	virtual bool SetVarCovMatrix(const Eigen::MatrixXd& CorrelationMatrix, const Eigen::VectorXd& Variances);
 	
 	//! Get the mean vector of the distribution
 	/*!
 	\return The current mean vector of the distribution
 	\sa SetMeanVector(const Eigen::VectorXd&)
 	*/
-	const Eigen::VectorXd& GetMeanVector() const {return meanVect;}
+	virtual const Eigen::VectorXd& GetMeanVector() const {return meanVect;}
 	//! Get the Var-Cov matrix of the distribution
 	/*!
 	\return The current variance-covariance matrix of the distribution
@@ -225,13 +225,13 @@ public:
 	\sa SetVarCovMatrix(const std::vector<double>&,bool)
 	\sa SetVarCovMatrix(const Eigen::MatrixXd&, const Eigen::VectorXd&)
 	*/
-	const Eigen::MatrixXd& GetVarCovMatrix() const {return VarCovMatrix;}
+	virtual const Eigen::MatrixXd& GetVarCovMatrix() const {return VarCovMatrix;}
 	//! Get the linear correlation matrix
 	/*!
 	\return The linear correlation matrix associated with the current variance-covariance matrix of the distribution
 	\sa GetVarCovMatrix()
 	*/
-	Eigen::MatrixXd GetCorrelationMatrix() const;
+	virtual Eigen::MatrixXd GetCorrelationMatrix() const;
 	
 	//! Generates multiple simulations from the distribution
 	/*!
@@ -242,7 +242,6 @@ public:
 	If NumSamples is 0 or the distribution is invalid, a null matrix is returned
 	*/
 	virtual Eigen::MatrixXd ExtractSamples(unsigned int NumSamples) const;
-	
 	//! Extracts samples from the distribution and returns their marginal CDF
 	/*!
 	\param NumSamples The number of simulation to run
@@ -253,20 +252,16 @@ public:
 
 	If NumSamples is 0 or the distribution is invalid, a null matrix is returned
 	 */
-	Eigen::MatrixXd ExtractSamplesCDF(unsigned int NumSamples) const;
-	
+	virtual Eigen::MatrixXd ExtractSamplesCDF(unsigned int NumSamples) const;
 	//! Computes the probability density function of the distribution in correspondence of the supplied coordinates
 	/*!
 	\param Coordinates A vector containing the coordinates of the point for which the pdf should be computed
-	\param GetLogDensity If set to true the log density is returned instead of the actual density
 	\return The value of the probability density function
 	\details This function computes the probability density function of the current distribution associated with the given coordinates.
 	
 	If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned
 	*/
-	double GetDensity(const Eigen::VectorXd& Coordinates)const;
-	
-	
+	virtual double GetDensity(const Eigen::VectorXd& Coordinates)const;
 	//! Computes the cumulative density function of the distribution in correspondence of the supplied coordinates
 	/*!
 	\param Coordinates A vector containing the coordinates of the point for which the cdf should be computed
@@ -275,7 +270,7 @@ public:
 
 	If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned.
 	*/
-	double GetCumulativeDesity(const Eigen::VectorXd& Coordinates)const;
+	virtual double GetCumulativeDesity(const Eigen::VectorXd& Coordinates)const;
 	//! Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability
 	/*!
 	\param Prob The probability for which the corresponding quantile must be found
@@ -303,14 +298,14 @@ public:
 	\details This is an overloaded version of SetMeanVector(const Eigen::VectorXd&)
 	\warning This function will search for a number of elements equal to the dimensionality of the distribution in the array. This may mean accessing unallocated memory blocks if the supplied array is not big enough
 	 */
-	void SetMeanVector(double* mVect);
+	virtual void SetMeanVector(double* mVect);
 	/**
 	\brief Set the Var-Cov matrix of the distribution
 	\param mVect a matrix containing the new values for the variance covariance matrix of the distribution
 	\details This is an overloaded version of SetVarCovMatrix(const Eigen::MatrixXd&)
 	\warning This function will search for a number of elements, both in the row and the column dimension, equal to the dimensionality of the distribution in the matrix. This may mean accessing unallocated memory blocks if the supplied matrix is not big enough
 	 */
-	bool SetVarCovMatrix(double** mVect);
+	virtual bool SetVarCovMatrix(double** mVect);
 	/// \}
 #endif
 	using Multivariate::AbstarctDistribution::GetDensity;
@@ -355,7 +350,9 @@ Alternatively, see [gnu.org](http://www.gnu.org/licenses/).
 */
 class GaussianCopula : public NormalDistribution{
 private:
+	// The mean vector has no impact on the copula
 	bool SetMeanVector(const Eigen::VectorXd& mVect){return NormalDistribution::SetMeanVector(mVect);}
+	// The mean vector has no impact on the copula
 	bool SetMeanVector(const std::vector<double>& mVect){return NormalDistribution::SetMeanVector(mVect);}
 public:
 	//! Constructs a standard Gaussian copula

@@ -26,6 +26,7 @@ namespace Multivariate{
 	class IndependenceCopula : public UniformDistribution{
 		private:
 			IndependenceCopula(unsigned int Dimension, const Eigen::MatrixX2d& MinMax) : UniformDistribution(Dimension,MinMax){}
+			// The limits have no impact on the copula
 			bool SetLimits(const Eigen::MatrixX2d& MinMax){return UniformDistribution::SetLimits(MinMax);}
 		public:
 			IndependenceCopula(unsigned int Dimension=2U) : UniformDistribution(Dimension){AllValid=AllValid && Dimension>1U;}
