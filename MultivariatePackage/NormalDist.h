@@ -1,9 +1,6 @@
 #ifndef NormalDist_h__
 #define NormalDist_h__
-#include <Eigen/Dense>
-#include <vector>
-#include <map>
-#include <boost/random/mersenne_twister.hpp>
+#include "AbstractDistribution.h"
 #include <boost/math/tools/tuple.hpp>
 #include <boost/math/tools/roots.hpp>
 //! Namespace where all the classes of the library are defined
@@ -26,10 +23,9 @@ The multivariate normal distribution funtion is defined as: \f$ f(\textbf{x})=((
 The analytical process for computing pdf and simulate from the distribution is based upon the [mvtnorm package](http://cran.r-project.org/web/packages/mvtnorm/index.html) for [R](http://www.r-project.org/) by Alan Genz, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, Friedrich Leisch, Fabian Scheipl, Bjoern Bornkamp, Torsten Hothorn
 The algorithm for cdf calculation is based on [A. Genz (1992)](http://www.math.wsu.edu/faculty/genz/homepage)
 
-To generate samples a [boost::random::mt19937](http://www.boost.org/doc/libs/1_55_0/doc/html/boost/random/mt19937.html) random number generator is used and seeded with [std::time(NULL)](http://www.cplusplus.com/reference/ctime/time/).<br>
-If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
+If you construct multiple instances this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
 
-Please refer to the \ref examples page for usage examples.
+Please refer to the \ref examplesPage page for usage examples.
 
 \remark This class is re-entrant
 \date November 2013
@@ -41,24 +37,64 @@ This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.<br><br>
-You should have received a copy of the GNU Lesser General Public License
-along with this program.  If not, see [gnu.org](http://www.gnu.org/licenses/).
+Here, you can find a copy of the \ref LicensePage.
+Alternatively, see [gnu.org](http://www.gnu.org/licenses/).
 */
-class NormalDistribution{
+class NormalDistribution : public AbstarctDistribution{
 private:
-	mutable boost::random::mt19937 RandNumGen;
-	unsigned int Dim;
 	Eigen::VectorXd meanVect;
 	Eigen::MatrixXd VarCovMatrix;
-	bool AllValid;
 	bool CheckValidity();
 	NormalDistribution(const NormalDistribution& a);
 	NormalDistribution& operator=(const NormalDistribution& a);
-	unsigned int CurrentSeed;
 	std::vector<unsigned int> FillOrder(const Eigen::VectorXd& source)const;
 	double ProbToFind;
 	boost::math::tuple<double, double> operator()(double x);
+	bool UseGenz;
+	unsigned int NumSimul;
 public:
+	//! Get either the Genz algorithm is used or not
+	/*!
+	\return A bool determining if Genz algorithm will be used for calculating the CDF
+	\sa SetUseGenz();
+	*/
+	bool GetUseGenz() const {return UseGenz;}
+	//! Get the maximum number of simulations that will be used to compute the CDF
+	/*!
+	\return The maximum number of simulations
+	\sa SetNumSimul();
+	*/
+	unsigned int GetNumSimul() const {return NumSimul;}
+	//! Set if Genz algorithm should be used
+	/*!
+	\param a Determinses if Genz algorithm will be used
+	\details If UseGenz is true, the algorithm used for computing the cumulative density function and the quantiles 
+	is the one described in [Alan Genz - "Numerical Computation of Multivariate Normal Probabilities", Journal of Computational and Graphical Statistics, 1(1992), pp. 141-149](http://www.math.wsu.edu/faculty/genz/papers/mvn.pdf)
+
+	If set to false, full monte-carlo simulation will be used (resulting in much slower performance)
+
+	\remark By default Genz algorithm is used in CDF and quantiles calculations.
+	\note The GetQuantile() function needs to calculate the CDF several times, using full monte-carlo may lead to very long execution times of that function
+	\sa GetUseGenz()
+	\sa SetNumSimul()
+	*/
+	void SetUseGenz(bool a=true){UseGenz=a;}
+	//! Set the maximum number of simulations used in the CDF calculation
+	/*
+	\param a The new maximum number of simulations
+	\return A bool determining if the number of simulations was changed successfully
+	\details This functions tries to set the maximum number of simulation used when calculating cumulative density function to the new, supplied, value.
+	
+	If the argument is less than 1 the maximum number of simulations is not changed and false is returned
+
+	If the Genz algorithm is used (the default) this is the maximum number of simulations that the algorithm will use.<br>
+	If full monte-carlo is used then this is the number of simulations used when estimating the CDF
+	\remark By default this parameter is set to 500000 that proved to give quite stable results for bivariate distributions using full monte-carlo
+	\warning Setting this parameters to less than 1000 times the dimensionality of the distribution may lead to very bad and unstable CDF estimates
+	\sa SetUseGenz()
+	\sa GetNumSimul()
+	*/
+	bool SetNumSimul(unsigned int a);
 	//! Construct a multivariate normal with the given parameters
 	/*!
 	\param Dimension The dimensionality of the multivariate normal (supports also univariate gaussian distributions in case this is 1)
@@ -87,43 +123,22 @@ public:
 	If dimension is unspecified, a univariate standard normal is constructed
 	*/
 	NormalDistribution(unsigned int Dimension=1U);
-	//! Check if the distribution is valid
-	/*!
-	\return A boolean determining if the structure of the distribution is valid
-	\details If this function returns false the structure of the distribution is meaningless and no result will be produced until the invalid parameters are cured.
-	*/
-	bool IsValid() const {return AllValid;}
-	//! Set the random number generator seed
-	/*!
-	\param NewSeed the new random seed
-	\note This seed is different from the srand() seed and, even with the same seed, random number generated by the internal generator will be different by those generated by rand()
-	\sa GetCurrentSeed()
-	*/
-	void SetRandomSeed(unsigned int NewSeed);
-	//! Get the random number generator seed
-	/*!
-	\return The random number generator seed.
-	\details This function return the seed that was used to initialize the random number generator.
-	\note This seed is different from the srand() seed and, even with the same seed, random number generated by the internal generator will be different by those generated by rand()
-	\sa SetRandomSeed()
-	*/
-	unsigned int GetCurrentSeed()const{return CurrentSeed;}
-	//! Set the expected values vector
+	//! Set the mean vector
 	/*!
 	\param mVect the vector of new values for the mean vector
 	\return A boolean determining if the mean vector was changed successfully
-	\details This function attempts to set the expected values vector to the new values supplied.
+	\details This function attempts to set the mean vector to the new values supplied.
 	
 	If the dimension of the vector is different from the dimension of the distribution the mean vector is not changed and false is returned
 	\sa GetMeanVector()
 	*/
-	bool SetMeanVector(const Eigen::VectorXd& mVect);
+	virtual bool SetMeanVector(const Eigen::VectorXd& mVect);
 	//! Set the expected values vector
 	/*!
-	\param mVect the vector of new values for the location vector
+	\param mVect the vector of new values for the mean vector
 	\details This is an overloaded version of SetMeanVector(const Eigen::VectorXd&)
 	*/
-	bool SetMeanVector(const std::vector<double>& mVect);
+	virtual bool SetMeanVector(const std::vector<double>& mVect);
 	//! Set the dimensionality of the distribution
 	/*!
 	\param Dimension the new dimensionality of the distribution 
@@ -136,7 +151,7 @@ public:
 
 	\sa GetDimension()
 	*/
-	bool SetDimension(unsigned int Dimension);
+	virtual bool SetDimension(unsigned int Dimension);
 	//! Set the Var-Cov matrix of the distribution
 	/*!
 	\param CovMatr the new variance covariance matrix of the distribution 
@@ -196,15 +211,10 @@ public:
 	\sa GetVarCovMatrix()
 	*/
 	bool SetVarCovMatrix(const Eigen::MatrixXd& CorrelationMatrix, const Eigen::VectorXd& Variances);
-	//! Get the dimensionality of the distribution
+	
+	//! Get the mean vector of the distribution
 	/*!
-	\return The current dimensionality of the distribution
-	\sa SetDimension()
-	*/
-	unsigned int GetDimension() const {return Dim;}
-	//! Get the expected values vector of the distribution
-	/*!
-	\return The current expected values vector of the distribution
+	\return The current mean vector of the distribution
 	\sa SetMeanVector(const Eigen::VectorXd&)
 	*/
 	const Eigen::VectorXd& GetMeanVector() const {return meanVect;}
@@ -222,20 +232,7 @@ public:
 	\sa GetVarCovMatrix()
 	*/
 	Eigen::MatrixXd GetCorrelationMatrix() const;
-	//! Generates a single simulation from the distribution
-	/*!
-	\return A vector with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution
-	\details This is equal to calling `ExtractSamples(1U)`
-	\sa ExtractSamples()
-	*/
-	Eigen::RowVectorXd ExtractSample() const{return ExtractSamples(1U);}
-	//! Generates a single simulation from the distribution
-	/*!
-	\return A vector with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution
-	\details This is equivalent to ExtractSample() but returns an std::vector intead of an Eigen::RowVectorXd
-	\sa ExtractSamples()
-	*/
-	std::vector<double> ExtractSampleVector() const;
+	
 	//! Generates multiple simulations from the distribution
 	/*!
 	\param NumSamples The number of simulation to run
@@ -244,30 +241,8 @@ public:
 	
 	If NumSamples is 0 or the distribution is invalid, a null matrix is returned
 	*/
-	Eigen::MatrixXd ExtractSamples(unsigned int NumSamples) const;
-	//! Generates multiple simulations from the distribution
-	/*!
-	\param NumSamples The number of simulation to run
-	\return A map that has as keys the index of the dimension (starting from 0) and as values a vector containing the simulation results for that dimension
-	\details This function generates NumSamples simulation from the current distribution and returns them in a map form.
+	virtual Eigen::MatrixXd ExtractSamples(unsigned int NumSamples) const;
 	
-	If NumSamples is 0 or the distribution is invalid, an empty map is returned
-	*/
-	std::map<unsigned int,std::vector<double> > ExtractSamplesMap(unsigned int NumSamples) const;
-	//! Generates a single simulation from the distribution and returns its marginal CDF
-	/*!
-	\return A vector with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution
-	\details This is equal to calling `ExtractSamplesCDF(1U)`
-	\sa ExtractSamplesCDF()
-	*/
-	Eigen::RowVectorXd ExtractSampleCDF() const{return ExtractSamples(1U);}
-	//! Generates a single simulation from the distribution and returns its marginal CDF
-	/*!
-	\return A vector with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution
-	\details This is equivalent to ExtractSampleCDF() but returns an std::vector intead of an Eigen::RowVectorXd
-	\sa ExtractSamplesCDF()
-	*/
-	std::vector<double> ExtractSampleCDFVect() const;
 	//! Extracts samples from the distribution and returns their marginal CDF
 	/*!
 	\param NumSamples The number of simulation to run
@@ -279,17 +254,7 @@ public:
 	If NumSamples is 0 or the distribution is invalid, a null matrix is returned
 	 */
 	Eigen::MatrixXd ExtractSamplesCDF(unsigned int NumSamples) const;
-	//! Extracts samples from the distribution and returns their marginal CDF
-	/*!
-	\param NumSamples The number of simulation to run
-	\return A matrix with columns equal to the dimensionality of the distribution and rows equal to the number of simulations
-	\details This function generates NumSamples simulation from the current distribution, computes the marginal cumulative density function for each of them and returns them in a map form.
 	
-	This function simulates extractions from a Gaussian copula
-
-	If NumSamples is 0 or the distribution is invalid, a null matrix is returned
-	 */
-	std::map<unsigned int,std::vector<double> > ExtractSamplesCDFMap(unsigned int NumSamples) const;
 	//! Computes the probability density function of the distribution in correspondence of the supplied coordinates
 	/*!
 	\param Coordinates A vector containing the coordinates of the point for which the pdf should be computed
@@ -299,37 +264,18 @@ public:
 	
 	If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned
 	*/
-	double GetDensity(const Eigen::VectorXd& Coordinates, bool GetLogDensity=false)const;
-	//! Computes the probability density function of the distribution in correspondence of the supplied coordinates
-	/*!
-	\param Coordinates  A vector containing the coordinates of the point for which the pdf should be computed
-	\param GetLogDensity If set to true the log density is returned instead of the actual density
-	\return The value of the probability density function
-	\details This is an overloaded version of GetDensity(const Eigen::VectorXd& Coordinates, bool GetLogDensity)const
-	*/
-	double GetDensity(const std::vector<double>& Coordinates, bool GetLogDensity=false)const;
+	double GetDensity(const Eigen::VectorXd& Coordinates)const;
+	
+	
 	//! Computes the cumulative density function of the distribution in correspondence of the supplied coordinates
 	/*!
 	\param Coordinates A vector containing the coordinates of the point for which the cdf should be computed
-	\param UseGenz If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower)
-	\param NumSimul The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo
-	\return The value of the cumulative density function
-	\details This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd&, bool, unsigned int)const
-	*/
-	double GetCumulativeDesity(const std::vector<double>& Coordinates, bool UseGenz=true, unsigned int NumSimul=500000)const;
-	//! Computes the cumulative density function of the distribution in correspondence of the supplied coordinates
-	/*!
-	\param Coordinates A vector containing the coordinates of the point for which the cdf should be computed
-	\param UseGenz If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower)
-	\param NumSimul The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo
 	\return The value of the cumulative density function
 	\details This function computes the cumulative density function of the current distribution associated with the given coordinates.
 
 	If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned.
-
-	If UseGenz is true, the algorithm used is the one described in [Alan Genz - "Numerical Computation of Multivariate Normal Probabilities", Journal of Computational and Graphical Statistics, 1(1992), pp. 141-149](http://www.math.wsu.edu/faculty/genz/papers/mvn.pdf)
 	*/
-	double GetCumulativeDesity(const Eigen::VectorXd& Coordinates, bool UseGenz=true, unsigned int NumSimul=500000)const;
+	double GetCumulativeDesity(const Eigen::VectorXd& Coordinates)const;
 	//! Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability
 	/*!
 	\param Prob The probability for which the corresponding quantile must be found
@@ -343,12 +289,7 @@ public:
 	If the probability supplied is greater, in absolute value, than 1 or the distribution is invalid, an empty vector is returned.
 	*/
 	Eigen::VectorXd GetQuantile(double Prob)const;
-	//! Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability
-	/*!
-	\return A vector containing the coordinates of the quantile
-	\details This is equivalent to GetQuantile() but returns an std::vector intead of an Eigen::VectorXd
-	*/
-	std::vector<double> GetQuantileVector(double Prob)const;
+	
 #ifdef mvNormSamplerUnsafeMethods
 	/** \name Unsafe Methods
 	The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.
@@ -370,68 +311,101 @@ public:
 	\warning This function will search for a number of elements, both in the row and the column dimension, equal to the dimensionality of the distribution in the matrix. This may mean accessing unallocated memory blocks if the supplied matrix is not big enough
 	 */
 	bool SetVarCovMatrix(double** mVect);
-	/**
-	\brief Generates a single simulation from the distribution
-	\return A dynamically allocated array with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution
-	\details This is equivalent to ExtractSample() but returns an array intead of an Eigen::RowVectorXd. If it can't be calculated, NULL is returned
-	\warning This function will return an array allocated on the heap. If the user doesn't take care of deleting it, this will lead to memory leaks
-	*/
-	double* ExtractSampleArray() const;
-	/**
-	\brief Generates a single simulation from the distribution
-	\param NumSamples The number of simulation to run
-	\return A dynamically allocated matrix with number of columns equal to the dimensionality of the distribution and number of rows equal to the number of simulations representing multiple draws from the distribution
-	\details This is equivalent to ExtractSamples() but returns a matrix intead of an Eigen::MatrixXd. If it can't be calculated, NULL is returned
-	\warning This function will return a matrix allocated on the heap. If the user doesn't take care of deleting it, this will lead to memory leaks
-	*/
-	double** ExtractSamplesMatix(unsigned int NumSamples) const;
-	/**
-	\brief Generates a single simulation from the distribution and returns its marginal CDF
-	\return A dynamically allocated array with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution
-	\details This is equivalent to ExtractSampleCDF() but returns an array intead of an Eigen::RowVectorXd. If it can't be calculated, NULL is returned
-	\warning This function will return an array allocated on the heap. If the user doesn't take care of deleting it, this will lead to memory leaks
-	*/
-	double* ExtractSampleCDFArray() const;
-	/**
-	\brief Generates a single simulation from the distribution and returns its marginal CDF
-	\param NumSamples The number of simulation to run
-	\return A dynamically allocated matrix with number of columns equal to the dimensionality of the distribution and number of rows equal to the number of simulations representing multiple draws from the distribution
-	\details This is equivalent to ExtractSamplesCDF() but returns a matrix intead of an Eigen::MatrixXd. If it can't be calculated, NULL is returned
-	\warning This function will return a matrix allocated on the heap. If the user doesn't take care of deleting it, this will lead to memory leaks
-	*/
-	double** ExtractSamplesCDFMatix(unsigned int NumSamples) const;
-	/**
-	\brief Computes the probability density function of the distribution in correspondence of the supplied coordinates
-	\param Coordinates An array containing the coordinates of the point for which the pdf should be computed
-	\param GetLogDensity If set to true the log density is returned instead of the actual density
-	\return The value of the probability density function
-	\details This is an overloaded version of GetDensity(const Eigen::VectorXd&, bool)
-	\warning This function will search for a number of elements equal to the dimensionality of the distribution in the array. This may mean accessing unallocated memory blocks if the supplied array is not big enough
-	*/
-	double GetDensity(double* Coordinates, bool GetLogDensity=false)const;
-	//! Computes the cumulative density function of the distribution in correspondence of the supplied coordinates
-	/*!
-	\param Coordinates A vector containing the coordinates of the point for which the cdf should be computed
-	\param UseGenz If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower)
-	\param NumSimul The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo
-	\return The value of the cumulative density function
-	\details This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd& Coordinates, bool UseGenz, unsigned int NumSimul)
-	\warning This function will search for a number of elements equal to the dimensionality of the distribution in the array. This may mean accessing unallocated memory blocks if the supplied array is not big enough
-	*/
-	double GetCumulativeDesity(double* Coordinates, bool UseGenz=true, unsigned int NumSimul=500000)const;
-	//! Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability
-	/*!
-	\return A dynamically allocated array containing the coordinates of the quantile
-	\details This is equivalent to GetQuantile() but returns an array intead of an Eigen::VectorXd. If it can't be calculated, NULL is returned
-	\warning This function will return a matrix allocated on the heap. If the user doesn't take care of deleting it, this will lead to memory leaks
-	*/
-	double* GetQuantileArray(double Prob);
 	/// \}
 #endif
-private:
+	using Multivariate::AbstarctDistribution::GetDensity;
+	using Multivariate::AbstarctDistribution::GetCumulativeDesity;
 	template <class F, class T> friend T boost::math::tools::newton_raphson_iterate(F f, T guess, T min, T max, int digits);
 	template <class F, class T>	friend T boost::math::tools::newton_raphson_iterate(F f, T guess, T min, T max, int digits, boost::uintmax_t& max_iter);
 	template <class F, class T> friend void boost::math::tools::detail::handle_zero_derivative(F f,T& last_f0,const T& f0,T& delta,T& result,T& guess,const T& min,const T& max);
+};
+//! Gaussian Copula Distribution
+/*!
+\details This class provides the functionality of calculating the probability density value, cumulative probability density value, inverse cumulative probability density and generate random samples from a Gaussian copula.
+
+Defining:
+	- \f$ k \f$ as the dimensionality of the copula
+	- \f$ \boldsymbol{\Sigma}=\begin{bmatrix}
+	\sigma^2_1 & \cdots & \sigma_{1,k}\\
+	\vdots  & \ddots & \vdots  \\
+	\sigma_{k,1} & \cdots & \sigma^2_k
+	\end{bmatrix} \f$ as the variance-covariance matrix
+
+The gaussian copula distribution funtion is defined as: \f$ f(\textbf{x})=((2\pi)^{-\frac{k}{2}} |\boldsymbol{\Sigma}|^{-\frac{1}{2}} e^{(-\frac{1}{2} \textbf{x}' \boldsymbol{\Sigma}^{-1} \textbf{x})} \f$
+
+The analytical process for computing pdf and simulate from the distribution is based upon the [mvtnorm package](http://cran.r-project.org/web/packages/mvtnorm/index.html) for [R](http://www.r-project.org/) by Alan Genz, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, Friedrich Leisch, Fabian Scheipl, Bjoern Bornkamp, Torsten Hothorn
+The algorithm for cdf calculation is based on [A. Genz (1992)](http://www.math.wsu.edu/faculty/genz/homepage)
+
+If you construct multiple instances this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
+
+Please refer to the \ref examplesPage page for usage examples.
+
+\remark This class is re-entrant
+\date November 2013
+\license This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.<br><br>
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.<br><br>
+Here, you can find a copy of the \ref LicensePage.
+Alternatively, see [gnu.org](http://www.gnu.org/licenses/).
+*/
+class GaussianCopula : public NormalDistribution{
+private:
+	bool SetMeanVector(const Eigen::VectorXd& mVect){return NormalDistribution::SetMeanVector(mVect);}
+	bool SetMeanVector(const std::vector<double>& mVect){return NormalDistribution::SetMeanVector(mVect);}
+public:
+	//! Constructs a standard Gaussian copula
+	/*!
+	\param Dimension The dimensionality of the copula
+	\details Construct a Gaussian copula with variance-covariance matrix set to the identity matrix.
+	
+	In case The Dimension less than 2 the class will be considered invalid (it can be checked using `IsValid()`) and won't produce any result until the problem is fixed.
+
+	If dimension is unspecified, a bivariate copula is constructed
+	*/
+	GaussianCopula(unsigned int Dimension=2U) : NormalDistribution(Dimension){AllValid=AllValid && Dimension>1U;}
+	//! Construct a Gaussian copula with the given parameters
+	/*!
+	\param Dimension The dimensionality of the multivariate normal (supports also univariate gaussian distributions in case this is 1)
+	\param CovMatr The variance-covariance
+	\details Construct a multivariate normal distribution.
+	
+	In case:
+	- The Dimension is less than 2
+	- The variance-covariance is not square
+	- The variance-covariance is not symmetric
+	- The variance-covariance is not semi-positive definite
+	- The variance-covariance has a number of rows different from the Dimension
+	
+	The class will be considered invalid (it can be checked using `IsValid()`) and won't produce any result until the problem is fixed.
+	*/
+	GaussianCopula(unsigned int Dimension,const Eigen::MatrixXd& CovMatr) : NormalDistribution(Dimension){AllValid=AllValid && Dimension>1U && SetVarCovMatrix(CovMatr);}
+	//! Generates multiple simulations from the copula
+	/*!
+	\param NumSamples The number of simulation to run
+	\return A matrix with columns equal to the dimensionality of the distribution and rows equal to the number of simulations
+	\details This function generates NumSamples simulation from the current copula and returns them in matrix form.
+	
+	If NumSamples is 0 or the distribution is invalid, a null matrix is returned
+	*/
+	Eigen::MatrixXd ExtractSamples(unsigned int NumSamples) const{return ExtractSamplesCDF(NumSamples);}
+	//! Set the dimensionality of the distribution
+	/*!
+	\param Dimension the new dimensionality of the distribution 
+	\return A boolean determining if the dimensionality was changed successfully
+	\details This function will try to change the dimensionality of the distribution (e.g. 2 for bivariate, 3 for trivariate, etc.)
+	
+	The variance covariance matrix will default to an identity matrix
+
+	If the argument passed is less than 2 the dimensionality will not be changed and the function will return false
+
+	\sa GetDimension()
+	*/
+	bool SetDimension(unsigned int Dimension){if(Dimension>1U) return NormalDistribution::SetDimension(Dimension); else return false;}
 };
 } //namespace Multivariate
 #endif // NormalDist_h__

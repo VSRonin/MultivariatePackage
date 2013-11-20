@@ -1,3 +1,5 @@
+GNU Lesser General Public License {#LicensePage}
+=================================
 \brief LGPL version 3
 
 <h3 style="text-align: center;">GNU LESSER GENERAL PUBLIC LICENSE</h3>

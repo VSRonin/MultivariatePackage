@@ -1,4 +1,4 @@
-Examples {#examples}
+Examples {#examplesPage}
 ========
 \brief Example usage code
 

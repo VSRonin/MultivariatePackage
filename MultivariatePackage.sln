@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Documentation\DOCMAIN.markdown = Documentation\DOCMAIN.markdown
 		Documentation\DoxygenConfig.doxyfile = Documentation\DoxygenConfig.doxyfile
 		Documentation\Examples.markdown = Documentation\Examples.markdown
+		Documentation\License.markdown = Documentation\License.markdown
 		MultivariatePackage\README.markdown = MultivariatePackage\README.markdown
 	EndProjectSection
 EndProject
