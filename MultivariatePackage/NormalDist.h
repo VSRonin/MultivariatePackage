@@ -294,7 +294,7 @@ public:
 	/** \name Unsafe Methods
 	The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.
 
-	These functions are normally not compiled for safety reasons. To use them, the mvNormSamplerUnsafeMethods symbol must be defined at compile time
+	These functions are normally not compiled for safety reasons. To use them, the **mvNormSamplerUnsafeMethods** symbol must be defined at compile time
 	\{
 	*/
 	/**

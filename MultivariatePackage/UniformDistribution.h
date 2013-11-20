@@ -28,7 +28,7 @@ namespace Multivariate{
 			IndependenceCopula(unsigned int Dimension, const Eigen::MatrixX2d& MinMax) : UniformDistribution(Dimension,MinMax){}
 			bool SetLimits(const Eigen::MatrixX2d& MinMax){return UniformDistribution::SetLimits(MinMax);}
 		public:
-			IndependenceCopula(unsigned int Dimension=2U) : UniformDistribution(Dimension){AllValid=AllValid && Dimension>1U}
+			IndependenceCopula(unsigned int Dimension=2U) : UniformDistribution(Dimension){AllValid=AllValid && Dimension>1U;}
 			bool SetDimension(unsigned int Dimension){if(Dimension>1U) return UniformDistribution::SetDimension(Dimension); else return false;}
 	};
 }
