@@ -113,10 +113,11 @@ Inheritance diagram for Multivariate::AbstarctDistribution:</div>
  <div class="center">
   <img src="class_multivariate_1_1_abstarct_distribution.png" usemap="#Multivariate::AbstarctDistribution_map" alt=""/>
   <map id="Multivariate::AbstarctDistribution_map" name="Multivariate::AbstarctDistribution_map">
-<area href="class_multivariate_1_1_normal_distribution.html" title="Multivariate Normal Distribution. " alt="Multivariate::NormalDistribution" shape="rect" coords="0,56,204,80"/>
-<area href="class_multivariate_1_1_uniform_distribution.html" alt="Multivariate::UniformDistribution" shape="rect" coords="214,56,418,80"/>
+<area href="class_multivariate_1_1_normal_distribution.html" title="Multivariate Normal Distribution. " alt="Multivariate::NormalDistribution" shape="rect" coords="107,56,311,80"/>
+<area href="class_multivariate_1_1_uniform_distribution.html" alt="Multivariate::UniformDistribution" shape="rect" coords="428,56,632,80"/>
 <area href="class_multivariate_1_1_gaussian_copula.html" title="Gaussian Copula Distribution. " alt="Multivariate::GaussianCopula" shape="rect" coords="0,112,204,136"/>
-<area href="class_multivariate_1_1_independence_copula.html" alt="Multivariate::IndependenceCopula" shape="rect" coords="214,112,418,136"/>
+<area href="class_multivariate_1_1t_distribution.html" title="Multivariate Student&#39;s t Distribution. " alt="Multivariate::tDistribution" shape="rect" coords="214,112,418,136"/>
+<area href="class_multivariate_1_1_independence_copula.html" alt="Multivariate::IndependenceCopula" shape="rect" coords="428,112,632,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -183,7 +184,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <tr class="separator:ac44f04571450f320b9845c6306739fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Unsafe Methods</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.</p>
-<p>These functions are normally not compiled for safety reasons. To use them, the mvNormSamplerUnsafeMethods symbol must be defined at compile time </p>
+<p>These functions are normally not compiled for safety reasons. To use them, the <b>mvNormSamplerUnsafeMethods</b> symbol must be defined at compile time </p>
 </div></td></tr>
 <tr class="memitem:a0c4877c6c67bea060ed4be40b306b54d"><td class="memItemLeft" align="right" valign="top">virtual double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a0c4877c6c67bea060ed4be40b306b54d">GetQuantileArray</a> (double Prob)</td></tr>
 <tr class="memdesc:a0c4877c6c67bea060ed4be40b306b54d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#a0c4877c6c67bea060ed4be40b306b54d">More...</a><br/></td></tr>
@@ -392,7 +393,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>A matrix with columns equal to the dimensionality of the distribution and rows equal to the number of simulations</dd></dl>
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#af006e0f0cd5ad9fd89e70056bd114fbb">Multivariate::GaussianCopula</a>, <a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472">Multivariate::NormalDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#a1ea060e1b9270ab93bc53bf8a558d8dc">Multivariate::UniformDistribution</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#af006e0f0cd5ad9fd89e70056bd114fbb">Multivariate::GaussianCopula</a>, <a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472">Multivariate::NormalDistribution</a>, <a class="el" href="class_multivariate_1_1t_distribution.html#a6fea4e6d795378bedc595f4683715942">Multivariate::tDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#a1ea060e1b9270ab93bc53bf8a558d8dc">Multivariate::UniformDistribution</a>.</p>
 
 </div>
 </div>
@@ -428,7 +429,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>A matrix with columns equal to the dimensionality of the distribution and rows equal to the number of simulations</dd></dl>
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_normal_distribution.html#ad874186c133d378f244992fd7a1060dc">Multivariate::NormalDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#ae716de95568b5e05081e8ec19066c6d8">Multivariate::UniformDistribution</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_normal_distribution.html#ad874186c133d378f244992fd7a1060dc">Multivariate::NormalDistribution</a>, <a class="el" href="class_multivariate_1_1t_distribution.html#ad7c08e40be396f834c319823306f9971">Multivariate::tDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#ae716de95568b5e05081e8ec19066c6d8">Multivariate::UniformDistribution</a>.</p>
 
 </div>
 </div>
@@ -633,7 +634,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>The value of the cumulative density function</dd></dl>
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_normal_distribution.html#a28f7933d325fe6c4883ea41d61167b83">Multivariate::NormalDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#a1d4ec9a9d7eed17229cebd82ef187cee">Multivariate::UniformDistribution</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_normal_distribution.html#a28f7933d325fe6c4883ea41d61167b83">Multivariate::NormalDistribution</a>, <a class="el" href="class_multivariate_1_1t_distribution.html#afd81aa8777dda82d3c479a2958c56c9b">Multivariate::tDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#a1d4ec9a9d7eed17229cebd82ef187cee">Multivariate::UniformDistribution</a>.</p>
 
 </div>
 </div>
@@ -767,7 +768,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>The value of the probability density function</dd></dl>
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_normal_distribution.html#aa787789a6d658f14acc81d73bd3d2ed6">Multivariate::NormalDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#ae0926989b3c0164e0a596f12e4161388">Multivariate::UniformDistribution</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_normal_distribution.html#aa787789a6d658f14acc81d73bd3d2ed6">Multivariate::NormalDistribution</a>, <a class="el" href="class_multivariate_1_1t_distribution.html#ad6e1a78c18ac02d3b53d06fa0effd5ea">Multivariate::tDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#ae0926989b3c0164e0a596f12e4161388">Multivariate::UniformDistribution</a>.</p>
 
 </div>
 </div>
@@ -1022,7 +1023,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a9cbc69b5d3cdd4783d3d85a225669ae9" title="Get the dimensionality of the distribution. ">GetDimension()</a> </dd></dl>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#a4ff7e1a1e7675230289cccdadeabec0a">Multivariate::GaussianCopula</a>, <a class="el" href="class_multivariate_1_1_normal_distribution.html#aebdd8074e156688337515ce598692e4d">Multivariate::NormalDistribution</a>, <a class="el" href="class_multivariate_1_1_independence_copula.html#ab1e6ec579685b3fc31bc98ae2a234171">Multivariate::IndependenceCopula</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#ab7f8c03ca35b10fbc6248507789466b5">Multivariate::UniformDistribution</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#a4ff7e1a1e7675230289cccdadeabec0a">Multivariate::GaussianCopula</a>, <a class="el" href="class_multivariate_1_1_normal_distribution.html#aebdd8074e156688337515ce598692e4d">Multivariate::NormalDistribution</a>, <a class="el" href="class_multivariate_1_1t_distribution.html#a97947d2309c6c41f7d64849fcf97b435">Multivariate::tDistribution</a>, <a class="el" href="class_multivariate_1_1_independence_copula.html#ab1e6ec579685b3fc31bc98ae2a234171">Multivariate::IndependenceCopula</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#ab7f8c03ca35b10fbc6248507789466b5">Multivariate::UniformDistribution</a>.</p>
 
 </div>
 </div>
@@ -1055,7 +1056,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 20 2013 12:02:28 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 20 2013 17:42:01 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

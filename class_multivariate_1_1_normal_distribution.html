@@ -114,8 +114,9 @@ Inheritance diagram for Multivariate::NormalDistribution:</div>
  <div class="center">
   <img src="class_multivariate_1_1_normal_distribution.png" usemap="#Multivariate::NormalDistribution_map" alt=""/>
   <map id="Multivariate::NormalDistribution_map" name="Multivariate::NormalDistribution_map">
-<area href="class_multivariate_1_1_abstarct_distribution.html" title="Abstract distribution base class. " alt="Multivariate::AbstarctDistribution" shape="rect" coords="0,0,194,24"/>
+<area href="class_multivariate_1_1_abstarct_distribution.html" title="Abstract distribution base class. " alt="Multivariate::AbstarctDistribution" shape="rect" coords="102,0,296,24"/>
 <area href="class_multivariate_1_1_gaussian_copula.html" title="Gaussian Copula Distribution. " alt="Multivariate::GaussianCopula" shape="rect" coords="0,112,194,136"/>
+<area href="class_multivariate_1_1t_distribution.html" title="Multivariate Student&#39;s t Distribution. " alt="Multivariate::tDistribution" shape="rect" coords="204,112,398,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -130,21 +131,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab9fd4754af0169a3e5e1a7eebe845472"><td class="memItemLeft" align="right" valign="top">virtual Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472">ExtractSamples</a> (unsigned int NumSamples) const </td></tr>
 <tr class="memdesc:ab9fd4754af0169a3e5e1a7eebe845472"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates multiple simulations from the distribution.  <a href="#ab9fd4754af0169a3e5e1a7eebe845472">More...</a><br/></td></tr>
 <tr class="separator:ab9fd4754af0169a3e5e1a7eebe845472"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad874186c133d378f244992fd7a1060dc"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ad874186c133d378f244992fd7a1060dc">ExtractSamplesCDF</a> (unsigned int NumSamples) const </td></tr>
+<tr class="memitem:ad874186c133d378f244992fd7a1060dc"><td class="memItemLeft" align="right" valign="top">virtual Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ad874186c133d378f244992fd7a1060dc">ExtractSamplesCDF</a> (unsigned int NumSamples) const </td></tr>
 <tr class="memdesc:ad874186c133d378f244992fd7a1060dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts samples from the distribution and returns their marginal CDF.  <a href="#ad874186c133d378f244992fd7a1060dc">More...</a><br/></td></tr>
 <tr class="separator:ad874186c133d378f244992fd7a1060dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4aa171e6f9f7ba70ddf4efe7afb22e0e"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a4aa171e6f9f7ba70ddf4efe7afb22e0e">GetCorrelationMatrix</a> () const </td></tr>
+<tr class="memitem:a4aa171e6f9f7ba70ddf4efe7afb22e0e"><td class="memItemLeft" align="right" valign="top">virtual Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a4aa171e6f9f7ba70ddf4efe7afb22e0e">GetCorrelationMatrix</a> () const </td></tr>
 <tr class="memdesc:a4aa171e6f9f7ba70ddf4efe7afb22e0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the linear correlation matrix.  <a href="#a4aa171e6f9f7ba70ddf4efe7afb22e0e">More...</a><br/></td></tr>
 <tr class="separator:a4aa171e6f9f7ba70ddf4efe7afb22e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28f7933d325fe6c4883ea41d61167b83"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a28f7933d325fe6c4883ea41d61167b83">GetCumulativeDesity</a> (const Eigen::VectorXd &amp;Coordinates) const </td></tr>
+<tr class="memitem:a28f7933d325fe6c4883ea41d61167b83"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a28f7933d325fe6c4883ea41d61167b83">GetCumulativeDesity</a> (const Eigen::VectorXd &amp;Coordinates) const </td></tr>
 <tr class="memdesc:a28f7933d325fe6c4883ea41d61167b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cumulative density function of the distribution in correspondence of the supplied coordinates.  <a href="#a28f7933d325fe6c4883ea41d61167b83">More...</a><br/></td></tr>
 <tr class="separator:a28f7933d325fe6c4883ea41d61167b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa787789a6d658f14acc81d73bd3d2ed6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa787789a6d658f14acc81d73bd3d2ed6">GetDensity</a> (const Eigen::VectorXd &amp;Coordinates) const </td></tr>
+<tr class="memitem:aa787789a6d658f14acc81d73bd3d2ed6"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa787789a6d658f14acc81d73bd3d2ed6">GetDensity</a> (const Eigen::VectorXd &amp;Coordinates) const </td></tr>
 <tr class="memdesc:aa787789a6d658f14acc81d73bd3d2ed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the distribution in correspondence of the supplied coordinates.  <a href="#aa787789a6d658f14acc81d73bd3d2ed6">More...</a><br/></td></tr>
 <tr class="separator:aa787789a6d658f14acc81d73bd3d2ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85ce4e9f8b01481c3549e6bf4369ac57"><td class="memItemLeft" align="right" valign="top">const Eigen::VectorXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a85ce4e9f8b01481c3549e6bf4369ac57">GetMeanVector</a> () const </td></tr>
-<tr class="memdesc:a85ce4e9f8b01481c3549e6bf4369ac57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mean vector of the distribution.  <a href="#a85ce4e9f8b01481c3549e6bf4369ac57">More...</a><br/></td></tr>
-<tr class="separator:a85ce4e9f8b01481c3549e6bf4369ac57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3dd2ad2aa02e4bd86e51242ae6a9cfa"><td class="memItemLeft" align="right" valign="top">virtual const Eigen::VectorXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ae3dd2ad2aa02e4bd86e51242ae6a9cfa">GetMeanVector</a> () const </td></tr>
+<tr class="memdesc:ae3dd2ad2aa02e4bd86e51242ae6a9cfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mean vector of the distribution.  <a href="#ae3dd2ad2aa02e4bd86e51242ae6a9cfa">More...</a><br/></td></tr>
+<tr class="separator:ae3dd2ad2aa02e4bd86e51242ae6a9cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5399cc002eb01b1e0bf17e49a7371151"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a5399cc002eb01b1e0bf17e49a7371151">GetNumSimul</a> () const </td></tr>
 <tr class="memdesc:a5399cc002eb01b1e0bf17e49a7371151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum number of simulations that will be used to compute the CDF.  <a href="#a5399cc002eb01b1e0bf17e49a7371151">More...</a><br/></td></tr>
 <tr class="separator:a5399cc002eb01b1e0bf17e49a7371151"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,9 +155,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a32402688b4c036d1b1bdfd4cfff7a897"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a32402688b4c036d1b1bdfd4cfff7a897">GetUseGenz</a> () const </td></tr>
 <tr class="memdesc:a32402688b4c036d1b1bdfd4cfff7a897"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get either the Genz algorithm is used or not.  <a href="#a32402688b4c036d1b1bdfd4cfff7a897">More...</a><br/></td></tr>
 <tr class="separator:a32402688b4c036d1b1bdfd4cfff7a897"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa503d66e2ca622c4c652851d9821248c"><td class="memItemLeft" align="right" valign="top">const Eigen::MatrixXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa503d66e2ca622c4c652851d9821248c">GetVarCovMatrix</a> () const </td></tr>
-<tr class="memdesc:aa503d66e2ca622c4c652851d9821248c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Var-Cov matrix of the distribution.  <a href="#aa503d66e2ca622c4c652851d9821248c">More...</a><br/></td></tr>
-<tr class="separator:aa503d66e2ca622c4c652851d9821248c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa23f8f964ec0affaf4153e181fc1ccc3"><td class="memItemLeft" align="right" valign="top">virtual const Eigen::MatrixXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa23f8f964ec0affaf4153e181fc1ccc3">GetVarCovMatrix</a> () const </td></tr>
+<tr class="memdesc:aa23f8f964ec0affaf4153e181fc1ccc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Var-Cov matrix of the distribution.  <a href="#aa23f8f964ec0affaf4153e181fc1ccc3">More...</a><br/></td></tr>
+<tr class="separator:aa23f8f964ec0affaf4153e181fc1ccc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebdd8074e156688337515ce598692e4d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aebdd8074e156688337515ce598692e4d">SetDimension</a> (unsigned int Dimension)</td></tr>
 <tr class="memdesc:aebdd8074e156688337515ce598692e4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the dimensionality of the distribution.  <a href="#aebdd8074e156688337515ce598692e4d">More...</a><br/></td></tr>
 <tr class="separator:aebdd8074e156688337515ce598692e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,23 +173,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2a95ec408d2ed8d2b74d4cf73b650b74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a2a95ec408d2ed8d2b74d4cf73b650b74">SetUseGenz</a> (bool a=true)</td></tr>
 <tr class="memdesc:a2a95ec408d2ed8d2b74d4cf73b650b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set if Genz algorithm should be used.  <a href="#a2a95ec408d2ed8d2b74d4cf73b650b74">More...</a><br/></td></tr>
 <tr class="separator:a2a95ec408d2ed8d2b74d4cf73b650b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d5bfdd6bc1454d15d78c50957cb8b3e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a2d5bfdd6bc1454d15d78c50957cb8b3e">SetVarCovMatrix</a> (const Eigen::MatrixXd &amp;CovMatr)</td></tr>
+<tr class="memitem:a2d5bfdd6bc1454d15d78c50957cb8b3e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a2d5bfdd6bc1454d15d78c50957cb8b3e">SetVarCovMatrix</a> (const Eigen::MatrixXd &amp;CovMatr)</td></tr>
 <tr class="memdesc:a2d5bfdd6bc1454d15d78c50957cb8b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Var-Cov matrix of the distribution.  <a href="#a2d5bfdd6bc1454d15d78c50957cb8b3e">More...</a><br/></td></tr>
 <tr class="separator:a2d5bfdd6bc1454d15d78c50957cb8b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a278c25161787bcae2340afe9848c813d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a278c25161787bcae2340afe9848c813d">SetVarCovMatrix</a> (const std::vector&lt; double &gt; &amp;mVect, bool RowWise=true)</td></tr>
+<tr class="memitem:a278c25161787bcae2340afe9848c813d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a278c25161787bcae2340afe9848c813d">SetVarCovMatrix</a> (const std::vector&lt; double &gt; &amp;mVect, bool RowWise=true)</td></tr>
 <tr class="memdesc:a278c25161787bcae2340afe9848c813d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Var-Cov matrix of the distribution.  <a href="#a278c25161787bcae2340afe9848c813d">More...</a><br/></td></tr>
 <tr class="separator:a278c25161787bcae2340afe9848c813d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd26977a95ba55befa129dbaa9254d56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#acd26977a95ba55befa129dbaa9254d56">SetVarCovMatrix</a> (const Eigen::MatrixXd &amp;CorrelationMatrix, const Eigen::VectorXd &amp;Variances)</td></tr>
+<tr class="memitem:acd26977a95ba55befa129dbaa9254d56"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#acd26977a95ba55befa129dbaa9254d56">SetVarCovMatrix</a> (const Eigen::MatrixXd &amp;CorrelationMatrix, const Eigen::VectorXd &amp;Variances)</td></tr>
 <tr class="memdesc:acd26977a95ba55befa129dbaa9254d56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Var-Cov matrix of the distribution.  <a href="#acd26977a95ba55befa129dbaa9254d56">More...</a><br/></td></tr>
 <tr class="separator:acd26977a95ba55befa129dbaa9254d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Unsafe Methods</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.</p>
-<p>These functions are normally not compiled for safety reasons. To use them, the mvNormSamplerUnsafeMethods symbol must be defined at compile time </p>
+<p>These functions are normally not compiled for safety reasons. To use them, the <b>mvNormSamplerUnsafeMethods</b> symbol must be defined at compile time </p>
 </div></td></tr>
-<tr class="memitem:a8a326301ddaab7d62262b6457af89098"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a8a326301ddaab7d62262b6457af89098">SetMeanVector</a> (double *mVect)</td></tr>
+<tr class="memitem:a8a326301ddaab7d62262b6457af89098"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a8a326301ddaab7d62262b6457af89098">SetMeanVector</a> (double *mVect)</td></tr>
 <tr class="memdesc:a8a326301ddaab7d62262b6457af89098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expected values vector.  <a href="#a8a326301ddaab7d62262b6457af89098">More...</a><br/></td></tr>
 <tr class="separator:a8a326301ddaab7d62262b6457af89098"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a973d6c43f5479762520750a8b7137859"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a973d6c43f5479762520750a8b7137859">SetVarCovMatrix</a> (double **mVect)</td></tr>
+<tr class="memitem:a973d6c43f5479762520750a8b7137859"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a973d6c43f5479762520750a8b7137859">SetVarCovMatrix</a> (double **mVect)</td></tr>
 <tr class="memdesc:a973d6c43f5479762520750a8b7137859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Var-Cov matrix of the distribution.  <a href="#a973d6c43f5479762520750a8b7137859">More...</a><br/></td></tr>
 <tr class="separator:a973d6c43f5479762520750a8b7137859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_multivariate_1_1_abstarct_distribution"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_multivariate_1_1_abstarct_distribution')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_multivariate_1_1_abstarct_distribution.html">Multivariate::AbstarctDistribution</a></td></tr>
@@ -407,7 +408,7 @@ template&lt;class F , class T &gt; </td></tr>
 
 <p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a85dbf1d0c1164dfc3b2b3992dc17f5c0">Multivariate::AbstarctDistribution</a>.</p>
 
-<p>Reimplemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#af006e0f0cd5ad9fd89e70056bd114fbb">Multivariate::GaussianCopula</a>.</p>
+<p>Reimplemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#af006e0f0cd5ad9fd89e70056bd114fbb">Multivariate::GaussianCopula</a>, and <a class="el" href="class_multivariate_1_1t_distribution.html#a6fea4e6d795378bedc595f4683715942">Multivariate::tDistribution</a>.</p>
 
 </div>
 </div>
@@ -447,11 +448,16 @@ template&lt;class F , class T &gt; </td></tr>
 
 <p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#acd5dd6c952b20a9a5c25bcd742db2367">Multivariate::AbstarctDistribution</a>.</p>
 
+<p>Reimplemented in <a class="el" href="class_multivariate_1_1t_distribution.html#ad7c08e40be396f834c319823306f9971">Multivariate::tDistribution</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a4aa171e6f9f7ba70ddf4efe7afb22e0e"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Eigen::MatrixXd NormalDistribution::GetCorrelationMatrix </td>
@@ -460,11 +466,16 @@ template&lt;class F , class T &gt; </td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Get the linear correlation matrix. </p>
 <dl class="section return"><dt>Returns</dt><dd>The linear correlation matrix associated with the current variance-covariance matrix of the distribution </dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa503d66e2ca622c4c652851d9821248c" title="Get the Var-Cov matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa23f8f964ec0affaf4153e181fc1ccc3" title="Get the Var-Cov matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
 
 </div>
 </div>
@@ -503,6 +514,8 @@ template&lt;class F , class T &gt; </td></tr>
 
 <p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a36c7ac3eef8bc504d576aa6d2d39c5b1">Multivariate::AbstarctDistribution</a>.</p>
 
+<p>Reimplemented in <a class="el" href="class_multivariate_1_1t_distribution.html#afd81aa8777dda82d3c479a2958c56c9b">Multivariate::tDistribution</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="aa787789a6d658f14acc81d73bd3d2ed6"></a>
@@ -531,7 +544,6 @@ template&lt;class F , class T &gt; </td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Coordinates</td><td>A vector containing the coordinates of the point for which the pdf should be computed </td></tr>
-    <tr><td class="paramname">GetLogDensity</td><td>If set to true the log density is returned instead of the actual density </td></tr>
   </table>
   </dd>
 </dl>
@@ -541,9 +553,11 @@ template&lt;class F , class T &gt; </td></tr>
 
 <p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#ac210c1c36643bb071c4955a2c3c3be34">Multivariate::AbstarctDistribution</a>.</p>
 
+<p>Reimplemented in <a class="el" href="class_multivariate_1_1t_distribution.html#ad6e1a78c18ac02d3b53d06fa0effd5ea">Multivariate::tDistribution</a>.</p>
+
 </div>
 </div>
-<a class="anchor" id="a85ce4e9f8b01481c3549e6bf4369ac57"></a>
+<a class="anchor" id="ae3dd2ad2aa02e4bd86e51242ae6a9cfa"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -551,7 +565,7 @@ template&lt;class F , class T &gt; </td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const Eigen::VectorXd&amp; Multivariate::NormalDistribution::GetMeanVector </td>
+          <td class="memname">virtual const Eigen::VectorXd&amp; Multivariate::NormalDistribution::GetMeanVector </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -559,7 +573,7 @@ template&lt;class F , class T &gt; </td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -664,7 +678,7 @@ template&lt;class F , class T &gt; </td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa503d66e2ca622c4c652851d9821248c"></a>
+<a class="anchor" id="aa23f8f964ec0affaf4153e181fc1ccc3"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -672,7 +686,7 @@ template&lt;class F , class T &gt; </td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const Eigen::MatrixXd&amp; Multivariate::NormalDistribution::GetVarCovMatrix </td>
+          <td class="memname">virtual const Eigen::MatrixXd&amp; Multivariate::NormalDistribution::GetVarCovMatrix </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -680,7 +694,7 @@ template&lt;class F , class T &gt; </td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -732,7 +746,7 @@ template&lt;class F , class T &gt; </td></tr>
 
 <p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a0f2cddf54143a804532ab4e097f1a3ef">Multivariate::AbstarctDistribution</a>.</p>
 
-<p>Reimplemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#a4ff7e1a1e7675230289cccdadeabec0a">Multivariate::GaussianCopula</a>.</p>
+<p>Reimplemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#a4ff7e1a1e7675230289cccdadeabec0a">Multivariate::GaussianCopula</a>, and <a class="el" href="class_multivariate_1_1t_distribution.html#a97947d2309c6c41f7d64849fcf97b435">Multivariate::tDistribution</a>.</p>
 
 </div>
 </div>
@@ -768,7 +782,7 @@ template&lt;class F , class T &gt; </td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A boolean determining if the mean vector was changed successfully</dd></dl>
 <p>This function attempts to set the mean vector to the new values supplied.</p>
 <p>If the dimension of the vector is different from the dimension of the distribution the mean vector is not changed and false is returned </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#a85ce4e9f8b01481c3549e6bf4369ac57" title="Get the mean vector of the distribution. ">GetMeanVector()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#ae3dd2ad2aa02e4bd86e51242ae6a9cfa" title="Get the mean vector of the distribution. ">GetMeanVector()</a> </dd></dl>
 
 </div>
 </div>
@@ -808,6 +822,9 @@ template&lt;class F , class T &gt; </td></tr>
 <a class="anchor" id="a8a326301ddaab7d62262b6457af89098"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void NormalDistribution::SetMeanVector </td>
@@ -817,6 +834,11 @@ template&lt;class F , class T &gt; </td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Set the expected values vector. </p>
@@ -891,6 +913,9 @@ template&lt;class F , class T &gt; </td></tr>
 <a class="anchor" id="a2d5bfdd6bc1454d15d78c50957cb8b3e"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool NormalDistribution::SetVarCovMatrix </td>
@@ -900,6 +925,11 @@ template&lt;class F , class T &gt; </td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Set the Var-Cov matrix of the distribution. </p>
@@ -919,13 +949,16 @@ template&lt;class F , class T &gt; </td></tr>
 <li>The variance-covariance has a number of rows different from the Dimension</li>
 </ul>
 <p>The variance covariance matrix of the distribution will not be changed and this function will return false</p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa503d66e2ca622c4c652851d9821248c" title="Get the Var-Cov matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa23f8f964ec0affaf4153e181fc1ccc3" title="Get the Var-Cov matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
 
 </div>
 </div>
 <a class="anchor" id="a278c25161787bcae2340afe9848c813d"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool NormalDistribution::SetVarCovMatrix </td>
@@ -945,6 +978,11 @@ template&lt;class F , class T &gt; </td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Set the Var-Cov matrix of the distribution. </p>
@@ -966,13 +1004,16 @@ template&lt;class F , class T &gt; </td></tr>
 <li>The variance-covariance has a number of rows different from the Dimension</li>
 </ul>
 <p>The variance covariance matrix of the distribution will not be changed and this function will return false</p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa503d66e2ca622c4c652851d9821248c" title="Get the Var-Cov matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa23f8f964ec0affaf4153e181fc1ccc3" title="Get the Var-Cov matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
 
 </div>
 </div>
 <a class="anchor" id="acd26977a95ba55befa129dbaa9254d56"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool NormalDistribution::SetVarCovMatrix </td>
@@ -992,6 +1033,11 @@ template&lt;class F , class T &gt; </td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Set the Var-Cov matrix of the distribution. </p>
@@ -1015,13 +1061,16 @@ template&lt;class F , class T &gt; </td></tr>
 <li>The correlation matrix has off-diagonal elements greater than 1 in absolute value</li>
 </ul>
 <p>The variance covariance matrix of the distribution will not be changed and this function will return false</p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa503d66e2ca622c4c652851d9821248c" title="Get the Var-Cov matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa23f8f964ec0affaf4153e181fc1ccc3" title="Get the Var-Cov matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
 
 </div>
 </div>
 <a class="anchor" id="a973d6c43f5479762520750a8b7137859"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool NormalDistribution::SetVarCovMatrix </td>
@@ -1031,6 +1080,11 @@ template&lt;class F , class T &gt; </td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Set the Var-Cov matrix of the distribution. </p>
@@ -1048,7 +1102,7 @@ template&lt;class F , class T &gt; </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 20 2013 12:02:28 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 20 2013 17:42:01 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
