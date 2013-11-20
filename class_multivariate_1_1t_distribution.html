@@ -71,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -132,8 +133,7 @@ std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <tr class="memitem:a4280b9d81def9fa50c1219c844dfcafb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4280b9d81def9fa50c1219c844dfcafb"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>GetCumulativeDesity</b> (const std::vector&lt; double &gt; &amp;Coordinates, bool UseGenz=true, unsigned int NumSimul=500000) const </td></tr>
 <tr class="separator:a4280b9d81def9fa50c1219c844dfcafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb6367d45b1b1916a7a3a4f30067332b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb6367d45b1b1916a7a3a4f30067332b"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>GetCumulativeDesity</b> (const Eigen::VectorXd &amp;Coordinates, bool UseGenz=true, unsigned int NumSimul=500000) const </td></tr>
+<tr class="memitem:adb6367d45b1b1916a7a3a4f30067332b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1t_distribution.html#adb6367d45b1b1916a7a3a4f30067332b">GetCumulativeDesity</a> (const Eigen::VectorXd &amp;Coordinates, bool UseGenz=true, unsigned int NumSimul=500000) const </td></tr>
 <tr class="separator:adb6367d45b1b1916a7a3a4f30067332b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc0b7f5913772e69706ab72a8defc840"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1t_distribution.html#abc0b7f5913772e69706ab72a8defc840">GetCurrentSeed</a> () const </td></tr>
 <tr class="memdesc:abc0b7f5913772e69706ab72a8defc840"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the random number generator seed.  <a href="#abc0b7f5913772e69706ab72a8defc840">More...</a><br/></td></tr>
@@ -153,9 +153,12 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>GetDensity</b> (con
 <tr class="memitem:a6803daa7543de43e85ba9ea4e80f1ab0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6803daa7543de43e85ba9ea4e80f1ab0"></a>
 const Eigen::VectorXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetLocationVector</b> () const </td></tr>
 <tr class="separator:a6803daa7543de43e85ba9ea4e80f1ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78c40c1f808d9988b21d452e66dd29eb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78c40c1f808d9988b21d452e66dd29eb"></a>
-std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetQuantileVector</b> (double Prob)</td></tr>
-<tr class="separator:a78c40c1f808d9988b21d452e66dd29eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84b9da621c974322bdad9639a855c55d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84b9da621c974322bdad9639a855c55d"></a>
+Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><b>GetQuantile</b> (double Prob) const </td></tr>
+<tr class="separator:a84b9da621c974322bdad9639a855c55d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dda5f446372edb265397c4119ca906f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2dda5f446372edb265397c4119ca906f"></a>
+std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetQuantileVector</b> (double Prob) const </td></tr>
+<tr class="separator:a2dda5f446372edb265397c4119ca906f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa00e3356eaff96063679892c8f3c9ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa00e3356eaff96063679892c8f3c9ad"></a>
 const Eigen::MatrixXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetScaleMatrix</b> () const </td></tr>
 <tr class="separator:afa00e3356eaff96063679892c8f3c9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,9 +186,6 @@ const Eigen::MatrixXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><
 <tr class="memitem:a0329ff06e0f4f47ac638f0faa600af7b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1t_distribution.html#a0329ff06e0f4f47ac638f0faa600af7b">SetScaleMatrix</a> (const std::vector&lt; double &gt; &amp;mVect, bool RowWise=true)</td></tr>
 <tr class="memdesc:a0329ff06e0f4f47ac638f0faa600af7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the scale matrix of the distribution.  <a href="#a0329ff06e0f4f47ac638f0faa600af7b">More...</a><br/></td></tr>
 <tr class="separator:a0329ff06e0f4f47ac638f0faa600af7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab648e1c036e26e0164aabb6b63aa45a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab648e1c036e26e0164aabb6b63aa45a5"></a>
-Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><b>tDistribution::GetQuantile</b> (double Prob)</td></tr>
-<tr class="separator:ab648e1c036e26e0164aabb6b63aa45a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -209,14 +209,14 @@ template&lt;class F , class T &gt; </td></tr>
 <p>The algorithm for cdf calculation is based on <a href="http://www.math.wsu.edu/faculty/genz/homepage">A. Genz &amp; F. Bretz (2002)</a></p>
 <p>To generate samples a <a href="http://www.boost.org/doc/libs/1_55_0/doc/html/boost/random/mt19937.html">boost::random::mt19937</a> random number generator is used and seeded with <a href="http://www.cplusplus.com/reference/ctime/time/">std::time(NULL)</a>.<br/>
  If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call <code>MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);</code></p>
-<p>Please refer to the <a class="el" href="examples.html">Examples</a> page for usage examples.</p>
+<p>Please refer to the examples page for usage examples.</p>
 <dl class="section remark"><dt>Remarks</dt><dd>This class is re-entrant </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>November 2013 </dd></dl>
 <dl class="section user"><dt>License</dt><dd>This program is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br/>
 <br/>
  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.<br/>
 <br/>
- You should have received a copy of the GNU Lesser General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">gnu.org</a>. </dd></dl>
+ Here, you can find a copy of the <a class="el" href="_license_page.html">GNU Lesser General Public License</a>. Alternatively, see <a href="http://www.gnu.org/licenses/">gnu.org</a>. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a021565a6aac3e9b834c5c81cf14c943e"></a>
 <div class="memitem">
@@ -318,6 +318,39 @@ template&lt;class F , class T &gt; </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="adb6367d45b1b1916a7a3a4f30067332b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double tDistribution::GetCumulativeDesity </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
+          <td class="paramname"><em>Coordinates</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>UseGenz</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>NumSimul</em> = <code>500000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Add the Genz algorithm </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="abc0b7f5913772e69706ab72a8defc840"></a>
 <div class="memitem">
 <div class="memproto">
@@ -623,7 +656,7 @@ template&lt;class F , class T &gt; </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 18 2013 16:53:08 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 20 2013 12:02:28 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

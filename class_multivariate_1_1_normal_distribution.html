@@ -71,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -107,6 +108,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="class_multivariate_1_1_normal_distribution.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_normal_dist_8h_source.html">NormalDist.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Multivariate::NormalDistribution:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_multivariate_1_1_normal_distribution.png" usemap="#Multivariate::NormalDistribution_map" alt=""/>
+  <map id="Multivariate::NormalDistribution_map" name="Multivariate::NormalDistribution_map">
+<area href="class_multivariate_1_1_abstarct_distribution.html" title="Abstract distribution base class. " alt="Multivariate::AbstarctDistribution" shape="rect" coords="0,0,194,24"/>
+<area href="class_multivariate_1_1_gaussian_copula.html" title="Gaussian Copula Distribution. " alt="Multivariate::GaussianCopula" shape="rect" coords="0,112,194,136"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -116,80 +127,51 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7096e747e8123ade3b20297f4d991e13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a7096e747e8123ade3b20297f4d991e13">NormalDistribution</a> (unsigned int Dimension=1U)</td></tr>
 <tr class="memdesc:a7096e747e8123ade3b20297f4d991e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a multivariate standard normal.  <a href="#a7096e747e8123ade3b20297f4d991e13">More...</a><br/></td></tr>
 <tr class="separator:a7096e747e8123ade3b20297f4d991e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cd73e13fce1151834ee9b7922540e97"><td class="memItemLeft" align="right" valign="top">Eigen::RowVectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a8cd73e13fce1151834ee9b7922540e97">ExtractSample</a> () const </td></tr>
-<tr class="memdesc:a8cd73e13fce1151834ee9b7922540e97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#a8cd73e13fce1151834ee9b7922540e97">More...</a><br/></td></tr>
-<tr class="separator:a8cd73e13fce1151834ee9b7922540e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc85d8f2aea3b84ae6e0196d511f8c01"><td class="memItemLeft" align="right" valign="top">Eigen::RowVectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#adc85d8f2aea3b84ae6e0196d511f8c01">ExtractSampleCDF</a> () const </td></tr>
-<tr class="memdesc:adc85d8f2aea3b84ae6e0196d511f8c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#adc85d8f2aea3b84ae6e0196d511f8c01">More...</a><br/></td></tr>
-<tr class="separator:adc85d8f2aea3b84ae6e0196d511f8c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d3d0ecf611b571692829163639c64cb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a8d3d0ecf611b571692829163639c64cb">ExtractSampleCDFVect</a> () const </td></tr>
-<tr class="memdesc:a8d3d0ecf611b571692829163639c64cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#a8d3d0ecf611b571692829163639c64cb">More...</a><br/></td></tr>
-<tr class="separator:a8d3d0ecf611b571692829163639c64cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9fd4754af0169a3e5e1a7eebe845472"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472">ExtractSamples</a> (unsigned int NumSamples) const </td></tr>
+<tr class="memitem:ab9fd4754af0169a3e5e1a7eebe845472"><td class="memItemLeft" align="right" valign="top">virtual Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472">ExtractSamples</a> (unsigned int NumSamples) const </td></tr>
 <tr class="memdesc:ab9fd4754af0169a3e5e1a7eebe845472"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates multiple simulations from the distribution.  <a href="#ab9fd4754af0169a3e5e1a7eebe845472">More...</a><br/></td></tr>
 <tr class="separator:ab9fd4754af0169a3e5e1a7eebe845472"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad874186c133d378f244992fd7a1060dc"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ad874186c133d378f244992fd7a1060dc">ExtractSamplesCDF</a> (unsigned int NumSamples) const </td></tr>
 <tr class="memdesc:ad874186c133d378f244992fd7a1060dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts samples from the distribution and returns their marginal CDF.  <a href="#ad874186c133d378f244992fd7a1060dc">More...</a><br/></td></tr>
 <tr class="separator:ad874186c133d378f244992fd7a1060dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a189e09786f50b483365d32d8010bcac1"><td class="memItemLeft" align="right" valign="top">std::map&lt; unsigned int, <br class="typebreak"/>
-std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a189e09786f50b483365d32d8010bcac1">ExtractSamplesCDFMap</a> (unsigned int NumSamples) const </td></tr>
-<tr class="memdesc:a189e09786f50b483365d32d8010bcac1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts samples from the distribution and returns their marginal CDF.  <a href="#a189e09786f50b483365d32d8010bcac1">More...</a><br/></td></tr>
-<tr class="separator:a189e09786f50b483365d32d8010bcac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cf5d93559379b352b629dedfe76c289"><td class="memItemLeft" align="right" valign="top">std::map&lt; unsigned int, <br class="typebreak"/>
-std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a0cf5d93559379b352b629dedfe76c289">ExtractSamplesMap</a> (unsigned int NumSamples) const </td></tr>
-<tr class="memdesc:a0cf5d93559379b352b629dedfe76c289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates multiple simulations from the distribution.  <a href="#a0cf5d93559379b352b629dedfe76c289">More...</a><br/></td></tr>
-<tr class="separator:a0cf5d93559379b352b629dedfe76c289"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e165383069c0c3a12464a7e1865eb05"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a3e165383069c0c3a12464a7e1865eb05">ExtractSampleVector</a> () const </td></tr>
-<tr class="memdesc:a3e165383069c0c3a12464a7e1865eb05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#a3e165383069c0c3a12464a7e1865eb05">More...</a><br/></td></tr>
-<tr class="separator:a3e165383069c0c3a12464a7e1865eb05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4aa171e6f9f7ba70ddf4efe7afb22e0e"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a4aa171e6f9f7ba70ddf4efe7afb22e0e">GetCorrelationMatrix</a> () const </td></tr>
 <tr class="memdesc:a4aa171e6f9f7ba70ddf4efe7afb22e0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the linear correlation matrix.  <a href="#a4aa171e6f9f7ba70ddf4efe7afb22e0e">More...</a><br/></td></tr>
 <tr class="separator:a4aa171e6f9f7ba70ddf4efe7afb22e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa30f9b087be38f888b9f370ab0b92931"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa30f9b087be38f888b9f370ab0b92931">GetCumulativeDesity</a> (const std::vector&lt; double &gt; &amp;Coordinates, bool UseGenz=true, unsigned int NumSimul=500000) const </td></tr>
-<tr class="memdesc:aa30f9b087be38f888b9f370ab0b92931"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cumulative density function of the distribution in correspondence of the supplied coordinates.  <a href="#aa30f9b087be38f888b9f370ab0b92931">More...</a><br/></td></tr>
-<tr class="separator:aa30f9b087be38f888b9f370ab0b92931"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a07c550354b70f5a5185735f3af70d4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a1a07c550354b70f5a5185735f3af70d4">GetCumulativeDesity</a> (const Eigen::VectorXd &amp;Coordinates, bool UseGenz=true, unsigned int NumSimul=500000) const </td></tr>
-<tr class="memdesc:a1a07c550354b70f5a5185735f3af70d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cumulative density function of the distribution in correspondence of the supplied coordinates.  <a href="#a1a07c550354b70f5a5185735f3af70d4">More...</a><br/></td></tr>
-<tr class="separator:a1a07c550354b70f5a5185735f3af70d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca480a313a63e95d9d723e25847959e6"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aca480a313a63e95d9d723e25847959e6">GetCurrentSeed</a> () const </td></tr>
-<tr class="memdesc:aca480a313a63e95d9d723e25847959e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the random number generator seed.  <a href="#aca480a313a63e95d9d723e25847959e6">More...</a><br/></td></tr>
-<tr class="separator:aca480a313a63e95d9d723e25847959e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d2382bc4d1f271b19759abab8223da9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a5d2382bc4d1f271b19759abab8223da9">GetDensity</a> (const Eigen::VectorXd &amp;Coordinates, bool GetLogDensity=false) const </td></tr>
-<tr class="memdesc:a5d2382bc4d1f271b19759abab8223da9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the distribution in correspondence of the supplied coordinates.  <a href="#a5d2382bc4d1f271b19759abab8223da9">More...</a><br/></td></tr>
-<tr class="separator:a5d2382bc4d1f271b19759abab8223da9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b1937ec0f6715d05cb55ba68a8a14c8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a7b1937ec0f6715d05cb55ba68a8a14c8">GetDensity</a> (const std::vector&lt; double &gt; &amp;Coordinates, bool GetLogDensity=false) const </td></tr>
-<tr class="memdesc:a7b1937ec0f6715d05cb55ba68a8a14c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the distribution in correspondence of the supplied coordinates.  <a href="#a7b1937ec0f6715d05cb55ba68a8a14c8">More...</a><br/></td></tr>
-<tr class="separator:a7b1937ec0f6715d05cb55ba68a8a14c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b7cc39af2d7505dab29e142314a48a4"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a5b7cc39af2d7505dab29e142314a48a4">GetDimension</a> () const </td></tr>
-<tr class="memdesc:a5b7cc39af2d7505dab29e142314a48a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the dimensionality of the distribution.  <a href="#a5b7cc39af2d7505dab29e142314a48a4">More...</a><br/></td></tr>
-<tr class="separator:a5b7cc39af2d7505dab29e142314a48a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28f7933d325fe6c4883ea41d61167b83"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a28f7933d325fe6c4883ea41d61167b83">GetCumulativeDesity</a> (const Eigen::VectorXd &amp;Coordinates) const </td></tr>
+<tr class="memdesc:a28f7933d325fe6c4883ea41d61167b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cumulative density function of the distribution in correspondence of the supplied coordinates.  <a href="#a28f7933d325fe6c4883ea41d61167b83">More...</a><br/></td></tr>
+<tr class="separator:a28f7933d325fe6c4883ea41d61167b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa787789a6d658f14acc81d73bd3d2ed6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa787789a6d658f14acc81d73bd3d2ed6">GetDensity</a> (const Eigen::VectorXd &amp;Coordinates) const </td></tr>
+<tr class="memdesc:aa787789a6d658f14acc81d73bd3d2ed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the distribution in correspondence of the supplied coordinates.  <a href="#aa787789a6d658f14acc81d73bd3d2ed6">More...</a><br/></td></tr>
+<tr class="separator:aa787789a6d658f14acc81d73bd3d2ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85ce4e9f8b01481c3549e6bf4369ac57"><td class="memItemLeft" align="right" valign="top">const Eigen::VectorXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a85ce4e9f8b01481c3549e6bf4369ac57">GetMeanVector</a> () const </td></tr>
-<tr class="memdesc:a85ce4e9f8b01481c3549e6bf4369ac57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the expected values vector of the distribution.  <a href="#a85ce4e9f8b01481c3549e6bf4369ac57">More...</a><br/></td></tr>
+<tr class="memdesc:a85ce4e9f8b01481c3549e6bf4369ac57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mean vector of the distribution.  <a href="#a85ce4e9f8b01481c3549e6bf4369ac57">More...</a><br/></td></tr>
 <tr class="separator:a85ce4e9f8b01481c3549e6bf4369ac57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1214ee63303435a246d0e3ae24d97bb"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ab1214ee63303435a246d0e3ae24d97bb">GetQuantile</a> (double Prob)</td></tr>
-<tr class="memdesc:ab1214ee63303435a246d0e3ae24d97bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#ab1214ee63303435a246d0e3ae24d97bb">More...</a><br/></td></tr>
-<tr class="separator:ab1214ee63303435a246d0e3ae24d97bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fe2a22a27cc410d0a8062f85f3cecea"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a1fe2a22a27cc410d0a8062f85f3cecea">GetQuantileVector</a> (double Prob)</td></tr>
-<tr class="memdesc:a1fe2a22a27cc410d0a8062f85f3cecea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#a1fe2a22a27cc410d0a8062f85f3cecea">More...</a><br/></td></tr>
-<tr class="separator:a1fe2a22a27cc410d0a8062f85f3cecea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5399cc002eb01b1e0bf17e49a7371151"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a5399cc002eb01b1e0bf17e49a7371151">GetNumSimul</a> () const </td></tr>
+<tr class="memdesc:a5399cc002eb01b1e0bf17e49a7371151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum number of simulations that will be used to compute the CDF.  <a href="#a5399cc002eb01b1e0bf17e49a7371151">More...</a><br/></td></tr>
+<tr class="separator:a5399cc002eb01b1e0bf17e49a7371151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc31997dfb55a0edeb998826c0ae662e"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#acc31997dfb55a0edeb998826c0ae662e">GetQuantile</a> (double Prob) const </td></tr>
+<tr class="memdesc:acc31997dfb55a0edeb998826c0ae662e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#acc31997dfb55a0edeb998826c0ae662e">More...</a><br/></td></tr>
+<tr class="separator:acc31997dfb55a0edeb998826c0ae662e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32402688b4c036d1b1bdfd4cfff7a897"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a32402688b4c036d1b1bdfd4cfff7a897">GetUseGenz</a> () const </td></tr>
+<tr class="memdesc:a32402688b4c036d1b1bdfd4cfff7a897"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get either the Genz algorithm is used or not.  <a href="#a32402688b4c036d1b1bdfd4cfff7a897">More...</a><br/></td></tr>
+<tr class="separator:a32402688b4c036d1b1bdfd4cfff7a897"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa503d66e2ca622c4c652851d9821248c"><td class="memItemLeft" align="right" valign="top">const Eigen::MatrixXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa503d66e2ca622c4c652851d9821248c">GetVarCovMatrix</a> () const </td></tr>
 <tr class="memdesc:aa503d66e2ca622c4c652851d9821248c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Var-Cov matrix of the distribution.  <a href="#aa503d66e2ca622c4c652851d9821248c">More...</a><br/></td></tr>
 <tr class="separator:aa503d66e2ca622c4c652851d9821248c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2cb4343d277a71b6c96875c048640cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ae2cb4343d277a71b6c96875c048640cc">IsValid</a> () const </td></tr>
-<tr class="memdesc:ae2cb4343d277a71b6c96875c048640cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the distribution is valid.  <a href="#ae2cb4343d277a71b6c96875c048640cc">More...</a><br/></td></tr>
-<tr class="separator:ae2cb4343d277a71b6c96875c048640cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebdd8074e156688337515ce598692e4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aebdd8074e156688337515ce598692e4d">SetDimension</a> (unsigned int Dimension)</td></tr>
+<tr class="memitem:aebdd8074e156688337515ce598692e4d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aebdd8074e156688337515ce598692e4d">SetDimension</a> (unsigned int Dimension)</td></tr>
 <tr class="memdesc:aebdd8074e156688337515ce598692e4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the dimensionality of the distribution.  <a href="#aebdd8074e156688337515ce598692e4d">More...</a><br/></td></tr>
 <tr class="separator:aebdd8074e156688337515ce598692e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a0ce8c08a03d4186ca311f61d5330fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a3a0ce8c08a03d4186ca311f61d5330fa">SetMeanVector</a> (const Eigen::VectorXd &amp;mVect)</td></tr>
-<tr class="memdesc:a3a0ce8c08a03d4186ca311f61d5330fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expected values vector.  <a href="#a3a0ce8c08a03d4186ca311f61d5330fa">More...</a><br/></td></tr>
+<tr class="memitem:a3a0ce8c08a03d4186ca311f61d5330fa"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a3a0ce8c08a03d4186ca311f61d5330fa">SetMeanVector</a> (const Eigen::VectorXd &amp;mVect)</td></tr>
+<tr class="memdesc:a3a0ce8c08a03d4186ca311f61d5330fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the mean vector.  <a href="#a3a0ce8c08a03d4186ca311f61d5330fa">More...</a><br/></td></tr>
 <tr class="separator:a3a0ce8c08a03d4186ca311f61d5330fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42d3a5770252cce1f59e809c308b5995"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a42d3a5770252cce1f59e809c308b5995">SetMeanVector</a> (const std::vector&lt; double &gt; &amp;mVect)</td></tr>
+<tr class="memitem:a42d3a5770252cce1f59e809c308b5995"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a42d3a5770252cce1f59e809c308b5995">SetMeanVector</a> (const std::vector&lt; double &gt; &amp;mVect)</td></tr>
 <tr class="memdesc:a42d3a5770252cce1f59e809c308b5995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expected values vector.  <a href="#a42d3a5770252cce1f59e809c308b5995">More...</a><br/></td></tr>
 <tr class="separator:a42d3a5770252cce1f59e809c308b5995"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3af02006aac51a3bfec92899dee9b0f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a3af02006aac51a3bfec92899dee9b0f2">SetRandomSeed</a> (unsigned int NewSeed)</td></tr>
-<tr class="memdesc:a3af02006aac51a3bfec92899dee9b0f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the random number generator seed.  <a href="#a3af02006aac51a3bfec92899dee9b0f2">More...</a><br/></td></tr>
-<tr class="separator:a3af02006aac51a3bfec92899dee9b0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d63c9aef6ecdee5fa4346bd1619afd7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a0d63c9aef6ecdee5fa4346bd1619afd7">SetNumSimul</a> (unsigned int a)</td></tr>
+<tr class="memdesc:a0d63c9aef6ecdee5fa4346bd1619afd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the maximum number of simulations used in the CDF calculation.  <a href="#a0d63c9aef6ecdee5fa4346bd1619afd7">More...</a><br/></td></tr>
+<tr class="separator:a0d63c9aef6ecdee5fa4346bd1619afd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a95ec408d2ed8d2b74d4cf73b650b74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a2a95ec408d2ed8d2b74d4cf73b650b74">SetUseGenz</a> (bool a=true)</td></tr>
+<tr class="memdesc:a2a95ec408d2ed8d2b74d4cf73b650b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set if Genz algorithm should be used.  <a href="#a2a95ec408d2ed8d2b74d4cf73b650b74">More...</a><br/></td></tr>
+<tr class="separator:a2a95ec408d2ed8d2b74d4cf73b650b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d5bfdd6bc1454d15d78c50957cb8b3e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a2d5bfdd6bc1454d15d78c50957cb8b3e">SetVarCovMatrix</a> (const Eigen::MatrixXd &amp;CovMatr)</td></tr>
 <tr class="memdesc:a2d5bfdd6bc1454d15d78c50957cb8b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Var-Cov matrix of the distribution.  <a href="#a2d5bfdd6bc1454d15d78c50957cb8b3e">More...</a><br/></td></tr>
 <tr class="separator:a2d5bfdd6bc1454d15d78c50957cb8b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,27 +191,69 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <tr class="memitem:a973d6c43f5479762520750a8b7137859"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a973d6c43f5479762520750a8b7137859">SetVarCovMatrix</a> (double **mVect)</td></tr>
 <tr class="memdesc:a973d6c43f5479762520750a8b7137859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Var-Cov matrix of the distribution.  <a href="#a973d6c43f5479762520750a8b7137859">More...</a><br/></td></tr>
 <tr class="separator:a973d6c43f5479762520750a8b7137859"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf8ee1abbad1b51c50c06ae025252aa1"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aaf8ee1abbad1b51c50c06ae025252aa1">ExtractSampleArray</a> () const </td></tr>
-<tr class="memdesc:aaf8ee1abbad1b51c50c06ae025252aa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#aaf8ee1abbad1b51c50c06ae025252aa1">More...</a><br/></td></tr>
-<tr class="separator:aaf8ee1abbad1b51c50c06ae025252aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2cb3aa2a3f9014313acffc72f8f960c"><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ae2cb3aa2a3f9014313acffc72f8f960c">ExtractSamplesMatix</a> (unsigned int NumSamples) const </td></tr>
-<tr class="memdesc:ae2cb3aa2a3f9014313acffc72f8f960c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#ae2cb3aa2a3f9014313acffc72f8f960c">More...</a><br/></td></tr>
-<tr class="separator:ae2cb3aa2a3f9014313acffc72f8f960c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d3ad4ebcfdff241b52170b71efe4bac"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a4d3ad4ebcfdff241b52170b71efe4bac">ExtractSampleCDFArray</a> () const </td></tr>
-<tr class="memdesc:a4d3ad4ebcfdff241b52170b71efe4bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#a4d3ad4ebcfdff241b52170b71efe4bac">More...</a><br/></td></tr>
-<tr class="separator:a4d3ad4ebcfdff241b52170b71efe4bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a883db23543d07902c57800bfd2c9f222"><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a883db23543d07902c57800bfd2c9f222">ExtractSamplesCDFMatix</a> (unsigned int NumSamples) const </td></tr>
-<tr class="memdesc:a883db23543d07902c57800bfd2c9f222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#a883db23543d07902c57800bfd2c9f222">More...</a><br/></td></tr>
-<tr class="separator:a883db23543d07902c57800bfd2c9f222"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ce9ed88fcad5019f8dfaf4c57e8c532"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a8ce9ed88fcad5019f8dfaf4c57e8c532">GetDensity</a> (double *Coordinates, bool GetLogDensity=false) const </td></tr>
-<tr class="memdesc:a8ce9ed88fcad5019f8dfaf4c57e8c532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the distribution in correspondence of the supplied coordinates.  <a href="#a8ce9ed88fcad5019f8dfaf4c57e8c532">More...</a><br/></td></tr>
-<tr class="separator:a8ce9ed88fcad5019f8dfaf4c57e8c532"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71ae25eaf20a5f07a1912831ca5d28ee"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a71ae25eaf20a5f07a1912831ca5d28ee">GetCumulativeDesity</a> (double *Coordinates, bool UseGenz=true, unsigned int NumSimul=500000) const </td></tr>
-<tr class="memdesc:a71ae25eaf20a5f07a1912831ca5d28ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cumulative density function of the distribution in correspondence of the supplied coordinates.  <a href="#a71ae25eaf20a5f07a1912831ca5d28ee">More...</a><br/></td></tr>
-<tr class="separator:a71ae25eaf20a5f07a1912831ca5d28ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a1329579e44ba6d1c3999f195176ca3"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a8a1329579e44ba6d1c3999f195176ca3">GetQuantileArray</a> (double Prob)</td></tr>
-<tr class="memdesc:a8a1329579e44ba6d1c3999f195176ca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#a8a1329579e44ba6d1c3999f195176ca3">More...</a><br/></td></tr>
-<tr class="separator:a8a1329579e44ba6d1c3999f195176ca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_multivariate_1_1_abstarct_distribution"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_multivariate_1_1_abstarct_distribution')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_multivariate_1_1_abstarct_distribution.html">Multivariate::AbstarctDistribution</a></td></tr>
+<tr class="memitem:abce7313e9e6a764c49ca3ac6ccd029ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual Eigen::RowVectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#abce7313e9e6a764c49ca3ac6ccd029ea">ExtractSample</a> () const </td></tr>
+<tr class="memdesc:abce7313e9e6a764c49ca3ac6ccd029ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#abce7313e9e6a764c49ca3ac6ccd029ea">More...</a><br/></td></tr>
+<tr class="separator:abce7313e9e6a764c49ca3ac6ccd029ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a75eb40b02fa3733eb5687e4b3cbf27 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual Eigen::RowVectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a1a75eb40b02fa3733eb5687e4b3cbf27">ExtractSampleCDF</a> () const </td></tr>
+<tr class="memdesc:a1a75eb40b02fa3733eb5687e4b3cbf27 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#a1a75eb40b02fa3733eb5687e4b3cbf27">More...</a><br/></td></tr>
+<tr class="separator:a1a75eb40b02fa3733eb5687e4b3cbf27 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa23fb4ab2cb967690c9d97d2f62bdb35 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#aa23fb4ab2cb967690c9d97d2f62bdb35">ExtractSampleCDFVect</a> () const </td></tr>
+<tr class="memdesc:aa23fb4ab2cb967690c9d97d2f62bdb35 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#aa23fb4ab2cb967690c9d97d2f62bdb35">More...</a><br/></td></tr>
+<tr class="separator:aa23fb4ab2cb967690c9d97d2f62bdb35 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a29f4b97e5f9c33423af614e93758ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; unsigned int, <br class="typebreak"/>
+std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a6a29f4b97e5f9c33423af614e93758ea">ExtractSamplesCDFMap</a> (unsigned int NumSamples) const </td></tr>
+<tr class="memdesc:a6a29f4b97e5f9c33423af614e93758ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts samples from the distribution and returns their marginal CDF.  <a href="#a6a29f4b97e5f9c33423af614e93758ea">More...</a><br/></td></tr>
+<tr class="separator:a6a29f4b97e5f9c33423af614e93758ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab43bb8d64d73fe1e12726438beefcb95 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; unsigned int, <br class="typebreak"/>
+std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#ab43bb8d64d73fe1e12726438beefcb95">ExtractSamplesMap</a> (unsigned int NumSamples) const </td></tr>
+<tr class="memdesc:ab43bb8d64d73fe1e12726438beefcb95 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates multiple simulations from the distribution.  <a href="#ab43bb8d64d73fe1e12726438beefcb95">More...</a><br/></td></tr>
+<tr class="separator:ab43bb8d64d73fe1e12726438beefcb95 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b6531fe4dcc76cd1f885deff19d6282 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a9b6531fe4dcc76cd1f885deff19d6282">ExtractSampleVector</a> () const </td></tr>
+<tr class="memdesc:a9b6531fe4dcc76cd1f885deff19d6282 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#a9b6531fe4dcc76cd1f885deff19d6282">More...</a><br/></td></tr>
+<tr class="separator:a9b6531fe4dcc76cd1f885deff19d6282 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6c35975b7038922a5f9358338dd2010 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#af6c35975b7038922a5f9358338dd2010">GetCumulativeDesity</a> (const std::vector&lt; double &gt; &amp;Coordinates) const </td></tr>
+<tr class="memdesc:af6c35975b7038922a5f9358338dd2010 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cumulative density function of the distribution in correspondence of the supplied coordinates.  <a href="#af6c35975b7038922a5f9358338dd2010">More...</a><br/></td></tr>
+<tr class="separator:af6c35975b7038922a5f9358338dd2010 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a280a4419344e014f23362704a74753f8 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a280a4419344e014f23362704a74753f8">GetCurrentSeed</a> () const </td></tr>
+<tr class="memdesc:a280a4419344e014f23362704a74753f8 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the random number generator seed.  <a href="#a280a4419344e014f23362704a74753f8">More...</a><br/></td></tr>
+<tr class="separator:a280a4419344e014f23362704a74753f8 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bdcfb3c863c2e5b9751eba73cd2f30f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a8bdcfb3c863c2e5b9751eba73cd2f30f">GetDensity</a> (const std::vector&lt; double &gt; &amp;Coordinates) const </td></tr>
+<tr class="memdesc:a8bdcfb3c863c2e5b9751eba73cd2f30f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the distribution in correspondence of the supplied coordinates.  <a href="#a8bdcfb3c863c2e5b9751eba73cd2f30f">More...</a><br/></td></tr>
+<tr class="separator:a8bdcfb3c863c2e5b9751eba73cd2f30f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cbc69b5d3cdd4783d3d85a225669ae9 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a9cbc69b5d3cdd4783d3d85a225669ae9">GetDimension</a> () const </td></tr>
+<tr class="memdesc:a9cbc69b5d3cdd4783d3d85a225669ae9 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the dimensionality of the distribution.  <a href="#a9cbc69b5d3cdd4783d3d85a225669ae9">More...</a><br/></td></tr>
+<tr class="separator:a9cbc69b5d3cdd4783d3d85a225669ae9 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabca6dd1809f76087b94b830c7c8d328 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#aabca6dd1809f76087b94b830c7c8d328">GetQuantileVector</a> (double Prob) const </td></tr>
+<tr class="memdesc:aabca6dd1809f76087b94b830c7c8d328 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#aabca6dd1809f76087b94b830c7c8d328">More...</a><br/></td></tr>
+<tr class="separator:aabca6dd1809f76087b94b830c7c8d328 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c073c108279b10eff33aa11e988936e inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a4c073c108279b10eff33aa11e988936e">IsValid</a> () const </td></tr>
+<tr class="memdesc:a4c073c108279b10eff33aa11e988936e inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the distribution is valid.  <a href="#a4c073c108279b10eff33aa11e988936e">More...</a><br/></td></tr>
+<tr class="separator:a4c073c108279b10eff33aa11e988936e inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac44f04571450f320b9845c6306739fc7 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#ac44f04571450f320b9845c6306739fc7">SetRandomSeed</a> (unsigned int NewSeed)</td></tr>
+<tr class="memdesc:ac44f04571450f320b9845c6306739fc7 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the random number generator seed.  <a href="#ac44f04571450f320b9845c6306739fc7">More...</a><br/></td></tr>
+<tr class="separator:ac44f04571450f320b9845c6306739fc7 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c4877c6c67bea060ed4be40b306b54d inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a0c4877c6c67bea060ed4be40b306b54d">GetQuantileArray</a> (double Prob)</td></tr>
+<tr class="memdesc:a0c4877c6c67bea060ed4be40b306b54d inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#a0c4877c6c67bea060ed4be40b306b54d">More...</a><br/></td></tr>
+<tr class="separator:a0c4877c6c67bea060ed4be40b306b54d inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fec18572a754622c6cb650717110c64 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a1fec18572a754622c6cb650717110c64">GetCumulativeDesity</a> (double *Coordinates) const </td></tr>
+<tr class="memdesc:a1fec18572a754622c6cb650717110c64 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cumulative density function of the distribution in correspondence of the supplied coordinates.  <a href="#a1fec18572a754622c6cb650717110c64">More...</a><br/></td></tr>
+<tr class="separator:a1fec18572a754622c6cb650717110c64 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad051a317e8aeccf8a5f82f8a6ff9dd4f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#ad051a317e8aeccf8a5f82f8a6ff9dd4f">GetDensity</a> (double *Coordinates) const </td></tr>
+<tr class="memdesc:ad051a317e8aeccf8a5f82f8a6ff9dd4f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the distribution in correspondence of the supplied coordinates.  <a href="#ad051a317e8aeccf8a5f82f8a6ff9dd4f">More...</a><br/></td></tr>
+<tr class="separator:ad051a317e8aeccf8a5f82f8a6ff9dd4f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a19d24c737438a5731b8d3be3328817 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a8a19d24c737438a5731b8d3be3328817">ExtractSampleArray</a> () const </td></tr>
+<tr class="memdesc:a8a19d24c737438a5731b8d3be3328817 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#a8a19d24c737438a5731b8d3be3328817">More...</a><br/></td></tr>
+<tr class="separator:a8a19d24c737438a5731b8d3be3328817 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac35d3867eccea5d492a5563edfb70da1 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#ac35d3867eccea5d492a5563edfb70da1">ExtractSamplesMatix</a> (unsigned int NumSamples) const </td></tr>
+<tr class="memdesc:ac35d3867eccea5d492a5563edfb70da1 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#ac35d3867eccea5d492a5563edfb70da1">More...</a><br/></td></tr>
+<tr class="separator:ac35d3867eccea5d492a5563edfb70da1 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b1aa831b14c8e4191a67a8c5c4b8c98 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a3b1aa831b14c8e4191a67a8c5c4b8c98">ExtractSampleCDFArray</a> () const </td></tr>
+<tr class="memdesc:a3b1aa831b14c8e4191a67a8c5c4b8c98 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#a3b1aa831b14c8e4191a67a8c5c4b8c98">More...</a><br/></td></tr>
+<tr class="separator:a3b1aa831b14c8e4191a67a8c5c4b8c98 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80849dea232b278ee71e5e0a5987745f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a80849dea232b278ee71e5e0a5987745f">ExtractSamplesCDFMatix</a> (unsigned int NumSamples) const </td></tr>
+<tr class="memdesc:a80849dea232b278ee71e5e0a5987745f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#a80849dea232b278ee71e5e0a5987745f">More...</a><br/></td></tr>
+<tr class="separator:a80849dea232b278ee71e5e0a5987745f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -257,16 +281,15 @@ template&lt;class F , class T &gt; </td></tr>
 </ul>
 <p>The multivariate normal distribution funtion is defined as: \( f(\textbf{x})=((2\pi)^{-\frac{k}{2}} |\boldsymbol{\Sigma}|^{-\frac{1}{2}} e^{(-\frac{1}{2} (\textbf{x}-\boldsymbol{\mu})&#39; \boldsymbol{\Sigma}^{-1} (\textbf{x}-\boldsymbol{\mu}))} \)</p>
 <p>The analytical process for computing pdf and simulate from the distribution is based upon the <a href="http://cran.r-project.org/web/packages/mvtnorm/index.html">mvtnorm package</a> for <a href="http://www.r-project.org/">R</a> by Alan Genz, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, Friedrich Leisch, Fabian Scheipl, Bjoern Bornkamp, Torsten Hothorn The algorithm for cdf calculation is based on <a href="http://www.math.wsu.edu/faculty/genz/homepage">A. Genz (1992)</a></p>
-<p>To generate samples a <a href="http://www.boost.org/doc/libs/1_55_0/doc/html/boost/random/mt19937.html">boost::random::mt19937</a> random number generator is used and seeded with <a href="http://www.cplusplus.com/reference/ctime/time/">std::time(NULL)</a>.<br/>
- If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call <code>MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);</code></p>
-<p>Please refer to the <a class="el" href="examples.html">Examples</a> page for usage examples.</p>
+<p>If you construct multiple instances this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call <code>MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);</code></p>
+<p>Please refer to the <a class="el" href="examples_page.html">Examples</a> page for usage examples.</p>
 <dl class="section remark"><dt>Remarks</dt><dd>This class is re-entrant </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>November 2013 </dd></dl>
 <dl class="section user"><dt>License</dt><dd>This program is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br/>
 <br/>
  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.<br/>
 <br/>
- You should have received a copy of the GNU Lesser General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">gnu.org</a>. </dd></dl>
+ Here, you can find a copy of the <a class="el" href="_license_page.html">GNU Lesser General Public License</a>. Alternatively, see <a href="http://www.gnu.org/licenses/">gnu.org</a>. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a101c2dfdab144fc989ae03ef940793f6"></a>
 <div class="memitem">
@@ -317,7 +340,7 @@ template&lt;class F , class T &gt; </td></tr>
 <li>The variance-covariance is not semi-positive definite</li>
 <li>The variance-covariance has a number of rows different from the Dimension</li>
 </ul>
-<p>The class will be considered invalid (it can be checked using <code><a class="el" href="class_multivariate_1_1_normal_distribution.html#ae2cb4343d277a71b6c96875c048640cc" title="Check if the distribution is valid. ">IsValid()</a></code>) and won't produce any result until the problem is fixed. </p>
+<p>The class will be considered invalid (it can be checked using <code><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a4c073c108279b10eff33aa11e988936e" title="Check if the distribution is valid. ">IsValid()</a></code>) and won't produce any result until the problem is fixed. </p>
 
 </div>
 </div>
@@ -343,131 +366,18 @@ template&lt;class F , class T &gt; </td></tr>
   </dd>
 </dl>
 <p>Construct a multivariate normal distribution with all mean values set to 0, unitary variances and null covariates.</p>
-<p>In case The Dimension is 0 the class will be considered invalid (it can be checked using <code><a class="el" href="class_multivariate_1_1_normal_distribution.html#ae2cb4343d277a71b6c96875c048640cc" title="Check if the distribution is valid. ">IsValid()</a></code>) and won't produce any result until the problem is fixed.</p>
+<p>In case The Dimension is 0 the class will be considered invalid (it can be checked using <code><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a4c073c108279b10eff33aa11e988936e" title="Check if the distribution is valid. ">IsValid()</a></code>) and won't produce any result until the problem is fixed.</p>
 <p>If dimension is unspecified, a univariate standard normal is constructed </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a8cd73e13fce1151834ee9b7922540e97"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Eigen::RowVectorXd Multivariate::NormalDistribution::ExtractSample </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Generates a single simulation from the distribution. </p>
-<dl class="section return"><dt>Returns</dt><dd>A vector with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution</dd></dl>
-<p>This is equal to calling <code>ExtractSamples(1U)</code> </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472" title="Generates multiple simulations from the distribution. ">ExtractSamples()</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aaf8ee1abbad1b51c50c06ae025252aa1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double * NormalDistribution::ExtractSampleArray </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates a single simulation from the distribution. </p>
-<dl class="section return"><dt>Returns</dt><dd>A dynamically allocated array with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution</dd></dl>
-<p>This is equivalent to <a class="el" href="class_multivariate_1_1_normal_distribution.html#a8cd73e13fce1151834ee9b7922540e97" title="Generates a single simulation from the distribution. ">ExtractSample()</a> but returns an array intead of an Eigen::RowVectorXd. If it can't be calculated, NULL is returned </p>
-<dl class="section warning"><dt>Warning</dt><dd>This function will return an array allocated on the heap. If the user doesn't take care of deleting it, this will lead to memory leaks </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="adc85d8f2aea3b84ae6e0196d511f8c01"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Eigen::RowVectorXd Multivariate::NormalDistribution::ExtractSampleCDF </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Generates a single simulation from the distribution and returns its marginal CDF. </p>
-<dl class="section return"><dt>Returns</dt><dd>A vector with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution</dd></dl>
-<p>This is equal to calling <code>ExtractSamplesCDF(1U)</code> </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#ad874186c133d378f244992fd7a1060dc" title="Extracts samples from the distribution and returns their marginal CDF. ">ExtractSamplesCDF()</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a4d3ad4ebcfdff241b52170b71efe4bac"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double * NormalDistribution::ExtractSampleCDFArray </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates a single simulation from the distribution and returns its marginal CDF. </p>
-<dl class="section return"><dt>Returns</dt><dd>A dynamically allocated array with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution</dd></dl>
-<p>This is equivalent to <a class="el" href="class_multivariate_1_1_normal_distribution.html#adc85d8f2aea3b84ae6e0196d511f8c01" title="Generates a single simulation from the distribution and returns its marginal CDF. ...">ExtractSampleCDF()</a> but returns an array intead of an Eigen::RowVectorXd. If it can't be calculated, NULL is returned </p>
-<dl class="section warning"><dt>Warning</dt><dd>This function will return an array allocated on the heap. If the user doesn't take care of deleting it, this will lead to memory leaks </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a8d3d0ecf611b571692829163639c64cb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; double &gt; NormalDistribution::ExtractSampleCDFVect </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates a single simulation from the distribution and returns its marginal CDF. </p>
-<dl class="section return"><dt>Returns</dt><dd>A vector with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution</dd></dl>
-<p>This is equivalent to <a class="el" href="class_multivariate_1_1_normal_distribution.html#adc85d8f2aea3b84ae6e0196d511f8c01" title="Generates a single simulation from the distribution and returns its marginal CDF. ...">ExtractSampleCDF()</a> but returns an std::vector intead of an Eigen::RowVectorXd </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#ad874186c133d378f244992fd7a1060dc" title="Extracts samples from the distribution and returns their marginal CDF. ">ExtractSamplesCDF()</a> </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="ab9fd4754af0169a3e5e1a7eebe845472"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Eigen::MatrixXd NormalDistribution::ExtractSamples </td>
@@ -477,6 +387,11 @@ template&lt;class F , class T &gt; </td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Generates multiple simulations from the distribution. </p>
@@ -490,11 +405,18 @@ template&lt;class F , class T &gt; </td></tr>
 <p>This function generates NumSamples simulation from the current distribution and returns them in matrix form.</p>
 <p>If NumSamples is 0 or the distribution is invalid, a null matrix is returned </p>
 
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a85dbf1d0c1164dfc3b2b3992dc17f5c0">Multivariate::AbstarctDistribution</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#af006e0f0cd5ad9fd89e70056bd114fbb">Multivariate::GaussianCopula</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ad874186c133d378f244992fd7a1060dc"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Eigen::MatrixXd NormalDistribution::ExtractSamplesCDF </td>
@@ -504,6 +426,11 @@ template&lt;class F , class T &gt; </td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Extracts samples from the distribution and returns their marginal CDF. </p>
@@ -518,134 +445,7 @@ template&lt;class F , class T &gt; </td></tr>
 <p>This function simulates extractions from a Gaussian copula</p>
 <p>If NumSamples is 0 or the distribution is invalid, a null matrix is returned </p>
 
-</div>
-</div>
-<a class="anchor" id="a189e09786f50b483365d32d8010bcac1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt; unsigned int, std::vector&lt; double &gt; &gt; NormalDistribution::ExtractSamplesCDFMap </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>NumSamples</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Extracts samples from the distribution and returns their marginal CDF. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">NumSamples</td><td>The number of simulation to run </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A matrix with columns equal to the dimensionality of the distribution and rows equal to the number of simulations</dd></dl>
-<p>This function generates NumSamples simulation from the current distribution, computes the marginal cumulative density function for each of them and returns them in a map form.</p>
-<p>This function simulates extractions from a Gaussian copula</p>
-<p>If NumSamples is 0 or the distribution is invalid, a null matrix is returned </p>
-
-</div>
-</div>
-<a class="anchor" id="a883db23543d07902c57800bfd2c9f222"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double ** NormalDistribution::ExtractSamplesCDFMatix </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>NumSamples</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates a single simulation from the distribution and returns its marginal CDF. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">NumSamples</td><td>The number of simulation to run </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A dynamically allocated matrix with number of columns equal to the dimensionality of the distribution and number of rows equal to the number of simulations representing multiple draws from the distribution</dd></dl>
-<p>This is equivalent to <a class="el" href="class_multivariate_1_1_normal_distribution.html#ad874186c133d378f244992fd7a1060dc" title="Extracts samples from the distribution and returns their marginal CDF. ">ExtractSamplesCDF()</a> but returns a matrix intead of an Eigen::MatrixXd. If it can't be calculated, NULL is returned </p>
-<dl class="section warning"><dt>Warning</dt><dd>This function will return a matrix allocated on the heap. If the user doesn't take care of deleting it, this will lead to memory leaks </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a0cf5d93559379b352b629dedfe76c289"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt; unsigned int, std::vector&lt; double &gt; &gt; NormalDistribution::ExtractSamplesMap </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>NumSamples</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates multiple simulations from the distribution. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">NumSamples</td><td>The number of simulation to run </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A map that has as keys the index of the dimension (starting from 0) and as values a vector containing the simulation results for that dimension</dd></dl>
-<p>This function generates NumSamples simulation from the current distribution and returns them in a map form.</p>
-<p>If NumSamples is 0 or the distribution is invalid, an empty map is returned </p>
-
-</div>
-</div>
-<a class="anchor" id="ae2cb3aa2a3f9014313acffc72f8f960c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double ** NormalDistribution::ExtractSamplesMatix </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>NumSamples</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates a single simulation from the distribution. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">NumSamples</td><td>The number of simulation to run </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A dynamically allocated matrix with number of columns equal to the dimensionality of the distribution and number of rows equal to the number of simulations representing multiple draws from the distribution</dd></dl>
-<p>This is equivalent to <a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472" title="Generates multiple simulations from the distribution. ">ExtractSamples()</a> but returns a matrix intead of an Eigen::MatrixXd. If it can't be calculated, NULL is returned </p>
-<dl class="section warning"><dt>Warning</dt><dd>This function will return a matrix allocated on the heap. If the user doesn't take care of deleting it, this will lead to memory leaks </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a3e165383069c0c3a12464a7e1865eb05"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; double &gt; NormalDistribution::ExtractSampleVector </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates a single simulation from the distribution. </p>
-<dl class="section return"><dt>Returns</dt><dd>A vector with number of elements equal to the dimensionality of the distribution representing a single extraction from the distribution</dd></dl>
-<p>This is equivalent to <a class="el" href="class_multivariate_1_1_normal_distribution.html#a8cd73e13fce1151834ee9b7922540e97" title="Generates a single simulation from the distribution. ">ExtractSample()</a> but returns an std::vector intead of an Eigen::RowVectorXd </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472" title="Generates multiple simulations from the distribution. ">ExtractSamples()</a> </dd></dl>
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#acd5dd6c952b20a9a5c25bcd742db2367">Multivariate::AbstarctDistribution</a>.</p>
 
 </div>
 </div>
@@ -668,142 +468,7 @@ template&lt;class F , class T &gt; </td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa30f9b087be38f888b9f370ab0b92931"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double NormalDistribution::GetCumulativeDesity </td>
-          <td>(</td>
-          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>Coordinates</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>UseGenz</em> = <code>true</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>NumSimul</em> = <code>500000</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the cumulative density function of the distribution in correspondence of the supplied coordinates. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Coordinates</td><td>A vector containing the coordinates of the point for which the cdf should be computed </td></tr>
-    <tr><td class="paramname">UseGenz</td><td>If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower) </td></tr>
-    <tr><td class="paramname">NumSimul</td><td>The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value of the cumulative density function</dd></dl>
-<p>This is an overloaded version of <a class="el" href="class_multivariate_1_1_normal_distribution.html#a1a07c550354b70f5a5185735f3af70d4" title="Computes the cumulative density function of the distribution in correspondence of the supplied coordi...">GetCumulativeDesity(const Eigen::VectorXd&amp;, bool, unsigned int)const</a> </p>
-
-</div>
-</div>
-<a class="anchor" id="a1a07c550354b70f5a5185735f3af70d4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double NormalDistribution::GetCumulativeDesity </td>
-          <td>(</td>
-          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
-          <td class="paramname"><em>Coordinates</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>UseGenz</em> = <code>true</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>NumSimul</em> = <code>500000</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the cumulative density function of the distribution in correspondence of the supplied coordinates. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Coordinates</td><td>A vector containing the coordinates of the point for which the cdf should be computed </td></tr>
-    <tr><td class="paramname">UseGenz</td><td>If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower) </td></tr>
-    <tr><td class="paramname">NumSimul</td><td>The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value of the cumulative density function</dd></dl>
-<p>This function computes the cumulative density function of the current distribution associated with the given coordinates.</p>
-<p>If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned.</p>
-<p>If UseGenz is true, the algorithm used is the one described in <a href="http://www.math.wsu.edu/faculty/genz/papers/mvn.pdf">Alan Genz - "Numerical Computation of Multivariate Normal Probabilities", Journal of Computational and Graphical Statistics, 1(1992), pp. 141-149</a> </p>
-
-</div>
-</div>
-<a class="anchor" id="a71ae25eaf20a5f07a1912831ca5d28ee"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double NormalDistribution::GetCumulativeDesity </td>
-          <td>(</td>
-          <td class="paramtype">double *&#160;</td>
-          <td class="paramname"><em>Coordinates</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>UseGenz</em> = <code>true</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>NumSimul</em> = <code>500000</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the cumulative density function of the distribution in correspondence of the supplied coordinates. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Coordinates</td><td>A vector containing the coordinates of the point for which the cdf should be computed </td></tr>
-    <tr><td class="paramname">UseGenz</td><td>If set to true the algorithm described in Genz (1992) to calculate the cdf, otherwise it will use full monte-carlo estimation (much slower) </td></tr>
-    <tr><td class="paramname">NumSimul</td><td>The maximum number of simulations for the Genz algorithm. If UseGenz is false this is the number of simulations that will be run by monte-carlo </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value of the cumulative density function</dd></dl>
-<p>This is an overloaded version of GetCumulativeDesity(const Eigen::VectorXd&amp; Coordinates, bool UseGenz, unsigned int NumSimul) </p>
-<dl class="section warning"><dt>Warning</dt><dd>This function will search for a number of elements equal to the dimensionality of the distribution in the array. This may mean accessing unallocated memory blocks if the supplied array is not big enough </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aca480a313a63e95d9d723e25847959e6"></a>
+<a class="anchor" id="a28f7933d325fe6c4883ea41d61167b83"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -811,49 +476,55 @@ template&lt;class F , class T &gt; </td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int Multivariate::NormalDistribution::GetCurrentSeed </td>
+          <td class="memname">double NormalDistribution::GetCumulativeDesity </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
+          <td class="paramname"><em>Coordinates</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the random number generator seed. </p>
-<dl class="section return"><dt>Returns</dt><dd>The random number generator seed.</dd></dl>
-<p>This function return the seed that was used to initialize the random number generator. </p>
-<dl class="section note"><dt>Note</dt><dd>This seed is different from the srand() seed and, even with the same seed, random number generated by the internal generator will be different by those generated by rand() </dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#a3af02006aac51a3bfec92899dee9b0f2" title="Set the random number generator seed. ">SetRandomSeed()</a> </dd></dl>
+<p>Computes the cumulative density function of the distribution in correspondence of the supplied coordinates. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Coordinates</td><td>A vector containing the coordinates of the point for which the cdf should be computed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the cumulative density function</dd></dl>
+<p>This function computes the cumulative density function of the current distribution associated with the given coordinates.</p>
+<p>If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned. </p>
+
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a36c7ac3eef8bc504d576aa6d2d39c5b1">Multivariate::AbstarctDistribution</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5d2382bc4d1f271b19759abab8223da9"></a>
+<a class="anchor" id="aa787789a6d658f14acc81d73bd3d2ed6"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">double NormalDistribution::GetDensity </td>
           <td>(</td>
           <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
-          <td class="paramname"><em>Coordinates</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>GetLogDensity</em> = <code>false</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
+          <td class="paramname"><em>Coordinates</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Computes the probability density function of the distribution in correspondence of the supplied coordinates. </p>
@@ -868,107 +539,7 @@ template&lt;class F , class T &gt; </td></tr>
 <p>This function computes the probability density function of the current distribution associated with the given coordinates.</p>
 <p>If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned </p>
 
-</div>
-</div>
-<a class="anchor" id="a7b1937ec0f6715d05cb55ba68a8a14c8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double NormalDistribution::GetDensity </td>
-          <td>(</td>
-          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>Coordinates</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>GetLogDensity</em> = <code>false</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the probability density function of the distribution in correspondence of the supplied coordinates. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Coordinates</td><td>A vector containing the coordinates of the point for which the pdf should be computed </td></tr>
-    <tr><td class="paramname">GetLogDensity</td><td>If set to true the log density is returned instead of the actual density </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value of the probability density function</dd></dl>
-<p>This is an overloaded version of <a class="el" href="class_multivariate_1_1_normal_distribution.html#a5d2382bc4d1f271b19759abab8223da9" title="Computes the probability density function of the distribution in correspondence of the supplied coord...">GetDensity(const Eigen::VectorXd&amp; Coordinates, bool GetLogDensity)const</a> </p>
-
-</div>
-</div>
-<a class="anchor" id="a8ce9ed88fcad5019f8dfaf4c57e8c532"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double Multivariate::NormalDistribution::GetDensity </td>
-          <td>(</td>
-          <td class="paramtype">double *&#160;</td>
-          <td class="paramname"><em>Coordinates</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>GetLogDensity</em> = <code>false</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the probability density function of the distribution in correspondence of the supplied coordinates. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Coordinates</td><td>An array containing the coordinates of the point for which the pdf should be computed </td></tr>
-    <tr><td class="paramname">GetLogDensity</td><td>If set to true the log density is returned instead of the actual density </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value of the probability density function</dd></dl>
-<p>This is an overloaded version of GetDensity(const Eigen::VectorXd&amp;, bool) </p>
-<dl class="section warning"><dt>Warning</dt><dd>This function will search for a number of elements equal to the dimensionality of the distribution in the array. This may mean accessing unallocated memory blocks if the supplied array is not big enough </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a5b7cc39af2d7505dab29e142314a48a4"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int Multivariate::NormalDistribution::GetDimension </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the dimensionality of the distribution. </p>
-<dl class="section return"><dt>Returns</dt><dd>The current dimensionality of the distribution </dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#aebdd8074e156688337515ce598692e4d" title="Set the dimensionality of the distribution. ">SetDimension()</a> </dd></dl>
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#ac210c1c36643bb071c4955a2c3c3be34">Multivariate::AbstarctDistribution</a>.</p>
 
 </div>
 </div>
@@ -993,24 +564,59 @@ template&lt;class F , class T &gt; </td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the expected values vector of the distribution. </p>
-<dl class="section return"><dt>Returns</dt><dd>The current expected values vector of the distribution </dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#a3a0ce8c08a03d4186ca311f61d5330fa" title="Set the expected values vector. ">SetMeanVector(const Eigen::VectorXd&amp;)</a> </dd></dl>
+<p>Get the mean vector of the distribution. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current mean vector of the distribution </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#a3a0ce8c08a03d4186ca311f61d5330fa" title="Set the mean vector. ">SetMeanVector(const Eigen::VectorXd&amp;)</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ab1214ee63303435a246d0e3ae24d97bb"></a>
+<a class="anchor" id="a5399cc002eb01b1e0bf17e49a7371151"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Multivariate::NormalDistribution::GetNumSimul </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the maximum number of simulations that will be used to compute the CDF. </p>
+<dl class="section return"><dt>Returns</dt><dd>The maximum number of simulations </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#a0d63c9aef6ecdee5fa4346bd1619afd7" title="Set the maximum number of simulations used in the CDF calculation. ">SetNumSimul()</a>; </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="acc31997dfb55a0edeb998826c0ae662e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Eigen::VectorXd NormalDistribution::GetQuantile </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>Prob</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability. </p>
@@ -1027,46 +633,34 @@ template&lt;class F , class T &gt; </td></tr>
  The additional restriction imposed to get to an unique solution is that each coordinate has equal distance from it's mean.</p>
 <p>If the probability supplied is greater, in absolute value, than 1 or the distribution is invalid, an empty vector is returned. </p>
 
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a753d520d03a094885932a121f4f313f3">Multivariate::AbstarctDistribution</a>.</p>
+
 </div>
 </div>
-<a class="anchor" id="a8a1329579e44ba6d1c3999f195176ca3"></a>
+<a class="anchor" id="a32402688b4c036d1b1bdfd4cfff7a897"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double * NormalDistribution::GetQuantileArray </td>
+          <td class="memname">bool Multivariate::NormalDistribution::GetUseGenz </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>Prob</em></td><td>)</td>
-          <td></td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability. </p>
-<dl class="section return"><dt>Returns</dt><dd>A dynamically allocated array containing the coordinates of the quantile</dd></dl>
-<p>This is equivalent to <a class="el" href="class_multivariate_1_1_normal_distribution.html#ab1214ee63303435a246d0e3ae24d97bb" title="Computes the inverse cumulative density function of the distribution in correspondence of the supplie...">GetQuantile()</a> but returns an array intead of an Eigen::VectorXd. If it can't be calculated, NULL is returned </p>
-<dl class="section warning"><dt>Warning</dt><dd>This function will return a matrix allocated on the heap. If the user doesn't take care of deleting it, this will lead to memory leaks </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a1fe2a22a27cc410d0a8062f85f3cecea"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; double &gt; NormalDistribution::GetQuantileVector </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>Prob</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability. </p>
-<dl class="section return"><dt>Returns</dt><dd>A vector containing the coordinates of the quantile</dd></dl>
-<p>This is equivalent to <a class="el" href="class_multivariate_1_1_normal_distribution.html#ab1214ee63303435a246d0e3ae24d97bb" title="Computes the inverse cumulative density function of the distribution in correspondence of the supplie...">GetQuantile()</a> but returns an std::vector intead of an Eigen::VectorXd </p>
+<p>Get either the Genz algorithm is used or not. </p>
+<dl class="section return"><dt>Returns</dt><dd>A bool determining if Genz algorithm will be used for calculating the CDF </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#a2a95ec408d2ed8d2b74d4cf73b650b74" title="Set if Genz algorithm should be used. ">SetUseGenz()</a>; </dd></dl>
 
 </div>
 </div>
@@ -1101,36 +695,12 @@ template&lt;class F , class T &gt; </td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae2cb4343d277a71b6c96875c048640cc"></a>
+<a class="anchor" id="aebdd8074e156688337515ce598692e4d"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Multivariate::NormalDistribution::IsValid </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Check if the distribution is valid. </p>
-<dl class="section return"><dt>Returns</dt><dd>A boolean determining if the structure of the distribution is valid</dd></dl>
-<p>If this function returns false the structure of the distribution is meaningless and no result will be produced until the invalid parameters are cured. </p>
-
-</div>
-</div>
-<a class="anchor" id="aebdd8074e156688337515ce598692e4d"></a>
-<div class="memitem">
-<div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">bool NormalDistribution::SetDimension </td>
@@ -1140,6 +710,11 @@ template&lt;class F , class T &gt; </td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Set the dimensionality of the distribution. </p>
@@ -1153,13 +728,20 @@ template&lt;class F , class T &gt; </td></tr>
 <p>This function will try to change the dimensionality of the distribution (e.g. 2 for bivariate, 3 for trivariate, etc.)</p>
 <p>All the components of the mean vector will be reset to 0 and the variance covariance matrix will default to an identity matrix</p>
 <p>If the argument passed is 0 the dimensionality will not be changed and the function will return false</p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#a5b7cc39af2d7505dab29e142314a48a4" title="Get the dimensionality of the distribution. ">GetDimension()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a9cbc69b5d3cdd4783d3d85a225669ae9" title="Get the dimensionality of the distribution. ">GetDimension()</a> </dd></dl>
+
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a0f2cddf54143a804532ab4e097f1a3ef">Multivariate::AbstarctDistribution</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#a4ff7e1a1e7675230289cccdadeabec0a">Multivariate::GaussianCopula</a>.</p>
 
 </div>
 </div>
 <a class="anchor" id="a3a0ce8c08a03d4186ca311f61d5330fa"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool NormalDistribution::SetMeanVector </td>
@@ -1169,9 +751,14 @@ template&lt;class F , class T &gt; </td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Set the expected values vector. </p>
+<p>Set the mean vector. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mVect</td><td>the vector of new values for the mean vector </td></tr>
@@ -1179,15 +766,18 @@ template&lt;class F , class T &gt; </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A boolean determining if the mean vector was changed successfully</dd></dl>
-<p>This function attempts to set the expected values vector to the new values supplied.</p>
+<p>This function attempts to set the mean vector to the new values supplied.</p>
 <p>If the dimension of the vector is different from the dimension of the distribution the mean vector is not changed and false is returned </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#a85ce4e9f8b01481c3549e6bf4369ac57" title="Get the expected values vector of the distribution. ">GetMeanVector()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#a85ce4e9f8b01481c3549e6bf4369ac57" title="Get the mean vector of the distribution. ">GetMeanVector()</a> </dd></dl>
 
 </div>
 </div>
 <a class="anchor" id="a42d3a5770252cce1f59e809c308b5995"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool NormalDistribution::SetMeanVector </td>
@@ -1197,16 +787,21 @@ template&lt;class F , class T &gt; </td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Set the expected values vector. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mVect</td><td>the vector of new values for the location vector</td></tr>
+    <tr><td class="paramname">mVect</td><td>the vector of new values for the mean vector</td></tr>
   </table>
   </dd>
 </dl>
-<p>This is an overloaded version of <a class="el" href="class_multivariate_1_1_normal_distribution.html#a3a0ce8c08a03d4186ca311f61d5330fa" title="Set the expected values vector. ">SetMeanVector(const Eigen::VectorXd&amp;)</a> </p>
+<p>This is an overloaded version of <a class="el" href="class_multivariate_1_1_normal_distribution.html#a3a0ce8c08a03d4186ca311f61d5330fa" title="Set the mean vector. ">SetMeanVector(const Eigen::VectorXd&amp;)</a> </p>
 
 </div>
 </div>
@@ -1231,34 +826,65 @@ template&lt;class F , class T &gt; </td></tr>
   </table>
   </dd>
 </dl>
-<p>This is an overloaded version of <a class="el" href="class_multivariate_1_1_normal_distribution.html#a3a0ce8c08a03d4186ca311f61d5330fa" title="Set the expected values vector. ">SetMeanVector(const Eigen::VectorXd&amp;)</a> </p>
+<p>This is an overloaded version of <a class="el" href="class_multivariate_1_1_normal_distribution.html#a3a0ce8c08a03d4186ca311f61d5330fa" title="Set the mean vector. ">SetMeanVector(const Eigen::VectorXd&amp;)</a> </p>
 <dl class="section warning"><dt>Warning</dt><dd>This function will search for a number of elements equal to the dimensionality of the distribution in the array. This may mean accessing unallocated memory blocks if the supplied array is not big enough </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a3af02006aac51a3bfec92899dee9b0f2"></a>
+<a class="anchor" id="a0d63c9aef6ecdee5fa4346bd1619afd7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void NormalDistribution::SetRandomSeed </td>
+          <td class="memname">bool NormalDistribution::SetNumSimul </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>NewSeed</em></td><td>)</td>
+          <td class="paramname"><em>a</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the random number generator seed. </p>
+<p>Set the maximum number of simulations used in the CDF calculation. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2a95ec408d2ed8d2b74d4cf73b650b74"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Multivariate::NormalDistribution::SetUseGenz </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>a</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set if Genz algorithm should be used. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">NewSeed</td><td>the new random seed </td></tr>
+    <tr><td class="paramname">a</td><td>Determinses if Genz algorithm will be used</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This seed is different from the srand() seed and, even with the same seed, random number generated by the internal generator will be different by those generated by rand() </dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#aca480a313a63e95d9d723e25847959e6" title="Get the random number generator seed. ">GetCurrentSeed()</a> </dd></dl>
+<p>If UseGenz is true, the algorithm used for computing the cumulative density function and the quantiles is the one described in <a href="http://www.math.wsu.edu/faculty/genz/papers/mvn.pdf">Alan Genz - "Numerical Computation of Multivariate Normal Probabilities", Journal of Computational and Graphical Statistics, 1(1992), pp. 141-149</a></p>
+<p>If set to false, full monte-carlo simulation will be used (resulting in much slower performance)</p>
+<dl class="section remark"><dt>Remarks</dt><dd>By default Genz algorithm is used in CDF and quantiles calculations. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The <a class="el" href="class_multivariate_1_1_normal_distribution.html#acc31997dfb55a0edeb998826c0ae662e" title="Computes the inverse cumulative density function of the distribution in correspondence of the supplie...">GetQuantile()</a> function needs to calculate the CDF several times, using full monte-carlo may lead to very long execution times of that function </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_normal_distribution.html#a32402688b4c036d1b1bdfd4cfff7a897" title="Get either the Genz algorithm is used or not. ">GetUseGenz()</a> </dd>
+<dd>
+<a class="el" href="class_multivariate_1_1_normal_distribution.html#a0d63c9aef6ecdee5fa4346bd1619afd7" title="Set the maximum number of simulations used in the CDF calculation. ">SetNumSimul()</a> </dd></dl>
 
 </div>
 </div>
@@ -1422,7 +1048,7 @@ template&lt;class F , class T &gt; </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 18 2013 16:53:08 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 20 2013 12:02:28 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
