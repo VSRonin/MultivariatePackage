@@ -1,3 +1,5 @@
+#ifndef tDist_h__
+#define tDist_h__
 #include "NormalDist.h"
 namespace Multivariate{
 	//! Multivariate Student's t Distribution
@@ -254,3 +256,4 @@ namespace Multivariate{
 		template <class F, class T> friend void boost::math::tools::detail::handle_zero_derivative(F f,T& last_f0,const T& f0,T& delta,T& result,T& guess,const T& min,const T& max);
 	};
 }
+#endif // tDist_h__

@@ -3,6 +3,34 @@
 #include "AbstarctCopula.h"
 #include "UniformDistribution.h"
 namespace Multivariate{
+	//! Independence Copula Distribution
+	/*!
+	\details This class provides the functionality of calculating the probability density value, cumulative probability density value, inverse cumulative probability density and generate random samples from an Independence copula.
+
+	Defining:
+		- \f$ k \f$ as the dimensionality of the copula
+	
+	The independence copula distribution funtion is defined as: \f$ C(\textbf{x})= \prod_{n=1}^k x_n \f$ for \f$ \textbf{x} \in \textbf{(0,1)} \f$
+
+	This is quite a trivial copula but is supplied for completeness
+
+	If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
+
+	Please refer to the \ref examplesPage page for usage examples.
+
+	\remark This class is re-entrant
+	\date November 2013
+	\license This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU Lesser General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.<br><br>
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU Lesser General Public License for more details.<br><br>
+	Here, you can find a copy of the \ref LicensePage.
+	Alternatively, see [gnu.org](http://www.gnu.org/licenses/).
+	*/
 	class IndependenceCopula : public AbstarctCopula{
 	private:
 		UniformDistribution LocalVersion;

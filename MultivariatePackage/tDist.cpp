@@ -2,7 +2,7 @@
 #include <boost/math/distributions/chi_squared.hpp>
 #include <boost/math/distributions/students_t.hpp>
 #include <boost/random/uniform_real_distribution.hpp>
-#include "SpecialFunctions.hpp"
+#include "SpecialFunctions.h"
 using namespace Multivariate;
 double tDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinates)const{
 	//! \todo Add the Genz algorithm

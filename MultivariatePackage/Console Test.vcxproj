@@ -75,21 +75,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbstarctArchimedeanCopula.cpp" />
     <ClCompile Include="AbstractCopula.cpp" />
     <ClCompile Include="AbstractDistribution.cpp" />
     <ClCompile Include="Console Test.cpp" />
     <ClCompile Include="GaussianCopula.cpp" />
+    <ClCompile Include="GumbelCopula.cpp" />
     <ClCompile Include="NormalDist.cpp" />
+    <ClCompile Include="SpecialFunctions.cpp" />
     <ClCompile Include="tDist.cpp" />
     <ClCompile Include="UniformDistribution.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbsaractCopula.h" />
+    <ClInclude Include="AbstarctArchimedeanCopula.h" />
     <ClInclude Include="AbstractDistribution.h" />
     <ClInclude Include="GaussianCopula.h" />
+    <ClInclude Include="GumbelCopula.h" />
     <ClInclude Include="IndependenceCopula.h" />
     <ClInclude Include="NormalDist.h" />
-    <ClInclude Include="SpecialFunctions.hpp" />
+    <ClInclude Include="SpecialFunctions.h" />
     <ClInclude Include="tDist.h" />
     <ClInclude Include="UniformDistribution.h" />
   </ItemGroup>

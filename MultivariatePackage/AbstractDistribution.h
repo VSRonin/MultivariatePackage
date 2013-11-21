@@ -4,8 +4,9 @@
 #include <vector>
 #include <map>
 #include <boost/random/mersenne_twister.hpp>
+//! Namespace where all classes are defined
 namespace Multivariate{
-	//! Abstract distribution base class
+	//! Distributions base class
 	/*!
 	\details Class that works as an interface to distributions
 	

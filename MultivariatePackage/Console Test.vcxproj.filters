@@ -42,15 +42,21 @@
     <ClCompile Include="GaussianCopula.cpp">
       <Filter>Source Files\Copulas</Filter>
     </ClCompile>
+    <ClCompile Include="AbstarctArchimedeanCopula.cpp">
+      <Filter>Source Files\Copulas</Filter>
+    </ClCompile>
+    <ClCompile Include="GumbelCopula.cpp">
+      <Filter>Source Files\Copulas</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecialFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NormalDist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tDist.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpecialFunctions.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UniformDistribution.h">
@@ -67,6 +73,15 @@
     </ClInclude>
     <ClInclude Include="AbsaractCopula.h">
       <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstarctArchimedeanCopula.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="GumbelCopula.h">
+      <Filter>Header Files\Copulas</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialFunctions.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

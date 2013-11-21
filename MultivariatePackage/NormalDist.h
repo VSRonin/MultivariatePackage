@@ -3,7 +3,6 @@
 #include "AbstractDistribution.h"
 #include <boost/math/tools/tuple.hpp>
 #include <boost/math/tools/roots.hpp>
-//! Namespace where all the classes of the library are defined
 namespace Multivariate{
 //! Multivariate Normal Distribution
 /*!
