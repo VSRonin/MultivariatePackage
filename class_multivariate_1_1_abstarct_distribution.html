@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Multivariate Analysis Package
-   &#160;<span id="projectnumber">0.2</span>
+   &#160;<span id="projectnumber">0.3</span>
    </div>
    <div id="projectbrief">A multivariate distributions analysis package</div>
   </td>
@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Abstract distribution base class.  
+<p>Distributions base class.  
  <a href="class_multivariate_1_1_abstarct_distribution.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_abstract_distribution_8h_source.html">AbstractDistribution.h</a>&gt;</code></p>
@@ -113,11 +113,9 @@ Inheritance diagram for Multivariate::AbstarctDistribution:</div>
  <div class="center">
   <img src="class_multivariate_1_1_abstarct_distribution.png" usemap="#Multivariate::AbstarctDistribution_map" alt=""/>
   <map id="Multivariate::AbstarctDistribution_map" name="Multivariate::AbstarctDistribution_map">
-<area href="class_multivariate_1_1_normal_distribution.html" title="Multivariate Normal Distribution. " alt="Multivariate::NormalDistribution" shape="rect" coords="107,56,311,80"/>
-<area href="class_multivariate_1_1_uniform_distribution.html" alt="Multivariate::UniformDistribution" shape="rect" coords="428,56,632,80"/>
-<area href="class_multivariate_1_1_gaussian_copula.html" title="Gaussian Copula Distribution. " alt="Multivariate::GaussianCopula" shape="rect" coords="0,112,204,136"/>
-<area href="class_multivariate_1_1t_distribution.html" title="Multivariate Student&#39;s t Distribution. " alt="Multivariate::tDistribution" shape="rect" coords="214,112,418,136"/>
-<area href="class_multivariate_1_1_independence_copula.html" alt="Multivariate::IndependenceCopula" shape="rect" coords="428,112,632,136"/>
+<area href="class_multivariate_1_1_normal_distribution.html" title="Multivariate Normal Distribution. " alt="Multivariate::NormalDistribution" shape="rect" coords="0,56,194,80"/>
+<area href="class_multivariate_1_1t_distribution.html" title="Multivariate Student&#39;s t Distribution. " alt="Multivariate::tDistribution" shape="rect" coords="204,56,398,80"/>
+<area href="class_multivariate_1_1_uniform_distribution.html" alt="Multivariate::UniformDistribution" shape="rect" coords="408,56,602,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -209,7 +207,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <tr class="separator:a80849dea232b278ee71e5e0a5987745f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract distribution base class. </p>
+<div class="textblock"><p>Distributions base class. </p>
 <p>Class that works as an interface to distributions</p>
 <p>To generate samples a <a href="http://www.boost.org/doc/libs/1_55_0/doc/html/boost/random/mt19937.html">boost::random::mt19937</a> random number generator is used and seeded with <a href="http://www.cplusplus.com/reference/ctime/time/">std::time(NULL)</a>.<br/>
  If you construct multiple instances of derived classes, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call <code>MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);</code> </p>
@@ -393,7 +391,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>A matrix with columns equal to the dimensionality of the distribution and rows equal to the number of simulations</dd></dl>
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#af006e0f0cd5ad9fd89e70056bd114fbb">Multivariate::GaussianCopula</a>, <a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472">Multivariate::NormalDistribution</a>, <a class="el" href="class_multivariate_1_1t_distribution.html#a6fea4e6d795378bedc595f4683715942">Multivariate::tDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#a1ea060e1b9270ab93bc53bf8a558d8dc">Multivariate::UniformDistribution</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472">Multivariate::NormalDistribution</a>, <a class="el" href="class_multivariate_1_1t_distribution.html#a6fea4e6d795378bedc595f4683715942">Multivariate::tDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#a1ea060e1b9270ab93bc53bf8a558d8dc">Multivariate::UniformDistribution</a>.</p>
 
 </div>
 </div>
@@ -1023,7 +1021,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a9cbc69b5d3cdd4783d3d85a225669ae9" title="Get the dimensionality of the distribution. ">GetDimension()</a> </dd></dl>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#a4ff7e1a1e7675230289cccdadeabec0a">Multivariate::GaussianCopula</a>, <a class="el" href="class_multivariate_1_1_normal_distribution.html#aebdd8074e156688337515ce598692e4d">Multivariate::NormalDistribution</a>, <a class="el" href="class_multivariate_1_1t_distribution.html#a97947d2309c6c41f7d64849fcf97b435">Multivariate::tDistribution</a>, <a class="el" href="class_multivariate_1_1_independence_copula.html#ab1e6ec579685b3fc31bc98ae2a234171">Multivariate::IndependenceCopula</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#ab7f8c03ca35b10fbc6248507789466b5">Multivariate::UniformDistribution</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_normal_distribution.html#aebdd8074e156688337515ce598692e4d">Multivariate::NormalDistribution</a>, <a class="el" href="class_multivariate_1_1t_distribution.html#a59fdef4f9cacfa07760020df8b99ac98">Multivariate::tDistribution</a>, and <a class="el" href="class_multivariate_1_1_uniform_distribution.html#ab7f8c03ca35b10fbc6248507789466b5">Multivariate::UniformDistribution</a>.</p>
 
 </div>
 </div>
@@ -1056,7 +1054,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 20 2013 17:42:01 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 21 2013 19:41:10 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

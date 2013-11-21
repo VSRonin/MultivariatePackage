@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.5"/>
-<title>Multivariate Analysis Package: Namespace List</title>
+<title>Multivariate Analysis Package: MultivariatePackage/SpecialFunctions.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -47,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -67,13 +67,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li class="current"><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
-      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
-    </ul>
-  </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -88,17 +81,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_aca4a6ce409a602c42c2bfcfb59e2d59.html">MultivariatePackage</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Namespace List</div>  </div>
+<div class="title">SpecialFunctions.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all documented namespaces with brief descriptions:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2ns.png" alt="N" width="24" height="22" /><a class="el" href="namespace_multivariate.html" target="_self">Multivariate</a></td><td class="desc">Namespace where all classes are defined </td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef SpecialFunctions_h__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SpecialFunctions_h__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="keyword">namespace </span>Multivariate{</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="namespace_multivariate.html#a5a525e4bfddadad32c95cec146d28aec">GammaFunction</a>(<span class="keywordtype">double</span> t);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="namespace_multivariate.html#ac4bb036d3fcf38fbd34a3d5099b9f133">SimulateStable</a>(<span class="keywordtype">double</span> Alpha,<span class="keywordtype">double</span> Beta,<span class="keywordtype">double</span> Gamma,<span class="keywordtype">double</span> Delta,<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> RandNumGenSeed=0);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif // SpecialFunctions_h__</span></div>
+<div class="ttc" id="namespace_multivariate_html_a5a525e4bfddadad32c95cec146d28aec"><div class="ttname"><a href="namespace_multivariate.html#a5a525e4bfddadad32c95cec146d28aec">Multivariate::GammaFunction</a></div><div class="ttdeci">double GammaFunction(double t)</div><div class="ttdoc">Computes the Gamma function for positive reals. </div><div class="ttdef"><b>Definition:</b> SpecialFunctions.cpp:7</div></div>
+<div class="ttc" id="namespace_multivariate_html_ac4bb036d3fcf38fbd34a3d5099b9f133"><div class="ttname"><a href="namespace_multivariate.html#ac4bb036d3fcf38fbd34a3d5099b9f133">Multivariate::SimulateStable</a></div><div class="ttdeci">double SimulateStable(double Alpha, double Beta, double Gamma, double Delta, unsigned int RandNumGenSeed=0)</div><div class="ttdoc">Simulates a draw from a stable distribution. </div><div class="ttdef"><b>Definition:</b> SpecialFunctions.cpp:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Thu Nov 21 2013 19:41:10 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">

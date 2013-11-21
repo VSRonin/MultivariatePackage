@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Multivariate Analysis Package
-   &#160;<span id="projectnumber">0.2</span>
+   &#160;<span id="projectnumber">0.3</span>
    </div>
    <div id="projectbrief">A multivariate distributions analysis package</div>
   </td>
@@ -106,15 +106,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Gaussian Copula Distribution.  
  <a href="class_multivariate_1_1_gaussian_copula.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_normal_dist_8h_source.html">NormalDist.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_gaussian_copula_8h_source.html">GaussianCopula.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Multivariate::GaussianCopula:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_multivariate_1_1_gaussian_copula.png" usemap="#Multivariate::GaussianCopula_map" alt=""/>
   <map id="Multivariate::GaussianCopula_map" name="Multivariate::GaussianCopula_map">
-<area href="class_multivariate_1_1_normal_distribution.html" title="Multivariate Normal Distribution. " alt="Multivariate::NormalDistribution" shape="rect" coords="0,56,194,80"/>
-<area href="class_multivariate_1_1_abstarct_distribution.html" title="Abstract distribution base class. " alt="Multivariate::AbstarctDistribution" shape="rect" coords="0,0,194,24"/>
+<area href="class_multivariate_1_1_abstarct_copula.html" title="Copulas base class. " alt="Multivariate::AbstarctCopula" shape="rect" coords="0,0,176,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -129,127 +128,77 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af006e0f0cd5ad9fd89e70056bd114fbb"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#af006e0f0cd5ad9fd89e70056bd114fbb">ExtractSamples</a> (unsigned int NumSamples) const </td></tr>
 <tr class="memdesc:af006e0f0cd5ad9fd89e70056bd114fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates multiple simulations from the copula.  <a href="#af006e0f0cd5ad9fd89e70056bd114fbb">More...</a><br/></td></tr>
 <tr class="separator:af006e0f0cd5ad9fd89e70056bd114fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ff7e1a1e7675230289cccdadeabec0a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a4ff7e1a1e7675230289cccdadeabec0a">SetDimension</a> (unsigned int Dimension)</td></tr>
-<tr class="memdesc:a4ff7e1a1e7675230289cccdadeabec0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the dimensionality of the distribution.  <a href="#a4ff7e1a1e7675230289cccdadeabec0a">More...</a><br/></td></tr>
-<tr class="separator:a4ff7e1a1e7675230289cccdadeabec0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_multivariate_1_1_normal_distribution"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_multivariate_1_1_normal_distribution')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_multivariate_1_1_normal_distribution.html">Multivariate::NormalDistribution</a></td></tr>
-<tr class="memitem:a101c2dfdab144fc989ae03ef940793f6 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a101c2dfdab144fc989ae03ef940793f6">NormalDistribution</a> (unsigned int Dimension, const Eigen::VectorXd &amp;mVect, const Eigen::MatrixXd &amp;CovMatr)</td></tr>
-<tr class="memdesc:a101c2dfdab144fc989ae03ef940793f6 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a multivariate normal with the given parameters.  <a href="#a101c2dfdab144fc989ae03ef940793f6">More...</a><br/></td></tr>
-<tr class="separator:a101c2dfdab144fc989ae03ef940793f6 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7096e747e8123ade3b20297f4d991e13 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a7096e747e8123ade3b20297f4d991e13">NormalDistribution</a> (unsigned int Dimension=1U)</td></tr>
-<tr class="memdesc:a7096e747e8123ade3b20297f4d991e13 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a multivariate standard normal.  <a href="#a7096e747e8123ade3b20297f4d991e13">More...</a><br/></td></tr>
-<tr class="separator:a7096e747e8123ade3b20297f4d991e13 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad874186c133d378f244992fd7a1060dc inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ad874186c133d378f244992fd7a1060dc">ExtractSamplesCDF</a> (unsigned int NumSamples) const </td></tr>
-<tr class="memdesc:ad874186c133d378f244992fd7a1060dc inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts samples from the distribution and returns their marginal CDF.  <a href="#ad874186c133d378f244992fd7a1060dc">More...</a><br/></td></tr>
-<tr class="separator:ad874186c133d378f244992fd7a1060dc inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4aa171e6f9f7ba70ddf4efe7afb22e0e inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a4aa171e6f9f7ba70ddf4efe7afb22e0e">GetCorrelationMatrix</a> () const </td></tr>
-<tr class="memdesc:a4aa171e6f9f7ba70ddf4efe7afb22e0e inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the linear correlation matrix.  <a href="#a4aa171e6f9f7ba70ddf4efe7afb22e0e">More...</a><br/></td></tr>
-<tr class="separator:a4aa171e6f9f7ba70ddf4efe7afb22e0e inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28f7933d325fe6c4883ea41d61167b83 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a28f7933d325fe6c4883ea41d61167b83">GetCumulativeDesity</a> (const Eigen::VectorXd &amp;Coordinates) const </td></tr>
-<tr class="memdesc:a28f7933d325fe6c4883ea41d61167b83 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cumulative density function of the distribution in correspondence of the supplied coordinates.  <a href="#a28f7933d325fe6c4883ea41d61167b83">More...</a><br/></td></tr>
-<tr class="separator:a28f7933d325fe6c4883ea41d61167b83 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa787789a6d658f14acc81d73bd3d2ed6 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa787789a6d658f14acc81d73bd3d2ed6">GetDensity</a> (const Eigen::VectorXd &amp;Coordinates) const </td></tr>
-<tr class="memdesc:aa787789a6d658f14acc81d73bd3d2ed6 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the distribution in correspondence of the supplied coordinates.  <a href="#aa787789a6d658f14acc81d73bd3d2ed6">More...</a><br/></td></tr>
-<tr class="separator:aa787789a6d658f14acc81d73bd3d2ed6 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3dd2ad2aa02e4bd86e51242ae6a9cfa inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual const Eigen::VectorXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#ae3dd2ad2aa02e4bd86e51242ae6a9cfa">GetMeanVector</a> () const </td></tr>
-<tr class="memdesc:ae3dd2ad2aa02e4bd86e51242ae6a9cfa inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mean vector of the distribution.  <a href="#ae3dd2ad2aa02e4bd86e51242ae6a9cfa">More...</a><br/></td></tr>
-<tr class="separator:ae3dd2ad2aa02e4bd86e51242ae6a9cfa inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5399cc002eb01b1e0bf17e49a7371151 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a5399cc002eb01b1e0bf17e49a7371151">GetNumSimul</a> () const </td></tr>
-<tr class="memdesc:a5399cc002eb01b1e0bf17e49a7371151 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum number of simulations that will be used to compute the CDF.  <a href="#a5399cc002eb01b1e0bf17e49a7371151">More...</a><br/></td></tr>
-<tr class="separator:a5399cc002eb01b1e0bf17e49a7371151 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc31997dfb55a0edeb998826c0ae662e inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#acc31997dfb55a0edeb998826c0ae662e">GetQuantile</a> (double Prob) const </td></tr>
-<tr class="memdesc:acc31997dfb55a0edeb998826c0ae662e inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#acc31997dfb55a0edeb998826c0ae662e">More...</a><br/></td></tr>
-<tr class="separator:acc31997dfb55a0edeb998826c0ae662e inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32402688b4c036d1b1bdfd4cfff7a897 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a32402688b4c036d1b1bdfd4cfff7a897">GetUseGenz</a> () const </td></tr>
-<tr class="memdesc:a32402688b4c036d1b1bdfd4cfff7a897 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get either the Genz algorithm is used or not.  <a href="#a32402688b4c036d1b1bdfd4cfff7a897">More...</a><br/></td></tr>
-<tr class="separator:a32402688b4c036d1b1bdfd4cfff7a897 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa23f8f964ec0affaf4153e181fc1ccc3 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual const Eigen::MatrixXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#aa23f8f964ec0affaf4153e181fc1ccc3">GetVarCovMatrix</a> () const </td></tr>
-<tr class="memdesc:aa23f8f964ec0affaf4153e181fc1ccc3 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Var-Cov matrix of the distribution.  <a href="#aa23f8f964ec0affaf4153e181fc1ccc3">More...</a><br/></td></tr>
-<tr class="separator:aa23f8f964ec0affaf4153e181fc1ccc3 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d63c9aef6ecdee5fa4346bd1619afd7 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a0d63c9aef6ecdee5fa4346bd1619afd7">SetNumSimul</a> (unsigned int a)</td></tr>
-<tr class="memdesc:a0d63c9aef6ecdee5fa4346bd1619afd7 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the maximum number of simulations used in the CDF calculation.  <a href="#a0d63c9aef6ecdee5fa4346bd1619afd7">More...</a><br/></td></tr>
-<tr class="separator:a0d63c9aef6ecdee5fa4346bd1619afd7 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a95ec408d2ed8d2b74d4cf73b650b74 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a2a95ec408d2ed8d2b74d4cf73b650b74">SetUseGenz</a> (bool a=true)</td></tr>
-<tr class="memdesc:a2a95ec408d2ed8d2b74d4cf73b650b74 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set if Genz algorithm should be used.  <a href="#a2a95ec408d2ed8d2b74d4cf73b650b74">More...</a><br/></td></tr>
-<tr class="separator:a2a95ec408d2ed8d2b74d4cf73b650b74 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d5bfdd6bc1454d15d78c50957cb8b3e inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a2d5bfdd6bc1454d15d78c50957cb8b3e">SetVarCovMatrix</a> (const Eigen::MatrixXd &amp;CovMatr)</td></tr>
-<tr class="memdesc:a2d5bfdd6bc1454d15d78c50957cb8b3e inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Var-Cov matrix of the distribution.  <a href="#a2d5bfdd6bc1454d15d78c50957cb8b3e">More...</a><br/></td></tr>
-<tr class="separator:a2d5bfdd6bc1454d15d78c50957cb8b3e inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a278c25161787bcae2340afe9848c813d inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a278c25161787bcae2340afe9848c813d">SetVarCovMatrix</a> (const std::vector&lt; double &gt; &amp;mVect, bool RowWise=true)</td></tr>
-<tr class="memdesc:a278c25161787bcae2340afe9848c813d inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Var-Cov matrix of the distribution.  <a href="#a278c25161787bcae2340afe9848c813d">More...</a><br/></td></tr>
-<tr class="separator:a278c25161787bcae2340afe9848c813d inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd26977a95ba55befa129dbaa9254d56 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#acd26977a95ba55befa129dbaa9254d56">SetVarCovMatrix</a> (const Eigen::MatrixXd &amp;CorrelationMatrix, const Eigen::VectorXd &amp;Variances)</td></tr>
-<tr class="memdesc:acd26977a95ba55befa129dbaa9254d56 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Var-Cov matrix of the distribution.  <a href="#acd26977a95ba55befa129dbaa9254d56">More...</a><br/></td></tr>
-<tr class="separator:acd26977a95ba55befa129dbaa9254d56 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a326301ddaab7d62262b6457af89098 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a8a326301ddaab7d62262b6457af89098">SetMeanVector</a> (double *mVect)</td></tr>
-<tr class="memdesc:a8a326301ddaab7d62262b6457af89098 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expected values vector.  <a href="#a8a326301ddaab7d62262b6457af89098">More...</a><br/></td></tr>
-<tr class="separator:a8a326301ddaab7d62262b6457af89098 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a973d6c43f5479762520750a8b7137859 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_normal_distribution.html#a973d6c43f5479762520750a8b7137859">SetVarCovMatrix</a> (double **mVect)</td></tr>
-<tr class="memdesc:a973d6c43f5479762520750a8b7137859 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Var-Cov matrix of the distribution.  <a href="#a973d6c43f5479762520750a8b7137859">More...</a><br/></td></tr>
-<tr class="separator:a973d6c43f5479762520750a8b7137859 inherit pub_methods_class_multivariate_1_1_normal_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_multivariate_1_1_abstarct_distribution"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_multivariate_1_1_abstarct_distribution')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_multivariate_1_1_abstarct_distribution.html">Multivariate::AbstarctDistribution</a></td></tr>
-<tr class="memitem:abce7313e9e6a764c49ca3ac6ccd029ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual Eigen::RowVectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#abce7313e9e6a764c49ca3ac6ccd029ea">ExtractSample</a> () const </td></tr>
-<tr class="memdesc:abce7313e9e6a764c49ca3ac6ccd029ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#abce7313e9e6a764c49ca3ac6ccd029ea">More...</a><br/></td></tr>
-<tr class="separator:abce7313e9e6a764c49ca3ac6ccd029ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a75eb40b02fa3733eb5687e4b3cbf27 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual Eigen::RowVectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a1a75eb40b02fa3733eb5687e4b3cbf27">ExtractSampleCDF</a> () const </td></tr>
-<tr class="memdesc:a1a75eb40b02fa3733eb5687e4b3cbf27 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#a1a75eb40b02fa3733eb5687e4b3cbf27">More...</a><br/></td></tr>
-<tr class="separator:a1a75eb40b02fa3733eb5687e4b3cbf27 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa23fb4ab2cb967690c9d97d2f62bdb35 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#aa23fb4ab2cb967690c9d97d2f62bdb35">ExtractSampleCDFVect</a> () const </td></tr>
-<tr class="memdesc:aa23fb4ab2cb967690c9d97d2f62bdb35 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#aa23fb4ab2cb967690c9d97d2f62bdb35">More...</a><br/></td></tr>
-<tr class="separator:aa23fb4ab2cb967690c9d97d2f62bdb35 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a29f4b97e5f9c33423af614e93758ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; unsigned int, <br class="typebreak"/>
-std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a6a29f4b97e5f9c33423af614e93758ea">ExtractSamplesCDFMap</a> (unsigned int NumSamples) const </td></tr>
-<tr class="memdesc:a6a29f4b97e5f9c33423af614e93758ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts samples from the distribution and returns their marginal CDF.  <a href="#a6a29f4b97e5f9c33423af614e93758ea">More...</a><br/></td></tr>
-<tr class="separator:a6a29f4b97e5f9c33423af614e93758ea inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab43bb8d64d73fe1e12726438beefcb95 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; unsigned int, <br class="typebreak"/>
-std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#ab43bb8d64d73fe1e12726438beefcb95">ExtractSamplesMap</a> (unsigned int NumSamples) const </td></tr>
-<tr class="memdesc:ab43bb8d64d73fe1e12726438beefcb95 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates multiple simulations from the distribution.  <a href="#ab43bb8d64d73fe1e12726438beefcb95">More...</a><br/></td></tr>
-<tr class="separator:ab43bb8d64d73fe1e12726438beefcb95 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b6531fe4dcc76cd1f885deff19d6282 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a9b6531fe4dcc76cd1f885deff19d6282">ExtractSampleVector</a> () const </td></tr>
-<tr class="memdesc:a9b6531fe4dcc76cd1f885deff19d6282 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#a9b6531fe4dcc76cd1f885deff19d6282">More...</a><br/></td></tr>
-<tr class="separator:a9b6531fe4dcc76cd1f885deff19d6282 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6c35975b7038922a5f9358338dd2010 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#af6c35975b7038922a5f9358338dd2010">GetCumulativeDesity</a> (const std::vector&lt; double &gt; &amp;Coordinates) const </td></tr>
-<tr class="memdesc:af6c35975b7038922a5f9358338dd2010 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cumulative density function of the distribution in correspondence of the supplied coordinates.  <a href="#af6c35975b7038922a5f9358338dd2010">More...</a><br/></td></tr>
-<tr class="separator:af6c35975b7038922a5f9358338dd2010 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a280a4419344e014f23362704a74753f8 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a280a4419344e014f23362704a74753f8">GetCurrentSeed</a> () const </td></tr>
-<tr class="memdesc:a280a4419344e014f23362704a74753f8 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the random number generator seed.  <a href="#a280a4419344e014f23362704a74753f8">More...</a><br/></td></tr>
-<tr class="separator:a280a4419344e014f23362704a74753f8 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bdcfb3c863c2e5b9751eba73cd2f30f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a8bdcfb3c863c2e5b9751eba73cd2f30f">GetDensity</a> (const std::vector&lt; double &gt; &amp;Coordinates) const </td></tr>
-<tr class="memdesc:a8bdcfb3c863c2e5b9751eba73cd2f30f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the distribution in correspondence of the supplied coordinates.  <a href="#a8bdcfb3c863c2e5b9751eba73cd2f30f">More...</a><br/></td></tr>
-<tr class="separator:a8bdcfb3c863c2e5b9751eba73cd2f30f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cbc69b5d3cdd4783d3d85a225669ae9 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a9cbc69b5d3cdd4783d3d85a225669ae9">GetDimension</a> () const </td></tr>
-<tr class="memdesc:a9cbc69b5d3cdd4783d3d85a225669ae9 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the dimensionality of the distribution.  <a href="#a9cbc69b5d3cdd4783d3d85a225669ae9">More...</a><br/></td></tr>
-<tr class="separator:a9cbc69b5d3cdd4783d3d85a225669ae9 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabca6dd1809f76087b94b830c7c8d328 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#aabca6dd1809f76087b94b830c7c8d328">GetQuantileVector</a> (double Prob) const </td></tr>
-<tr class="memdesc:aabca6dd1809f76087b94b830c7c8d328 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#aabca6dd1809f76087b94b830c7c8d328">More...</a><br/></td></tr>
-<tr class="separator:aabca6dd1809f76087b94b830c7c8d328 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c073c108279b10eff33aa11e988936e inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a4c073c108279b10eff33aa11e988936e">IsValid</a> () const </td></tr>
-<tr class="memdesc:a4c073c108279b10eff33aa11e988936e inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the distribution is valid.  <a href="#a4c073c108279b10eff33aa11e988936e">More...</a><br/></td></tr>
-<tr class="separator:a4c073c108279b10eff33aa11e988936e inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac44f04571450f320b9845c6306739fc7 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#ac44f04571450f320b9845c6306739fc7">SetRandomSeed</a> (unsigned int NewSeed)</td></tr>
-<tr class="memdesc:ac44f04571450f320b9845c6306739fc7 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the random number generator seed.  <a href="#ac44f04571450f320b9845c6306739fc7">More...</a><br/></td></tr>
-<tr class="separator:ac44f04571450f320b9845c6306739fc7 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c4877c6c67bea060ed4be40b306b54d inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a0c4877c6c67bea060ed4be40b306b54d">GetQuantileArray</a> (double Prob)</td></tr>
-<tr class="memdesc:a0c4877c6c67bea060ed4be40b306b54d inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#a0c4877c6c67bea060ed4be40b306b54d">More...</a><br/></td></tr>
-<tr class="separator:a0c4877c6c67bea060ed4be40b306b54d inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fec18572a754622c6cb650717110c64 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a1fec18572a754622c6cb650717110c64">GetCumulativeDesity</a> (double *Coordinates) const </td></tr>
-<tr class="memdesc:a1fec18572a754622c6cb650717110c64 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cumulative density function of the distribution in correspondence of the supplied coordinates.  <a href="#a1fec18572a754622c6cb650717110c64">More...</a><br/></td></tr>
-<tr class="separator:a1fec18572a754622c6cb650717110c64 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad051a317e8aeccf8a5f82f8a6ff9dd4f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#ad051a317e8aeccf8a5f82f8a6ff9dd4f">GetDensity</a> (double *Coordinates) const </td></tr>
-<tr class="memdesc:ad051a317e8aeccf8a5f82f8a6ff9dd4f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the distribution in correspondence of the supplied coordinates.  <a href="#ad051a317e8aeccf8a5f82f8a6ff9dd4f">More...</a><br/></td></tr>
-<tr class="separator:ad051a317e8aeccf8a5f82f8a6ff9dd4f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a19d24c737438a5731b8d3be3328817 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a8a19d24c737438a5731b8d3be3328817">ExtractSampleArray</a> () const </td></tr>
-<tr class="memdesc:a8a19d24c737438a5731b8d3be3328817 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#a8a19d24c737438a5731b8d3be3328817">More...</a><br/></td></tr>
-<tr class="separator:a8a19d24c737438a5731b8d3be3328817 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac35d3867eccea5d492a5563edfb70da1 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#ac35d3867eccea5d492a5563edfb70da1">ExtractSamplesMatix</a> (unsigned int NumSamples) const </td></tr>
-<tr class="memdesc:ac35d3867eccea5d492a5563edfb70da1 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution.  <a href="#ac35d3867eccea5d492a5563edfb70da1">More...</a><br/></td></tr>
-<tr class="separator:ac35d3867eccea5d492a5563edfb70da1 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b1aa831b14c8e4191a67a8c5c4b8c98 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a3b1aa831b14c8e4191a67a8c5c4b8c98">ExtractSampleCDFArray</a> () const </td></tr>
-<tr class="memdesc:a3b1aa831b14c8e4191a67a8c5c4b8c98 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#a3b1aa831b14c8e4191a67a8c5c4b8c98">More...</a><br/></td></tr>
-<tr class="separator:a3b1aa831b14c8e4191a67a8c5c4b8c98 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80849dea232b278ee71e5e0a5987745f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a80849dea232b278ee71e5e0a5987745f">ExtractSamplesCDFMatix</a> (unsigned int NumSamples) const </td></tr>
-<tr class="memdesc:a80849dea232b278ee71e5e0a5987745f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#a80849dea232b278ee71e5e0a5987745f">More...</a><br/></td></tr>
-<tr class="separator:a80849dea232b278ee71e5e0a5987745f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c762cdc344c5f17bc2f3ef8ee7f1cfe"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a9c762cdc344c5f17bc2f3ef8ee7f1cfe">GetCumulativeDesity</a> (const Eigen::VectorXd &amp;Coordinates) const </td></tr>
+<tr class="memdesc:a9c762cdc344c5f17bc2f3ef8ee7f1cfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the copula function in correspondence of the supplied coordinates.  <a href="#a9c762cdc344c5f17bc2f3ef8ee7f1cfe">More...</a><br/></td></tr>
+<tr class="separator:a9c762cdc344c5f17bc2f3ef8ee7f1cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eb5bb5ba6236919b73ef44ef4499e77"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a7eb5bb5ba6236919b73ef44ef4499e77">GetDensity</a> (const Eigen::VectorXd &amp;Coordinates) const </td></tr>
+<tr class="memdesc:a7eb5bb5ba6236919b73ef44ef4499e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the copula density function in correspondence of the supplied coordinates.  <a href="#a7eb5bb5ba6236919b73ef44ef4499e77">More...</a><br/></td></tr>
+<tr class="separator:a7eb5bb5ba6236919b73ef44ef4499e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca051cbc5a5face751bc98e9224fcef5"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#aca051cbc5a5face751bc98e9224fcef5">GetQuantile</a> (double Prob) const </td></tr>
+<tr class="memdesc:aca051cbc5a5face751bc98e9224fcef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse copula function in correspondence of the supplied probability.  <a href="#aca051cbc5a5face751bc98e9224fcef5">More...</a><br/></td></tr>
+<tr class="separator:aca051cbc5a5face751bc98e9224fcef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5971126c3eab0cff9437f5ced3a7d491"><td class="memItemLeft" align="right" valign="top">const Eigen::MatrixXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a5971126c3eab0cff9437f5ced3a7d491">GetVarCovMatrix</a> () const </td></tr>
+<tr class="memdesc:a5971126c3eab0cff9437f5ced3a7d491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the standardized covariance matrix of the distribution.  <a href="#a5971126c3eab0cff9437f5ced3a7d491">More...</a><br/></td></tr>
+<tr class="separator:a5971126c3eab0cff9437f5ced3a7d491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2469a662f4b5a36f2bb72384176b66b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a2469a662f4b5a36f2bb72384176b66b5">SetVarCovMatrix</a> (const Eigen::MatrixXd &amp;CovMatr)</td></tr>
+<tr class="memdesc:a2469a662f4b5a36f2bb72384176b66b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the covariance matrix of the distribution.  <a href="#a2469a662f4b5a36f2bb72384176b66b5">More...</a><br/></td></tr>
+<tr class="separator:a2469a662f4b5a36f2bb72384176b66b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82dd8181e9d3c3bf1bb0e8986d9dae03"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a82dd8181e9d3c3bf1bb0e8986d9dae03">SetVarCovMatrix</a> (const Eigen::MatrixXd &amp;CorrelationMatrix, const Eigen::VectorXd &amp;Variances)</td></tr>
+<tr class="memdesc:a82dd8181e9d3c3bf1bb0e8986d9dae03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the covariance matrix of the distribution.  <a href="#a82dd8181e9d3c3bf1bb0e8986d9dae03">More...</a><br/></td></tr>
+<tr class="separator:a82dd8181e9d3c3bf1bb0e8986d9dae03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ada65ba73dbd5543d58cf3c314bd310"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a6ada65ba73dbd5543d58cf3c314bd310">SetVarCovMatrix</a> (const std::vector&lt; double &gt; &amp;mVect, bool RowWise=true)</td></tr>
+<tr class="memdesc:a6ada65ba73dbd5543d58cf3c314bd310"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the covariance matrix of the distribution.  <a href="#a6ada65ba73dbd5543d58cf3c314bd310">More...</a><br/></td></tr>
+<tr class="separator:a6ada65ba73dbd5543d58cf3c314bd310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_multivariate_1_1_abstarct_copula"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_multivariate_1_1_abstarct_copula')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_multivariate_1_1_abstarct_copula.html">Multivariate::AbstarctCopula</a></td></tr>
+<tr class="memitem:a61e14fcae7629aa76bd08011a3434acf inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">Eigen::RowVectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#a61e14fcae7629aa76bd08011a3434acf">ExtractSample</a> () const </td></tr>
+<tr class="memdesc:a61e14fcae7629aa76bd08011a3434acf inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the copula.  <a href="#a61e14fcae7629aa76bd08011a3434acf">More...</a><br/></td></tr>
+<tr class="separator:a61e14fcae7629aa76bd08011a3434acf inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15978ac500f0f2325a63b51445614022 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">std::map&lt; unsigned int, <br class="typebreak"/>
+std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#a15978ac500f0f2325a63b51445614022">ExtractSamplesMap</a> (unsigned int NumSamples) const </td></tr>
+<tr class="memdesc:a15978ac500f0f2325a63b51445614022 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates multiple simulations from the copula.  <a href="#a15978ac500f0f2325a63b51445614022">More...</a><br/></td></tr>
+<tr class="separator:a15978ac500f0f2325a63b51445614022 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb976f94a39cb36bf91b8ab208bb45ea inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#afb976f94a39cb36bf91b8ab208bb45ea">ExtractSampleVector</a> () const </td></tr>
+<tr class="memdesc:afb976f94a39cb36bf91b8ab208bb45ea inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the copula.  <a href="#afb976f94a39cb36bf91b8ab208bb45ea">More...</a><br/></td></tr>
+<tr class="separator:afb976f94a39cb36bf91b8ab208bb45ea inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3d4f0bdc7e74552c9658e480aa52c54 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#ac3d4f0bdc7e74552c9658e480aa52c54">GetCumulativeDesity</a> (const std::vector&lt; double &gt; &amp;Coordinates) const </td></tr>
+<tr class="memdesc:ac3d4f0bdc7e74552c9658e480aa52c54 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the copula function in correspondence of the supplied coordinates.  <a href="#ac3d4f0bdc7e74552c9658e480aa52c54">More...</a><br/></td></tr>
+<tr class="separator:ac3d4f0bdc7e74552c9658e480aa52c54 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6b211a96f62f06b3f40a1ae880df7aa inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#af6b211a96f62f06b3f40a1ae880df7aa">GetCurrentSeed</a> () const </td></tr>
+<tr class="memdesc:af6b211a96f62f06b3f40a1ae880df7aa inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the random number generator seed.  <a href="#af6b211a96f62f06b3f40a1ae880df7aa">More...</a><br/></td></tr>
+<tr class="separator:af6b211a96f62f06b3f40a1ae880df7aa inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf6a6e5278c255dfd6b478625b08dd71 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#aaf6a6e5278c255dfd6b478625b08dd71">GetDensity</a> (const std::vector&lt; double &gt; &amp;Coordinates) const </td></tr>
+<tr class="memdesc:aaf6a6e5278c255dfd6b478625b08dd71 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the copula in correspondence of the supplied coordinates.  <a href="#aaf6a6e5278c255dfd6b478625b08dd71">More...</a><br/></td></tr>
+<tr class="separator:aaf6a6e5278c255dfd6b478625b08dd71 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f97e929a17d82301904d86e709e3485 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#a2f97e929a17d82301904d86e709e3485">GetDimension</a> () const </td></tr>
+<tr class="memdesc:a2f97e929a17d82301904d86e709e3485 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the dimensionality of the copula.  <a href="#a2f97e929a17d82301904d86e709e3485">More...</a><br/></td></tr>
+<tr class="separator:a2f97e929a17d82301904d86e709e3485 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad998a214c751a623326a2fd302941db0 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#ad998a214c751a623326a2fd302941db0">GetQuantileVector</a> (double Prob) const </td></tr>
+<tr class="memdesc:ad998a214c751a623326a2fd302941db0 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse copula function in correspondence of the supplied probability.  <a href="#ad998a214c751a623326a2fd302941db0">More...</a><br/></td></tr>
+<tr class="separator:ad998a214c751a623326a2fd302941db0 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ff9f4ee605cf44d4c27a0524283076 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#a65ff9f4ee605cf44d4c27a0524283076">IsValid</a> () const </td></tr>
+<tr class="memdesc:a65ff9f4ee605cf44d4c27a0524283076 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the copula is valid.  <a href="#a65ff9f4ee605cf44d4c27a0524283076">More...</a><br/></td></tr>
+<tr class="separator:a65ff9f4ee605cf44d4c27a0524283076 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ee0b60267e15355b91edf3b41e79165 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#a7ee0b60267e15355b91edf3b41e79165">SetDimension</a> (unsigned int Dimension)</td></tr>
+<tr class="memdesc:a7ee0b60267e15355b91edf3b41e79165 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the dimensionality of the copula.  <a href="#a7ee0b60267e15355b91edf3b41e79165">More...</a><br/></td></tr>
+<tr class="separator:a7ee0b60267e15355b91edf3b41e79165 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aace30dc200b05f6b4cdc64dbfb3efca7 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#aace30dc200b05f6b4cdc64dbfb3efca7">SetRandomSeed</a> (unsigned int NewSeed)</td></tr>
+<tr class="memdesc:aace30dc200b05f6b4cdc64dbfb3efca7 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the random number generator seed.  <a href="#aace30dc200b05f6b4cdc64dbfb3efca7">More...</a><br/></td></tr>
+<tr class="separator:aace30dc200b05f6b4cdc64dbfb3efca7 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af937d40d5d91bc2289d333e0b1abec16 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#af937d40d5d91bc2289d333e0b1abec16">GetQuantileArray</a> (double Prob)</td></tr>
+<tr class="memdesc:af937d40d5d91bc2289d333e0b1abec16 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse copula function in correspondence of the supplied probability.  <a href="#af937d40d5d91bc2289d333e0b1abec16">More...</a><br/></td></tr>
+<tr class="separator:af937d40d5d91bc2289d333e0b1abec16 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07b32c491891c5bed548c11b69679098 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#a07b32c491891c5bed548c11b69679098">GetCumulativeDesity</a> (double *Coordinates) const </td></tr>
+<tr class="memdesc:a07b32c491891c5bed548c11b69679098 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the copula function in correspondence of the supplied coordinates.  <a href="#a07b32c491891c5bed548c11b69679098">More...</a><br/></td></tr>
+<tr class="separator:a07b32c491891c5bed548c11b69679098 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c3112f4f08a519e79738733d7c78886 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#a4c3112f4f08a519e79738733d7c78886">GetDensity</a> (double *Coordinates) const </td></tr>
+<tr class="memdesc:a4c3112f4f08a519e79738733d7c78886 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the probability density function of the copula in correspondence of the supplied coordinates.  <a href="#a4c3112f4f08a519e79738733d7c78886">More...</a><br/></td></tr>
+<tr class="separator:a4c3112f4f08a519e79738733d7c78886 inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a705a1156c6ec6fce97acaf5964026bdf inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#a705a1156c6ec6fce97acaf5964026bdf">ExtractSampleArray</a> () const </td></tr>
+<tr class="memdesc:a705a1156c6ec6fce97acaf5964026bdf inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the copula.  <a href="#a705a1156c6ec6fce97acaf5964026bdf">More...</a><br/></td></tr>
+<tr class="separator:a705a1156c6ec6fce97acaf5964026bdf inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbac53f2d7845bab8874f1db5b52b4da inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#adbac53f2d7845bab8874f1db5b52b4da">ExtractSamplesMatix</a> (unsigned int NumSamples) const </td></tr>
+<tr class="memdesc:adbac53f2d7845bab8874f1db5b52b4da inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the copula.  <a href="#adbac53f2d7845bab8874f1db5b52b4da">More...</a><br/></td></tr>
+<tr class="separator:adbac53f2d7845bab8874f1db5b52b4da inherit pub_methods_class_multivariate_1_1_abstarct_copula"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Gaussian Copula Distribution. </p>
@@ -257,11 +206,13 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <p>Defining:</p>
 <ul>
 <li>\( k \) as the dimensionality of the copula</li>
+<li>\( \Phi^{-1} \) as the inverse of the cumulative density function of the standard normal</li>
+<li>\( \Phi_{\rho} \) as the cumulative density function of the multivariate normal with mean \( \textbf{0} \) and covariance matix \( \rho \)</li>
 <li>\( \boldsymbol{\Sigma}=\begin{bmatrix} \sigma^2_1 &amp; \cdots &amp; \sigma_{1,k}\\ \vdots &amp; \ddots &amp; \vdots \\ \sigma_{k,1} &amp; \cdots &amp; \sigma^2_k \end{bmatrix} \) as the variance-covariance matrix</li>
 </ul>
-<p>The gaussian copula distribution funtion is defined as: \( f(\textbf{x})=((2\pi)^{-\frac{k}{2}} |\boldsymbol{\Sigma}|^{-\frac{1}{2}} e^{(-\frac{1}{2} \textbf{x}&#39; \boldsymbol{\Sigma}^{-1} \textbf{x})} \)</p>
-<p>The analytical process for computing pdf and simulate from the distribution is based upon the <a href="http://cran.r-project.org/web/packages/mvtnorm/index.html">mvtnorm package</a> for <a href="http://www.r-project.org/">R</a> by Alan Genz, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, Friedrich Leisch, Fabian Scheipl, Bjoern Bornkamp, Torsten Hothorn The algorithm for cdf calculation is based on <a href="http://www.math.wsu.edu/faculty/genz/homepage">A. Genz (1992)</a></p>
-<p>If you construct multiple instances this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call <code>MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);</code></p>
+<p>We can define \( \boldsymbol{\rho}(\boldsymbol{\Sigma})=\begin{bmatrix} 1 &amp; \cdots &amp; \frac{\sigma_{1,k}}{\sigma_1 \sigma_k}\\ \vdots &amp; \ddots &amp; \vdots \\ \frac{\sigma_{k,1}}{\sigma_k \sigma_1} &amp; \cdots &amp; 1 \end{bmatrix} \)<br/>
+ The gaussian copula distribution funtion is defined as: \( C(\textbf{x})=\Phi_{\rho}(((2\pi)^{-\frac{k}{2}} |\boldsymbol{\Sigma}|^{-\frac{1}{2}} e^{(-\frac{1}{2} \boldsymbol{\Phi}^{-1}(\textbf{x}&#39;) \boldsymbol{\Sigma}^{-1} \boldsymbol{\Phi}^{-1}(\textbf{x}))}) \) for \( \textbf{x} \in \textbf{(0,1)} \)</p>
+<p>If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call <code>MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);</code></p>
 <p>Please refer to the <a class="el" href="examples_page.html">Examples</a> page for usage examples.</p>
 <dl class="section remark"><dt>Remarks</dt><dd>This class is re-entrant </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>November 2013 </dd></dl>
@@ -301,7 +252,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
   </dd>
 </dl>
 <p>Construct a Gaussian copula with variance-covariance matrix set to the identity matrix.</p>
-<p>In case The Dimension less than 2 the class will be considered invalid (it can be checked using <code><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a4c073c108279b10eff33aa11e988936e" title="Check if the distribution is valid. ">IsValid()</a></code>) and won't produce any result until the problem is fixed.</p>
+<p>In case The Dimension less than 2 the class will be considered invalid (it can be checked using <code><a class="el" href="class_multivariate_1_1_abstarct_copula.html#a65ff9f4ee605cf44d4c27a0524283076" title="Check if the copula is valid. ">IsValid()</a></code>) and won't produce any result until the problem is fixed.</p>
 <p>If dimension is unspecified, a bivariate copula is constructed </p>
 
 </div>
@@ -355,7 +306,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <li>The variance-covariance is not semi-positive definite</li>
 <li>The variance-covariance has a number of rows different from the Dimension</li>
 </ul>
-<p>The class will be considered invalid (it can be checked using <code><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a4c073c108279b10eff33aa11e988936e" title="Check if the distribution is valid. ">IsValid()</a></code>) and won't produce any result until the problem is fixed. </p>
+<p>The class will be considered invalid (it can be checked using <code><a class="el" href="class_multivariate_1_1_abstarct_copula.html#a65ff9f4ee605cf44d4c27a0524283076" title="Check if the copula is valid. ">IsValid()</a></code>) and won't produce any result until the problem is fixed. </p>
 
 </div>
 </div>
@@ -391,13 +342,13 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A matrix with columns equal to the dimensionality of the distribution and rows equal to the number of simulations</dd></dl>
 <p>This function generates NumSamples simulation from the current copula and returns them in matrix form.</p>
-<p>If NumSamples is 0 or the distribution is invalid, a null matrix is returned </p>
+<p>If NumSamples is 0 or the copula is invalid, a null matrix is returned </p>
 
-<p>Reimplemented from <a class="el" href="class_multivariate_1_1_normal_distribution.html#ab9fd4754af0169a3e5e1a7eebe845472">Multivariate::NormalDistribution</a>.</p>
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_copula.html#abc5bd17395e3925290399a2f5c6b7831">Multivariate::AbstarctCopula</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4ff7e1a1e7675230289cccdadeabec0a"></a>
+<a class="anchor" id="a9c762cdc344c5f17bc2f3ef8ee7f1cfe"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -405,41 +356,290 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Multivariate::GaussianCopula::SetDimension </td>
+          <td class="memname">double GaussianCopula::GetCumulativeDesity </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>Dimension</em></td><td>)</td>
-          <td></td>
+          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
+          <td class="paramname"><em>Coordinates</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Set the dimensionality of the distribution. </p>
+<p>Computes the copula function in correspondence of the supplied coordinates. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Dimension</td><td>the new dimensionality of the distribution </td></tr>
+    <tr><td class="paramname">Coordinates</td><td>A vector containing the coordinates of the point for which the pdf should be computed </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A boolean determining if the dimensionality was changed successfully</dd></dl>
-<p>This function will try to change the dimensionality of the distribution (e.g. 2 for bivariate, 3 for trivariate, etc.)</p>
-<p>The variance covariance matrix will default to an identity matrix</p>
-<p>If the argument passed is less than 2 the dimensionality will not be changed and the function will return false</p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a9cbc69b5d3cdd4783d3d85a225669ae9" title="Get the dimensionality of the distribution. ">GetDimension()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the copula function</dd></dl>
+<p>This function computes the probability density function of the current copula associated with the given coordinates.</p>
+<p>The coordinates must all be in the interval (0,1)</p>
+<p>If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned </p>
 
-<p>Reimplemented from <a class="el" href="class_multivariate_1_1_normal_distribution.html#aebdd8074e156688337515ce598692e4d">Multivariate::NormalDistribution</a>.</p>
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_copula.html#a1eca5a0c9a618361a321ffe0f80d450b">Multivariate::AbstarctCopula</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7eb5bb5ba6236919b73ef44ef4499e77"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double GaussianCopula::GetDensity </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
+          <td class="paramname"><em>Coordinates</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the copula density function in correspondence of the supplied coordinates. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Coordinates</td><td>A vector containing the coordinates of the point for which the pdf should be computed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the copula density function</dd></dl>
+<p>This function computes the probability density function of the current copula associated with the given coordinates.</p>
+<p>The coordinates must all be in the interval (0,1)</p>
+<p>If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned </p>
+
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_copula.html#a04c9087ef2aba03c31ea7a2db1bde263">Multivariate::AbstarctCopula</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aca051cbc5a5face751bc98e9224fcef5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::VectorXd GaussianCopula::GetQuantile </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Prob</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the inverse copula function in correspondence of the supplied probability. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Prob</td><td>The probability for which the corresponding quantile must be found </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing the coordinates of the quantile in the intervall [0;1]</dd></dl>
+<p>This function computes the inverse cumulative density function of the current distribution associated with the given probability.</p>
+<p>The solution is unique only in the univariate case.<br/>
+ Generally the system of equations \( F^{-1}(Coordinates_1 \cdots Coordinates_k)=Prob \) has k-1 degrees of freedom, where k is the dimensionality of the distribution.<br/>
+ The additional restriction imposed to get to an unique solution is that each coordinate has equal distance from it's mean.</p>
+<p>If the probability supplied is greater than 1, less than 0 or the distribution is invalid, an empty vector is returned. </p>
+
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_copula.html#ab01d2adb65809c62db7b051effa2c9d0">Multivariate::AbstarctCopula</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5971126c3eab0cff9437f5ced3a7d491"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const Eigen::MatrixXd&amp; Multivariate::GaussianCopula::GetVarCovMatrix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the standardized covariance matrix of the distribution. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current variance-covariance matrix of the distribution </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a2469a662f4b5a36f2bb72384176b66b5" title="Set the covariance matrix of the distribution. ">SetVarCovMatrix(const Eigen::MatrixXd&amp;)</a> </dd>
+<dd>
+<a class="el" href="class_multivariate_1_1_gaussian_copula.html#a6ada65ba73dbd5543d58cf3c314bd310" title="Set the covariance matrix of the distribution. ">SetVarCovMatrix(const std::vector&lt;double&gt;&amp;,bool)</a> </dd>
+<dd>
+<a class="el" href="class_multivariate_1_1_gaussian_copula.html#a82dd8181e9d3c3bf1bb0e8986d9dae03" title="Set the covariance matrix of the distribution. ">SetVarCovMatrix(const Eigen::MatrixXd&amp;, const Eigen::VectorXd&amp;)</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2469a662f4b5a36f2bb72384176b66b5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GaussianCopula::SetVarCovMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixXd &amp;&#160;</td>
+          <td class="paramname"><em>CovMatr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the covariance matrix of the distribution. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">CovMatr</td><td>the new variance covariance matrix of the distribution </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A boolean determining if the variance covariance matrix of the distribution was changed successfully</dd></dl>
+<p>This function tries to set the variance covariance matrix of the distribution to the new one.</p>
+<p>The Variance-Covariance matrix is then standardized to have unitary diagonal</p>
+<p>In case:</p>
+<ul>
+<li>The variance-covariance is not square</li>
+<li>The variance-covariance is not symmetric</li>
+<li>The variance-covariance is not semi-positive definite</li>
+<li>The variance-covariance has a number of rows different from the Dimension</li>
+</ul>
+<p>The variance covariance matrix of the distribution will not be changed and this function will return false</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a5971126c3eab0cff9437f5ced3a7d491" title="Get the standardized covariance matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a82dd8181e9d3c3bf1bb0e8986d9dae03"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Multivariate::GaussianCopula::SetVarCovMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixXd &amp;&#160;</td>
+          <td class="paramname"><em>CorrelationMatrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
+          <td class="paramname"><em>Variances</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the covariance matrix of the distribution. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">CorrelationMatrix</td><td>The correlation coefficients matrix </td></tr>
+    <tr><td class="paramname">Variances</td><td>the vector of variances </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A boolean determining if the variance covariance matrix of the distribution was changed successfully</dd></dl>
+<p>This function tries to set the variance covariance matrix of the distribution according to the correlation matrix supplied.</p>
+<p>Sets the covariance matrix to the supplied CorrelationMatrix</p>
+<p>In case:</p>
+<ul>
+<li>The size of the vector of variances is different from the distribution dimensionality</li>
+<li>The correlation matrix is not symmetric</li>
+<li>The correlation matrix has elements different from 1 on the diagonal</li>
+<li>The correlation matrix has a number of rows different from the Dimension</li>
+<li>The correlation matrix is not squared</li>
+<li>The correlation matrix has off-diagonal elements greater than 1 in absolute value</li>
+</ul>
+<p>The variance covariance matrix of the distribution will not be changed and this function will return false</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a5971126c3eab0cff9437f5ced3a7d491" title="Get the standardized covariance matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6ada65ba73dbd5543d58cf3c314bd310"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GaussianCopula::SetVarCovMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mVect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>RowWise</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the covariance matrix of the distribution. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mVect</td><td>a vector containing the elements of the new variance covariance matrix of the distribution </td></tr>
+    <tr><td class="paramname">RowWise</td><td>if it's set to true (the default) the matrix will be filled by row. If it's false it will be filled by columns </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A boolean determining if the variance covariance matrix of the distribution was changed successfully</dd></dl>
+<p>This function tries to set the variance covariance matrix of the distribution to the new one.</p>
+<p>Constructs square a matrix with number of rows equal to the dimensionality of the distribution, it is then filled with the values supplied in order according to the RowWise parameter</p>
+<p>The Variance-Covariance matrix is then standardized to have unitary diagonal</p>
+<p>In case:</p>
+<ul>
+<li>The vector size is different from the square of the distribution dimensionality</li>
+<li>The variance-covariance is not symmetric</li>
+<li>The variance-covariance is not semi-positive definite</li>
+<li>The variance-covariance has a number of rows different from the Dimension</li>
+</ul>
+<p>The variance covariance matrix of the distribution will not be changed and this function will return false</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a5971126c3eab0cff9437f5ced3a7d491" title="Get the standardized covariance matrix of the distribution. ">GetVarCovMatrix()</a> </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 20 2013 17:42:01 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 21 2013 19:41:10 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
