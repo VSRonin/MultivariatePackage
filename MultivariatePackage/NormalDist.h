@@ -23,7 +23,7 @@ The multivariate normal distribution funtion is defined as: \f$ f(\textbf{x})=((
 The analytical process for computing pdf and simulate from the distribution is based upon the [mvtnorm package](http://cran.r-project.org/web/packages/mvtnorm/index.html) for [R](http://www.r-project.org/) by Alan Genz, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, Friedrich Leisch, Fabian Scheipl, Bjoern Bornkamp, Torsten Hothorn
 The algorithm for cdf calculation is based on [A. Genz (1992)](http://www.math.wsu.edu/faculty/genz/homepage)
 
-If you construct multiple instances this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
+If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
 
 Please refer to the \ref examplesPage page for usage examples.
 
@@ -132,13 +132,13 @@ public:
 	If the dimension of the vector is different from the dimension of the distribution the mean vector is not changed and false is returned
 	\sa GetMeanVector()
 	*/
-	virtual bool SetMeanVector(const Eigen::VectorXd& mVect);
+	bool SetMeanVector(const Eigen::VectorXd& mVect);
 	//! Set the expected values vector
 	/*!
 	\param mVect the vector of new values for the mean vector
 	\details This is an overloaded version of SetMeanVector(const Eigen::VectorXd&)
 	*/
-	virtual bool SetMeanVector(const std::vector<double>& mVect);
+	bool SetMeanVector(const std::vector<double>& mVect);
 	//! Set the dimensionality of the distribution
 	/*!
 	\param Dimension the new dimensionality of the distribution 
@@ -151,7 +151,7 @@ public:
 
 	\sa GetDimension()
 	*/
-	virtual bool SetDimension(unsigned int Dimension);
+	bool SetDimension(unsigned int Dimension);
 	//! Set the Var-Cov matrix of the distribution
 	/*!
 	\param CovMatr the new variance covariance matrix of the distribution 
@@ -168,7 +168,7 @@ public:
 
 	\sa GetVarCovMatrix()
 	*/
-	virtual bool SetVarCovMatrix(const Eigen::MatrixXd& CovMatr);
+	bool SetVarCovMatrix(const Eigen::MatrixXd& CovMatr);
 	//! Set the Var-Cov matrix of the distribution
 	/*!
 	\param mVect a vector containing the elements of the new variance covariance matrix of the distribution
@@ -188,7 +188,7 @@ public:
 
 	\sa GetVarCovMatrix()
 	*/
-	virtual bool SetVarCovMatrix(const std::vector<double>& mVect, bool RowWise=true);
+	bool SetVarCovMatrix(const std::vector<double>& mVect, bool RowWise=true);
 	//! Set the Var-Cov matrix of the distribution
 	/*!
 	\param CorrelationMatrix The correlation coefficients matrix
@@ -210,14 +210,14 @@ public:
 
 	\sa GetVarCovMatrix()
 	*/
-	virtual bool SetVarCovMatrix(const Eigen::MatrixXd& CorrelationMatrix, const Eigen::VectorXd& Variances);
+	bool SetVarCovMatrix(const Eigen::MatrixXd& CorrelationMatrix, const Eigen::VectorXd& Variances);
 	
 	//! Get the mean vector of the distribution
 	/*!
 	\return The current mean vector of the distribution
 	\sa SetMeanVector(const Eigen::VectorXd&)
 	*/
-	virtual const Eigen::VectorXd& GetMeanVector() const {return meanVect;}
+	const Eigen::VectorXd& GetMeanVector() const {return meanVect;}
 	//! Get the Var-Cov matrix of the distribution
 	/*!
 	\return The current variance-covariance matrix of the distribution
@@ -225,13 +225,13 @@ public:
 	\sa SetVarCovMatrix(const std::vector<double>&,bool)
 	\sa SetVarCovMatrix(const Eigen::MatrixXd&, const Eigen::VectorXd&)
 	*/
-	virtual const Eigen::MatrixXd& GetVarCovMatrix() const {return VarCovMatrix;}
+	const Eigen::MatrixXd& GetVarCovMatrix() const {return VarCovMatrix;}
 	//! Get the linear correlation matrix
 	/*!
 	\return The linear correlation matrix associated with the current variance-covariance matrix of the distribution
 	\sa GetVarCovMatrix()
 	*/
-	virtual Eigen::MatrixXd GetCorrelationMatrix() const;
+	Eigen::MatrixXd GetCorrelationMatrix() const;
 	
 	//! Generates multiple simulations from the distribution
 	/*!
@@ -241,18 +241,16 @@ public:
 	
 	If NumSamples is 0 or the distribution is invalid, a null matrix is returned
 	*/
-	virtual Eigen::MatrixXd ExtractSamples(unsigned int NumSamples) const;
+	Eigen::MatrixXd ExtractSamples(unsigned int NumSamples) const;
 	//! Extracts samples from the distribution and returns their marginal CDF
 	/*!
 	\param NumSamples The number of simulation to run
 	\return A matrix with columns equal to the dimensionality of the distribution and rows equal to the number of simulations
 	\details This function generates NumSamples simulation from the current distribution, computes the marginal cumulative density function for each of them and returns them in matrix form.
-	
-	This function simulates extractions from a Gaussian copula
 
 	If NumSamples is 0 or the distribution is invalid, a null matrix is returned
 	 */
-	virtual Eigen::MatrixXd ExtractSamplesCDF(unsigned int NumSamples) const;
+	Eigen::MatrixXd ExtractSamplesCDF(unsigned int NumSamples) const;
 	//! Computes the probability density function of the distribution in correspondence of the supplied coordinates
 	/*!
 	\param Coordinates A vector containing the coordinates of the point for which the pdf should be computed
@@ -261,7 +259,7 @@ public:
 	
 	If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned
 	*/
-	virtual double GetDensity(const Eigen::VectorXd& Coordinates)const;
+	double GetDensity(const Eigen::VectorXd& Coordinates)const;
 	//! Computes the cumulative density function of the distribution in correspondence of the supplied coordinates
 	/*!
 	\param Coordinates A vector containing the coordinates of the point for which the cdf should be computed
@@ -270,7 +268,7 @@ public:
 
 	If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned.
 	*/
-	virtual double GetCumulativeDesity(const Eigen::VectorXd& Coordinates)const;
+	double GetCumulativeDesity(const Eigen::VectorXd& Coordinates)const;
 	//! Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability
 	/*!
 	\param Prob The probability for which the corresponding quantile must be found
@@ -278,10 +276,10 @@ public:
 	\details This function computes the inverse cumulative density function of the current distribution associated with the given probability.
 	
 	The solution is unique only in the univariate case.<br>
-	Generally the system of equations \f$ F^{-1}(Coordinates_1 \cdots Coordinates_Dimensions)=Prob \f$ has Dimensions-1 degrees of freedom.<br>
+	Generally the system of equations \f$ F^{-1}(Coordinates_1 \cdots Coordinates_k)=Prob \f$ has k-1 degrees of freedom, where k is the dimensionality of the distribution.<br>
 	The additional restriction imposed to get to an unique solution is that each coordinate has equal distance from it's mean.
 
-	If the probability supplied is greater, in absolute value, than 1 or the distribution is invalid, an empty vector is returned.
+	If the probability supplied is greater than 1, less than 0 or the distribution is invalid, an empty vector is returned.
 	*/
 	Eigen::VectorXd GetQuantile(double Prob)const;
 	
@@ -314,95 +312,7 @@ public:
 	template <class F, class T>	friend T boost::math::tools::newton_raphson_iterate(F f, T guess, T min, T max, int digits, boost::uintmax_t& max_iter);
 	template <class F, class T> friend void boost::math::tools::detail::handle_zero_derivative(F f,T& last_f0,const T& f0,T& delta,T& result,T& guess,const T& min,const T& max);
 };
-//! Gaussian Copula Distribution
-/*!
-\details This class provides the functionality of calculating the probability density value, cumulative probability density value, inverse cumulative probability density and generate random samples from a Gaussian copula.
 
-Defining:
-	- \f$ k \f$ as the dimensionality of the copula
-	- \f$ \boldsymbol{\Sigma}=\begin{bmatrix}
-	\sigma^2_1 & \cdots & \sigma_{1,k}\\
-	\vdots  & \ddots & \vdots  \\
-	\sigma_{k,1} & \cdots & \sigma^2_k
-	\end{bmatrix} \f$ as the variance-covariance matrix
 
-The gaussian copula distribution funtion is defined as: \f$ f(\textbf{x})=((2\pi)^{-\frac{k}{2}} |\boldsymbol{\Sigma}|^{-\frac{1}{2}} e^{(-\frac{1}{2} \textbf{x}' \boldsymbol{\Sigma}^{-1} \textbf{x})} \f$
-
-The analytical process for computing pdf and simulate from the distribution is based upon the [mvtnorm package](http://cran.r-project.org/web/packages/mvtnorm/index.html) for [R](http://www.r-project.org/) by Alan Genz, Frank Bretz, Tetsuhisa Miwa, Xuefei Mi, Friedrich Leisch, Fabian Scheipl, Bjoern Bornkamp, Torsten Hothorn
-The algorithm for cdf calculation is based on [A. Genz (1992)](http://www.math.wsu.edu/faculty/genz/homepage)
-
-If you construct multiple instances this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
-
-Please refer to the \ref examplesPage page for usage examples.
-
-\remark This class is re-entrant
-\date November 2013
-\license This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Lesser General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.<br><br>
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Lesser General Public License for more details.<br><br>
-Here, you can find a copy of the \ref LicensePage.
-Alternatively, see [gnu.org](http://www.gnu.org/licenses/).
-*/
-class GaussianCopula : public NormalDistribution{
-private:
-	// The mean vector has no impact on the copula
-	bool SetMeanVector(const Eigen::VectorXd& mVect){return NormalDistribution::SetMeanVector(mVect);}
-	// The mean vector has no impact on the copula
-	bool SetMeanVector(const std::vector<double>& mVect){return NormalDistribution::SetMeanVector(mVect);}
-public:
-	//! Constructs a standard Gaussian copula
-	/*!
-	\param Dimension The dimensionality of the copula
-	\details Construct a Gaussian copula with variance-covariance matrix set to the identity matrix.
-	
-	In case The Dimension less than 2 the class will be considered invalid (it can be checked using `IsValid()`) and won't produce any result until the problem is fixed.
-
-	If dimension is unspecified, a bivariate copula is constructed
-	*/
-	GaussianCopula(unsigned int Dimension=2U) : NormalDistribution(Dimension){AllValid=AllValid && Dimension>1U;}
-	//! Construct a Gaussian copula with the given parameters
-	/*!
-	\param Dimension The dimensionality of the multivariate normal (supports also univariate gaussian distributions in case this is 1)
-	\param CovMatr The variance-covariance
-	\details Construct a multivariate normal distribution.
-	
-	In case:
-	- The Dimension is less than 2
-	- The variance-covariance is not square
-	- The variance-covariance is not symmetric
-	- The variance-covariance is not semi-positive definite
-	- The variance-covariance has a number of rows different from the Dimension
-	
-	The class will be considered invalid (it can be checked using `IsValid()`) and won't produce any result until the problem is fixed.
-	*/
-	GaussianCopula(unsigned int Dimension,const Eigen::MatrixXd& CovMatr) : NormalDistribution(Dimension){AllValid=AllValid && Dimension>1U && SetVarCovMatrix(CovMatr);}
-	//! Generates multiple simulations from the copula
-	/*!
-	\param NumSamples The number of simulation to run
-	\return A matrix with columns equal to the dimensionality of the distribution and rows equal to the number of simulations
-	\details This function generates NumSamples simulation from the current copula and returns them in matrix form.
-	
-	If NumSamples is 0 or the distribution is invalid, a null matrix is returned
-	*/
-	Eigen::MatrixXd ExtractSamples(unsigned int NumSamples) const{return ExtractSamplesCDF(NumSamples);}
-	//! Set the dimensionality of the distribution
-	/*!
-	\param Dimension the new dimensionality of the distribution 
-	\return A boolean determining if the dimensionality was changed successfully
-	\details This function will try to change the dimensionality of the distribution (e.g. 2 for bivariate, 3 for trivariate, etc.)
-	
-	The variance covariance matrix will default to an identity matrix
-
-	If the argument passed is less than 2 the dimensionality will not be changed and the function will return false
-
-	\sa GetDimension()
-	*/
-	bool SetDimension(unsigned int Dimension){if(Dimension>1U) return NormalDistribution::SetDimension(Dimension); else return false;}
-};
 } //namespace Multivariate
 #endif // NormalDist_h__

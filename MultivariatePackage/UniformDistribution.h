@@ -18,19 +18,8 @@ namespace Multivariate{
 		double GetCumulativeDesity(const Eigen::VectorXd& Coordinates)const;
 		Eigen::VectorXd GetQuantile(double Prob)const;
 		Eigen::MatrixXd ExtractSamplesCDF(unsigned int NumSamples) const;
-
-
 		using Multivariate::AbstarctDistribution::GetDensity;
 		using Multivariate::AbstarctDistribution::GetCumulativeDesity;
-	};
-	class IndependenceCopula : public UniformDistribution{
-		private:
-			IndependenceCopula(unsigned int Dimension, const Eigen::MatrixX2d& MinMax) : UniformDistribution(Dimension,MinMax){}
-			// The limits have no impact on the copula
-			bool SetLimits(const Eigen::MatrixX2d& MinMax){return UniformDistribution::SetLimits(MinMax);}
-		public:
-			IndependenceCopula(unsigned int Dimension=2U) : UniformDistribution(Dimension){AllValid=AllValid && Dimension>1U;}
-			bool SetDimension(unsigned int Dimension){if(Dimension>1U) return UniformDistribution::SetDimension(Dimension); else return false;}
 	};
 }
 #endif // UniformDistribution_h__

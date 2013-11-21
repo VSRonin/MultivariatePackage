@@ -4,14 +4,24 @@ namespace Multivariate{
 	/*!
 	\details This class provides the functionality of calculating the probability density value, cumulative probability density value and generate random samples from a multivariate Student's t distribution.
 
-	It uses the [Eigen](http://eigen.tuxfamily.org) libraries for linear algebra computation and [Boost](http://www.boost.org/) libraries for statistical distribution and random number generation.
+	Defining:
+	- \f$ \Gamma() \f$ as the [Gamma function](http://en.wikipedia.org/wiki/Gamma_function)
+	- \f$ k \f$ as the dimensionality of the distribution
+	- \f$ v \f$ as the degrees of freedom of the distribution
+	- \f$ \boldsymbol{\mu}=[\mu_1 \cdots \mu_k] \f$ as the location vector
+	- \f$ \boldsymbol{\Sigma}=\begin{bmatrix}
+	\sigma^2_1 & \cdots & \sigma_{1,k}\\
+	\vdots  & \ddots & \vdots  \\
+	\sigma_{k,1} & \cdots & \sigma^2_k
+	\end{bmatrix} \f$ as the scale matrix
+
+	The multivariate student's t distribution funtion is defined as: \f$ f(\textbf{x})= \frac{\Gamma(\frac{v+k}{2})}{\Gamma(\frac{v}{2}) v^{k/2} \pi^{k/2} |\boldsymbol{\Sigma}|^{1/2} (1+ \frac{1}{v} (\textbf{x}-\boldsymbol{\mu})' \boldsymbol{\Sigma}^{-1} (\textbf{x}-\boldsymbol{\mu}))^{\frac{v+k}{2}}} \f$
 
 	The algorithm for cdf calculation is based on [A. Genz & F. Bretz (2002)](http://www.math.wsu.edu/faculty/genz/homepage)
 
-	To generate samples a [boost::random::mt19937](http://www.boost.org/doc/libs/1_55_0/doc/html/boost/random/mt19937.html) random number generator is used and seeded with [std::time(NULL)](http://www.cplusplus.com/reference/ctime/time/).<br>
 	If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
 
-	Please refer to the \ref examples page for usage examples.
+	Please refer to the \ref examplesPage page for usage examples.
 
 	\remark This class is re-entrant
 	\date November 2013
@@ -26,23 +36,18 @@ namespace Multivariate{
 	Here, you can find a copy of the \ref LicensePage.
 	Alternatively, see [gnu.org](http://www.gnu.org/licenses/).
 	*/
-	class tDistribution : public NormalDistribution{
+	class tDistribution : public AbstarctDistribution{
 	private:
 		unsigned int DegreesOfFreedom;
 		tDistribution(const tDistribution& a);
 		tDistribution& operator=(const tDistribution& a);
-		// Use SetLocationVector instead
-		bool SetMeanVector(const Eigen::VectorXd& mVect){return NormalDistribution::SetMeanVector(mVect);}
-		// Use SetLocationVector instead
-		bool SetMeanVector(const std::vector<double>& mVect){return NormalDistribution::SetMeanVector(mVect);}
-		// Use SetScaleMatrix instead
-		bool SetVarCovMatrix(const Eigen::MatrixXd& SclMatr){return NormalDistribution::SetVarCovMatrix(SclMatr);}
-		// Use SetScaleMatrix instead
-		bool SetVarCovMatrix(const std::vector<double>& mVect, bool RowWise=true){return NormalDistribution::SetVarCovMatrix(mVect,RowWise);}
-		//Use GetLocationVector instead
-		const Eigen::VectorXd& GetMeanVector()const{return NormalDistribution::GetMeanVector();}	
-		//Use GetScaleMatrix instead
-		const Eigen::MatrixXd& GetVarCovMatrix() const{return NormalDistribution::GetVarCovMatrix();}	
+		Eigen::VectorXd LocatVect;
+		Eigen::MatrixXd ScaleMatrix;
+		bool CheckValidity();
+		double ProbToFind;
+		boost::math::tuple<double, double> operator()(double x);
+		bool UseGenz;
+		unsigned int NumSimul;
 	public:
 		//! Construct a multivariate student's t with the given parameters
 		/*!
@@ -86,13 +91,13 @@ namespace Multivariate{
 		If the dimension of the vector is different from the dimension of the distribution the location vector is not changed and false is returned
 		\sa GetLocationVector()
 		*/
-		bool SetLocationVector(const Eigen::VectorXd& mVect){return NormalDistribution::SetMeanVector(mVect); AllValid=AllValid && DegreesOfFreedom>0;}
+		bool SetLocationVector(const Eigen::VectorXd& mVect){if(mVect.rows()!=Dim) return false; LocatVect=mVect; CheckValidity(); return true;}
 		//! Set the location vector
 		/*!
 		\param mVect the vector of new values for the location vector
 		\details This is an overloaded version of SetLocationVector(const Eigen::VectorXd&)
 		*/
-		bool SetLocationVector(const std::vector<double>& mVect){return NormalDistribution::SetMeanVector(mVect); AllValid=AllValid && DegreesOfFreedom>0;}
+		bool SetLocationVector(const std::vector<double>& mVect);
 		//! Set the dimensionality of the distribution
 		/*!
 		\param Dimension the new dimensionality of the distribution 
@@ -105,7 +110,7 @@ namespace Multivariate{
 
 		\sa GetDimension()
 		*/
-		bool SetDimension(unsigned int Dimension){return NormalDistribution::SetDimension(Dimension); AllValid=AllValid && DegreesOfFreedom>0;}
+		bool SetDimension(unsigned int Dimension);
 		//! Set the scale matrix of the distribution
 		/*!
 		\param SclMatr the new scale matrix of the distribution 
@@ -122,7 +127,7 @@ namespace Multivariate{
 
 		\sa GetScaleMatrix()
 		*/
-		bool SetScaleMatrix(const Eigen::MatrixXd& SclMatr){return NormalDistribution::SetVarCovMatrix(SclMatr); AllValid=AllValid && DegreesOfFreedom>0;}
+		bool SetScaleMatrix(const Eigen::MatrixXd& SclMatr);
 		//! Set the scale matrix of the distribution
 		/*!
 		\param mVect a vector containing the elements of the new scale matrix of the distribution
@@ -142,7 +147,7 @@ namespace Multivariate{
 
 		\sa GetScaleMatrix()
 		*/
-		bool SetScaleMatrix(const std::vector<double>& mVect, bool RowWise=true){return NormalDistribution::SetVarCovMatrix(mVect,RowWise); AllValid=AllValid && DegreesOfFreedom>0;}
+		bool SetScaleMatrix(const std::vector<double>& mVect, bool RowWise=true);
 		//! Set the degrees of freedom of the distribution
 		/*!
 		\param a The number of degrees of freedom of the distribution
@@ -159,13 +164,13 @@ namespace Multivariate{
 		\return The current location vector of the distribution
 		\sa SetLocationVector(const Eigen::VectorXd&)
 		*/
-		const Eigen::VectorXd& GetLocationVector() const {return NormalDistribution::GetMeanVector();}
+		const Eigen::VectorXd& GetLocationVector() const {return LocatVect;}
 		//! Get the scale matrix of the distribution
 		/*!
 		\return The current scale matrix of the distribution
 		\sa SetScaleMatrix(const Eigen::MatrixXd&)
 		*/
-		const Eigen::MatrixXd& GetScaleMatrix() const {return NormalDistribution::GetVarCovMatrix();}
+		const Eigen::MatrixXd& GetScaleMatrix() const {return ScaleMatrix;}
 		//! Get the degrees of freedom of the distribution
 		/*!
 		\return The current degrees of freedom of the distribution
@@ -228,8 +233,24 @@ namespace Multivariate{
 		If the degrees of freedom are less than 3 or the distribution is invalid, a null matrix is returned
 		*/
 		Eigen::MatrixXd GetVarMatrix() const;
+		//! Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability
+		/*!
+		\param Prob The probability for which the corresponding quantile must be found
+		\return A vector containing the coordinates of the quantile
+		\details This function computes the inverse cumulative density function of the current distribution associated with the given probability.
+	
+		The solution is unique only in the univariate case.<br>
+		Generally the system of equations \f$ F^{-1}(Coordinates_1 \cdots Coordinates_k)=Prob \f$ has k-1 degrees of freedom, where k is the dimensionality of the distribution.<br>
+		The additional restriction imposed to get to an unique solution is that each coordinate has equal distance from it's mean.
+
+		If the probability supplied is greater than 1, less than 0 or the distribution is invalid, an empty vector is returned.
+		*/
+		Eigen::VectorXd GetQuantile(double Prob)const;
 
 		using Multivariate::AbstarctDistribution::GetDensity;
 		using Multivariate::AbstarctDistribution::GetCumulativeDesity;
+		template <class F, class T> friend T boost::math::tools::newton_raphson_iterate(F f, T guess, T min, T max, int digits);
+		template <class F, class T>	friend T boost::math::tools::newton_raphson_iterate(F f, T guess, T min, T max, int digits, boost::uintmax_t& max_iter);
+		template <class F, class T> friend void boost::math::tools::detail::handle_zero_derivative(F f,T& last_f0,const T& f0,T& delta,T& result,T& guess,const T& min,const T& max);
 	};
 }

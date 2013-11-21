@@ -1,3 +1,5 @@
+#ifndef AbstractDistribution_h__
+#define AbstractDistribution_h__
 #include <Eigen/Dense>
 #include <vector>
 #include <map>
@@ -235,3 +237,4 @@ namespace Multivariate{
 #endif
 	};
 }
+#endif // AbstractDistribution_h__
