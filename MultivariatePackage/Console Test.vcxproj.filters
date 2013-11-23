@@ -51,6 +51,9 @@
     <ClCompile Include="SpecialFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ClaytonCopula.cpp">
+      <Filter>Source Files\Copulas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NormalDist.h">
@@ -82,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="SpecialFunctions.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClaytonCopula.h">
+      <Filter>Header Files\Copulas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

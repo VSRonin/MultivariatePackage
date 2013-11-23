@@ -2,22 +2,24 @@
 #include <boost/math/distributions/chi_squared.hpp>
 #include <boost/math/distributions/students_t.hpp>
 #include <boost/random/uniform_real_distribution.hpp>
-#include "SpecialFunctions.h"
+#include <boost/math/special_functions/gamma.hpp>
+#include <boost/math/distributions/gamma.hpp>
 using namespace Multivariate;
 double tDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinates)const{
 	//! \todo Add the Genz algorithm
-	if(!AllValid || Coordinates.rows()!=Dim) return -1.0;
-	Eigen::MatrixXd Samples=ExtractSamples(NumSimul);
-	unsigned int Result=0;
-	bool AllLess;
-	for(unsigned int i=0;i<NumSimul;i++){
-		AllLess=true;
-		for(unsigned int j=0;j<Dim && AllLess;j++){
-			if(Samples(i,j)>=Coordinates(j)) AllLess=false;
+	
+		if(!AllValid || Coordinates.rows()!=Dim) return -1.0;
+		Eigen::MatrixXd Samples=ExtractSamples(NumSimul);
+		unsigned int Result=0;
+		bool AllLess;
+		for(unsigned int i=0;i<NumSimul;i++){
+			AllLess=true;
+			for(unsigned int j=0;j<Dim && AllLess;j++){
+				if(Samples(i,j)>=Coordinates(j)) AllLess=false;
+			}
+			if(AllLess) Result++;
 		}
-		if(AllLess) Result++;
-	}
-	return static_cast<double>(Result)/static_cast<double>(NumSimul);
+		return static_cast<double>(Result)/static_cast<double>(NumSimul);
 }
 Eigen::MatrixXd tDistribution::ExtractSamples(unsigned int NumSamples) const{
 	if(!AllValid || NumSamples==0) Eigen::MatrixXd();
@@ -42,8 +44,8 @@ double tDistribution::GetDensity(const Eigen::VectorXd& Coordinates)const{
 	if(Dim==1U){ //Univariate case
 		Result= 
 			(
-				GammaFunction(static_cast<double>(DegreesOfFreedom+1U)/2.0) /
-				(GammaFunction(static_cast<double>(DegreesOfFreedom)/2.0)*sqrt(ScaleMatrix(0,0)*boost::math::constants::pi<double>()*static_cast<double>(DegreesOfFreedom)))
+				boost::math::tgamma(static_cast<double>(DegreesOfFreedom+1U)/2.0) /
+				(boost::math::tgamma(static_cast<double>(DegreesOfFreedom)/2.0)*sqrt(ScaleMatrix(0,0)*boost::math::constants::pi<double>()*static_cast<double>(DegreesOfFreedom)))
 			)*(
 				pow(
 					1.0+((1.0/(static_cast<double>(DegreesOfFreedom)*ScaleMatrix(0,0)))*(Coordinates(0)-LocatVect(0))*(Coordinates(0)-LocatVect(0)))
@@ -55,9 +57,9 @@ double tDistribution::GetDensity(const Eigen::VectorXd& Coordinates)const{
 	}
 	double distval=(Coordinates-LocatVect).transpose()*ScaleMatrix.inverse()*(Coordinates-LocatVect);
 	Result=(
-		GammaFunction(static_cast<double>(DegreesOfFreedom+Dim)/2.0) /
+		boost::math::tgamma(static_cast<double>(DegreesOfFreedom+Dim)/2.0) /
 		(
-			GammaFunction(static_cast<double>(DegreesOfFreedom)/2.0)
+			boost::math::tgamma(static_cast<double>(DegreesOfFreedom)/2.0)
 			*pow(static_cast<double>(DegreesOfFreedom),static_cast<double>(Dim)/2.0)
 			*pow(boost::math::constants::pi<double>(),static_cast<double>(Dim)/2.0)
 			*sqrt(ScaleMatrix.determinant())
@@ -260,4 +262,12 @@ boost::math::tuple<double, double> tDistribution::operator()(double x){
 	Eigen::VectorXd CoordinatesVector(Dim);
 	for(unsigned i=0;i<Dim;i++) CoordinatesVector(i)=x;
 	return boost::math::make_tuple(GetCumulativeDesity(CoordinatesVector)-ProbToFind,GetDensity(CoordinatesVector));
+}
+std::pair<double,double> tDistribution::ComputeThat(unsigned int N)const{
+	Eigen::MatrixXd CholVar = Eigen::LLT<Eigen::MatrixXd>(ScaleMatrix).matrixL(); // compute the Cholesky decomposition of the Scale matrix
+	boost::random::uniform_real_distribution<double> UnifDist(0.0,1.0);
+	boost::math::normal StandardNormal(0.0,1.0);
+
+	boost::math::gamma_distribution<double> GammaDist(1.0/Theta,1.0);
+	
 }

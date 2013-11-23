@@ -2,7 +2,7 @@
 #define tDist_h__
 #include "NormalDist.h"
 namespace Multivariate{
-	//! Multivariate Student's t Distribution
+	//! %Multivariate Student's t Distribution
 	/*!
 	\details This class provides the functionality of calculating the probability density value, cumulative probability density value and generate random samples from a multivariate Student's t distribution.
 
@@ -50,6 +50,7 @@ namespace Multivariate{
 		boost::math::tuple<double, double> operator()(double x);
 		bool UseGenz;
 		unsigned int NumSimul;
+		std::pair<double,double> ComputeThat(unsigned int N)const;
 	public:
 		//! Construct a multivariate student's t with the given parameters
 		/*!

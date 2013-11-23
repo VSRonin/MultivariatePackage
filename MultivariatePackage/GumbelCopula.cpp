@@ -47,6 +47,5 @@ Eigen::VectorXd GumbelCopula::GetQuantile(double Prob)const{
 }
 
 double GumbelCopula::SimulateGeneratorInverseFourier()const{
-	double Gam=pow(cos(boost::math::constants::pi<double>()/(Theta*2.0)),Theta);
-	return SimulateStable(1.0/Theta,1.0,Gam,0,CurrentSeed+RandNumGen());
+	return SimulateStable(1.0/Theta,1.0,pow(cos(boost::math::constants::pi<double>()/(Theta*2.0)),Theta),0,RandNumGen());
 }

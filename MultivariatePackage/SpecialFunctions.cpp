@@ -4,11 +4,6 @@
 #include <boost/random/exponential_distribution.hpp>
 #include <boost/math/constants/constants.hpp>
 #include <boost/random/mersenne_twister.hpp>
-double Multivariate::GammaFunction(double t){
-	if(t<=0) return 0.0;
-	boost::math::gamma_distribution<double> GammaDist(t,1.0);
-	return exp(-1.0)/pdf(GammaDist,1.0);
-}
 double Multivariate::SimulateStable(double Alpha,double Beta,double Gamma,double Delta,unsigned int RandNumGenSeed){
 	if(Alpha<=0.0 || Alpha>2.0 || Beta<-1.0 || Beta>1.0 || Gamma<=0.0) return 0.0;
 	boost::random::mt19937 RandNumGen;

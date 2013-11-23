@@ -4,7 +4,7 @@
 #include <boost/math/tools/tuple.hpp>
 #include <boost/math/tools/roots.hpp>
 namespace Multivariate{
-//! Multivariate Normal Distribution
+//! %Multivariate Normal Distribution
 /*!
 \details This class provides the functionality of calculating the probability density value, cumulative probability density value, inverse cumulative probability density and generate random samples from a multivariate normal.
 

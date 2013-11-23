@@ -52,7 +52,7 @@ double NormalDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinate
 				AdjVarCoV(VariablesOrder[i],VariablesOrder[j])=VarCovMatrix(i,j);
 			}
 		}
-		//Run the quasi monte-carlo simulation
+		//Run the monte-carlo simulation
 		const double MonteCarloConfidenceFactor=2.5;
 		boost::random::uniform_real_distribution<double> dist(0.0, 1.0);
 		boost::math::normal StandardNormal(0.0,1.0);

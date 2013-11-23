@@ -78,6 +78,7 @@
     <ClCompile Include="AbstarctArchimedeanCopula.cpp" />
     <ClCompile Include="AbstractCopula.cpp" />
     <ClCompile Include="AbstractDistribution.cpp" />
+    <ClCompile Include="ClaytonCopula.cpp" />
     <ClCompile Include="Console Test.cpp" />
     <ClCompile Include="GaussianCopula.cpp" />
     <ClCompile Include="GumbelCopula.cpp" />
@@ -90,6 +91,7 @@
     <ClInclude Include="AbsaractCopula.h" />
     <ClInclude Include="AbstarctArchimedeanCopula.h" />
     <ClInclude Include="AbstractDistribution.h" />
+    <ClInclude Include="ClaytonCopula.h" />
     <ClInclude Include="GaussianCopula.h" />
     <ClInclude Include="GumbelCopula.h" />
     <ClInclude Include="IndependenceCopula.h" />
