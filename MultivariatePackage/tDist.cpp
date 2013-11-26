@@ -244,7 +244,7 @@ Eigen::VectorXd tDistribution::GetQuantile(double Prob)const{
 	CentralDistr.SetScaleMatrix(ScaleMatrix);
 	CentralDistr.SetRandomSeed(CurrentSeed);
 	CentralDistr.ProbToFind=Prob;
-	double CenteredQuantile =  boost::math::tools::newton_raphson_iterate(CentralDistr,0.0,-DBL_MAX,DBL_MAX,8);
+	double CenteredQuantile =  boost::math::tools::newton_raphson_iterate(CentralDistr,0.0,-sqrt(DBL_MAX),sqrt(DBL_MAX),8);
 	Eigen::VectorXd CoordinatesVector(Dim);
 	for(unsigned i=0;i<Dim;i++){
 		if(LocatVect(i)>0.0){
@@ -264,10 +264,12 @@ boost::math::tuple<double, double> tDistribution::operator()(double x){
 	return boost::math::make_tuple(GetCumulativeDesity(CoordinatesVector)-ProbToFind,GetDensity(CoordinatesVector));
 }
 std::pair<double,double> tDistribution::ComputeThat(unsigned int N)const{
+	//! \todo Find how to calculate y and calculate equation 13 in [Genz's Paper](http://www.math.wsu.edu/faculty/genz/papers/mvtcmpn.pdf)
+
 	Eigen::MatrixXd CholVar = Eigen::LLT<Eigen::MatrixXd>(ScaleMatrix).matrixL(); // compute the Cholesky decomposition of the Scale matrix
 	boost::random::uniform_real_distribution<double> UnifDist(0.0,1.0);
 	boost::math::normal StandardNormal(0.0,1.0);
 
-	boost::math::gamma_distribution<double> GammaDist(1.0/Theta,1.0);
-	
+	//boost::math::gamma_distribution<double> GammaDist(1.0/Theta,1.0);
+	return std::pair<double,double>(0.0,0.0);
 }

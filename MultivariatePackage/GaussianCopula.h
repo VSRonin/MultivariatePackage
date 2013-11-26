@@ -57,9 +57,9 @@ namespace Multivariate{
 		GaussianCopula(unsigned int Dimension=2U){BaseDist=new NormalDistribution(Dimension); LocalVersion=static_cast<NormalDistribution*>(BaseDist);}
 		//! Construct a Gaussian copula with the given parameters
 		/*!
-		\param Dimension The dimensionality of the multivariate normal (supports also univariate gaussian distributions in case this is 1)
+		\param Dimension The dimensionality of the Gaussian copula
 		\param CovMatr The variance-covariance
-		\details Construct a multivariate normal distribution.
+		\details Construct a Gaussian copula distribution.
 	
 		In case:
 		- The Dimension is less than 2
@@ -180,11 +180,11 @@ namespace Multivariate{
 		\return A vector containing the coordinates of the quantile in the intervall [0;1]
 		\details This function computes the inverse cumulative density function of the current distribution associated with the given probability.
 	
-		The solution is unique only in the univariate case.<br>
-		Generally the system of equations \f$ F^{-1}(Coordinates_1 \cdots Coordinates_k)=Prob \f$ has k-1 degrees of freedom, where k is the dimensionality of the distribution.<br>
+		The solution is not unique.<br>
+		Generally the system of equations \f$ C^{-1}(Coordinates_1 \cdots Coordinates_k)=Prob \f$ has k-1 degrees of freedom, where k is the dimensionality of the distribution.<br>
 		The additional restriction imposed to get to an unique solution is that each coordinate has equal distance from it's mean.
 
-		If the probability supplied is greater than 1, less than 0 or the distribution is invalid, an empty vector is returned.
+		If the coordinates supplied have any component that is greater than 1 or less than 0 or the distribution is invalid, an empty vector is returned.
 		*/
 		Eigen::VectorXd GetQuantile(double Prob)const;
 		using Multivariate::AbstarctCopula::GetDensity;

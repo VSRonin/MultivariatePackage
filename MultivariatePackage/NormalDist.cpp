@@ -11,7 +11,7 @@ Eigen::VectorXd NormalDistribution::GetQuantile(double Prob)const{
 	if(Prob==1.0 || Prob==0.0){
 		Eigen::VectorXd TempVector(Dim);
 		for(unsigned int i=0;i<Dim;i++){
-			TempVector(i)= Prob>0.0 ? DBL_MAX : -DBL_MAX;
+			TempVector(i)= Prob>0.0 ? sqrt(DBL_MAX) : -sqrt(DBL_MAX);
 		}
 		return TempVector;
 	}
@@ -19,7 +19,7 @@ Eigen::VectorXd NormalDistribution::GetQuantile(double Prob)const{
 	CentralDistr.SetVarCovMatrix(VarCovMatrix);
 	CentralDistr.SetRandomSeed(CurrentSeed);
 	CentralDistr.ProbToFind=Prob;
-	double CenteredQuantile =  boost::math::tools::newton_raphson_iterate(CentralDistr,0.0,-DBL_MAX,DBL_MAX,8);
+	double CenteredQuantile =  boost::math::tools::newton_raphson_iterate(CentralDistr,0.0,-sqrt(DBL_MAX),sqrt(DBL_MAX),8);
 	Eigen::VectorXd CoordinatesVector(Dim);
 	for(unsigned i=0;i<Dim;i++){
 		if(meanVect(i)>0.0){
@@ -67,8 +67,8 @@ double NormalDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinate
 		do{
 			for(unsigned int i=1;i<Dim;i++){
 				if(e[i-1]>0.0 && e[i-1]<1.0) y[i-1]=boost::math::quantile(StandardNormal,dist(RandNumGen)*(e[i-1]));
-				else if(e[i-1]>0.0) y[i-1]=DBL_MAX;
-				else if(e[i-1]<1.0)	y[i-1]=-DBL_MAX;
+				else if(e[i-1]>0.0) y[i-1]=sqrt(DBL_MAX);
+				else if(e[i-1]<1.0)	y[i-1]=-sqrt(DBL_MAX);
 				SumCy=0.0;
 				for(unsigned int j=0;j<i;j++){
 					SumCy+=CholVar(i,j)*(y[j]);

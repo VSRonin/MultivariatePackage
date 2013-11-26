@@ -16,6 +16,8 @@ namespace Multivariate{
 		GumbelCopula(unsigned int Dimension,double theta);
 		bool SetTheta(double t){if(Theta>=1.0) {Theta=t; return true;} return false;}
 		Eigen::VectorXd GetQuantile(double Prob)const;
+		double GetLowerTailDependence() const;//! \todo Implement GetUpperTailDependence
+		bool SetLowerTailDependence(double ltd);//! \todo Implement SetUpperTailDependence
 
 		template <class F, class T> friend T boost::math::tools::newton_raphson_iterate(F f, T guess, T min, T max, int digits);
 		template <class F, class T>	friend T boost::math::tools::newton_raphson_iterate(F f, T guess, T min, T max, int digits, boost::uintmax_t& max_iter);
