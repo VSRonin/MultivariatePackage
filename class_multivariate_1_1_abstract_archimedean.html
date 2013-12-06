@@ -102,13 +102,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Multivariate::AbstractArchimedean Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Archimedean Copulas base class.  
+ <a href="class_multivariate_1_1_abstract_archimedean.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_abstarct_archimedean_copula_8h_source.html">AbstarctArchimedeanCopula.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Multivariate::AbstractArchimedean:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_multivariate_1_1_abstract_archimedean.png" usemap="#Multivariate::AbstractArchimedean_map" alt=""/>
   <map id="Multivariate::AbstractArchimedean_map" name="Multivariate::AbstractArchimedean_map">
-<area href="class_multivariate_1_1_gumbel_copula.html" alt="Multivariate::GumbelCopula" shape="rect" coords="0,56,206,80"/>
+<area href="class_multivariate_1_1_clayton_copula.html" title="Clayton Copula Distribution. " alt="Multivariate::ClaytonCopula" shape="rect" coords="0,56,206,80"/>
+<area href="class_multivariate_1_1_gumbel_copula.html" alt="Multivariate::GumbelCopula" shape="rect" coords="216,56,422,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -168,7 +174,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <tr class="separator:acbe7166701692b1d2b515374c7c3b8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Unsafe Methods</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.</p>
-<p>These functions are normally not compiled for safety reasons. To use them, the <b>mvNormSamplerUnsafeMethods</b> symbol must be defined at compile time </p>
+<p>These functions are normally not compiled for safety reasons. To use them, the <b>mvPackageUnsafeMethods</b> symbol must be defined at compile time </p>
 </div></td></tr>
 <tr class="memitem:acb559822fb4a3afe0ddcf24cf87a479f"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstract_archimedean.html#acb559822fb4a3afe0ddcf24cf87a479f">GetQuantileArray</a> (double Prob)</td></tr>
 <tr class="memdesc:acb559822fb4a3afe0ddcf24cf87a479f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse copula function in correspondence of the supplied probability.  <a href="#acb559822fb4a3afe0ddcf24cf87a479f">More...</a><br/></td></tr>
@@ -186,7 +192,22 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <tr class="memdesc:afbd33749e74842f7122e99e64c222024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the copula.  <a href="#afbd33749e74842f7122e99e64c222024">More...</a><br/></td></tr>
 <tr class="separator:afbd33749e74842f7122e99e64c222024"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Archimedean Copulas base class. </p>
+<p>Class that works as an interface to Archimedean copulas.</p>
+<p>An Archimedean copula of dimension k is defined as:<br/>
+ \( C(u_1 , \cdots , u_k ; \theta)=\psi^{-1}(\psi(u_1 ; \theta)+ \cdots + \psi(u_k ; \theta); \theta) \) <br/>
+ where \( \theta \) is the dependence parameter ruling the distribution and \( \psi(.) \) is the generator function.</p>
+<p>To generate samples a <a href="http://www.boost.org/doc/libs/1_55_0/doc/html/boost/random/mt19937.html">boost::random::mt19937</a> random number generator is used and seeded with <a href="http://www.cplusplus.com/reference/ctime/time/">std::time(NULL)</a>.<br/>
+ If you construct multiple instances of derived classes, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call <code>MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);</code> </p>
+<dl class="section note"><dt>Note</dt><dd>This class is abstract </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>November 2013 </dd></dl>
+<dl class="section user"><dt>License</dt><dd>This program is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br/>
+<br/>
+ This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.<br/>
+<br/>
+ Here, you can find a copy of the <a class="el" href="_license_page.html">GNU Lesser General Public License</a>. Alternatively, see <a href="http://www.gnu.org/licenses/">gnu.org</a>. </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a1fe4269d0f55220a60e18a1f97395442"></a>
 <div class="memitem">
 <div class="memproto">
@@ -265,7 +286,8 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A matrix with columns equal to the dimensionality of the copula and rows equal to the number of simulations</dd></dl>
-<p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
+<p>This function uses the algorithm described by <a href="http://www.jstor.org/stable/2289314">Albert W. Marshall and Ingram Olkin, Families of Multivariate Distributions, Journal of the American Statistical Association, Vol. 83, No. 403 (Sep., 1988), pp. 834-841</a> to sample from the copula distribution.</p>
+<p>If NumSamples is less than 1 or the distribution is invalid, an empty matrix will be returned </p>
 
 </div>
 </div>
@@ -605,7 +627,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>A vector containing the coordinates of the quantile</dd></dl>
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_gumbel_copula.html#abb2f5b311db4b20a5a812ff7e628484c">Multivariate::GumbelCopula</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_clayton_copula.html#a388702ae53853f7a16b5e7c5762abfc7">Multivariate::ClaytonCopula</a>, and <a class="el" href="class_multivariate_1_1_gumbel_copula.html#abb2f5b311db4b20a5a812ff7e628484c">Multivariate::GumbelCopula</a>.</p>
 
 </div>
 </div>
@@ -795,14 +817,14 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <p>This implementation won't perform any check on \( \theta \). See the derived class documentation for specific restrictions</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1_abstract_archimedean.html#af7bd376e7da73e57587b8eb86122b28a" title="Get the dependence parameter. ">GetTheta()</a> </dd></dl>
 
-<p>Reimplemented in <a class="el" href="class_multivariate_1_1_gumbel_copula.html#a5da3dec9cfb28a15753e7b9c9953866c">Multivariate::GumbelCopula</a>.</p>
+<p>Reimplemented in <a class="el" href="class_multivariate_1_1_clayton_copula.html#aa05fd1dacb203cfba5f63a418d4f39cb">Multivariate::ClaytonCopula</a>, and <a class="el" href="class_multivariate_1_1_gumbel_copula.html#a5da3dec9cfb28a15753e7b9c9953866c">Multivariate::GumbelCopula</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 21 2013 19:41:10 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 6 2013 16:27:09 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

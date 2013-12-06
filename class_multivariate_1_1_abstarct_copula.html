@@ -115,6 +115,7 @@ Inheritance diagram for Multivariate::AbstarctCopula:</div>
   <map id="Multivariate::AbstarctCopula_map" name="Multivariate::AbstarctCopula_map">
 <area href="class_multivariate_1_1_gaussian_copula.html" title="Gaussian Copula Distribution. " alt="Multivariate::GaussianCopula" shape="rect" coords="0,56,204,80"/>
 <area href="class_multivariate_1_1_independence_copula.html" title="Independence Copula Distribution. " alt="Multivariate::IndependenceCopula" shape="rect" coords="214,56,418,80"/>
+<area href="class_multivariate_1_1t_copula.html" title="Student&#39;s t Copula Distribution. " alt="Multivariate::tCopula" shape="rect" coords="428,56,632,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -168,7 +169,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <tr class="separator:aace30dc200b05f6b4cdc64dbfb3efca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Unsafe Methods</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.</p>
-<p>These functions are normally not compiled for safety reasons. To use them, the <b>mvNormSamplerUnsafeMethods</b> symbol must be defined at compile time </p>
+<p>These functions are normally not compiled for safety reasons. To use them, the <b>mvPackageUnsafeMethods</b> symbol must be defined at compile time </p>
 </div></td></tr>
 <tr class="memitem:af937d40d5d91bc2289d333e0b1abec16"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_copula.html#af937d40d5d91bc2289d333e0b1abec16">GetQuantileArray</a> (double Prob)</td></tr>
 <tr class="memdesc:af937d40d5d91bc2289d333e0b1abec16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse copula function in correspondence of the supplied probability.  <a href="#af937d40d5d91bc2289d333e0b1abec16">More...</a><br/></td></tr>
@@ -279,7 +280,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>A matrix with columns equal to the dimensionality of the copula and rows equal to the number of simulations</dd></dl>
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#af006e0f0cd5ad9fd89e70056bd114fbb">Multivariate::GaussianCopula</a>, and <a class="el" href="class_multivariate_1_1_independence_copula.html#a14202f8776414e0e88878fdfa2028424">Multivariate::IndependenceCopula</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#af006e0f0cd5ad9fd89e70056bd114fbb">Multivariate::GaussianCopula</a>, <a class="el" href="class_multivariate_1_1t_copula.html#a00bff10c08d2090c00ef864bf71caa2a">Multivariate::tCopula</a>, and <a class="el" href="class_multivariate_1_1_independence_copula.html#a14202f8776414e0e88878fdfa2028424">Multivariate::IndependenceCopula</a>.</p>
 
 </div>
 </div>
@@ -389,7 +390,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>The value of the copula function</dd></dl>
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#a9c762cdc344c5f17bc2f3ef8ee7f1cfe">Multivariate::GaussianCopula</a>, and <a class="el" href="class_multivariate_1_1_independence_copula.html#a4f93d30e12cc955d1e40849eb24d8dc2">Multivariate::IndependenceCopula</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#a9c762cdc344c5f17bc2f3ef8ee7f1cfe">Multivariate::GaussianCopula</a>, <a class="el" href="class_multivariate_1_1t_copula.html#ad3e4066ace79e807b77bb16f17ebeadf">Multivariate::tCopula</a>, and <a class="el" href="class_multivariate_1_1_independence_copula.html#a4f93d30e12cc955d1e40849eb24d8dc2">Multivariate::IndependenceCopula</a>.</p>
 
 </div>
 </div>
@@ -507,7 +508,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>The value of the probability density function</dd></dl>
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#a7eb5bb5ba6236919b73ef44ef4499e77">Multivariate::GaussianCopula</a>, and <a class="el" href="class_multivariate_1_1_independence_copula.html#a72c6cdcca0feef908d73225f986de18a">Multivariate::IndependenceCopula</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#a7eb5bb5ba6236919b73ef44ef4499e77">Multivariate::GaussianCopula</a>, <a class="el" href="class_multivariate_1_1t_copula.html#aef3dd54468a0a9b0c7721009d3f07399">Multivariate::tCopula</a>, and <a class="el" href="class_multivariate_1_1_independence_copula.html#a72c6cdcca0feef908d73225f986de18a">Multivariate::IndependenceCopula</a>.</p>
 
 </div>
 </div>
@@ -623,7 +624,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>A vector containing the coordinates of the quantile</dd></dl>
 <p>This is a pure virtual function. Refer to child documentation for specific implementation details </p>
 
-<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#aca051cbc5a5face751bc98e9224fcef5">Multivariate::GaussianCopula</a>, and <a class="el" href="class_multivariate_1_1_independence_copula.html#a9c04e74680daedb8442cee9b4fc06c25">Multivariate::IndependenceCopula</a>.</p>
+<p>Implemented in <a class="el" href="class_multivariate_1_1_gaussian_copula.html#aca051cbc5a5face751bc98e9224fcef5">Multivariate::GaussianCopula</a>, <a class="el" href="class_multivariate_1_1t_copula.html#aa2ea81f8bbad615333ab61bcacbab80f">Multivariate::tCopula</a>, and <a class="el" href="class_multivariate_1_1_independence_copula.html#a9c04e74680daedb8442cee9b4fc06c25">Multivariate::IndependenceCopula</a>.</p>
 
 </div>
 </div>
@@ -768,7 +769,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 21 2013 19:41:10 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 6 2013 16:27:09 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

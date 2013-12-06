@@ -122,9 +122,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1654c509a37c8b10d2b417898aab828d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#a1654c509a37c8b10d2b417898aab828d">GaussianCopula</a> (unsigned int Dimension=2U)</td></tr>
 <tr class="memdesc:a1654c509a37c8b10d2b417898aab828d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a standard Gaussian copula.  <a href="#a1654c509a37c8b10d2b417898aab828d">More...</a><br/></td></tr>
 <tr class="separator:a1654c509a37c8b10d2b417898aab828d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af406febac8286f1da2cc2dc915341edc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#af406febac8286f1da2cc2dc915341edc">GaussianCopula</a> (unsigned int Dimension, const Eigen::MatrixXd &amp;CovMatr)</td></tr>
-<tr class="memdesc:af406febac8286f1da2cc2dc915341edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a Gaussian copula with the given parameters.  <a href="#af406febac8286f1da2cc2dc915341edc">More...</a><br/></td></tr>
-<tr class="separator:af406febac8286f1da2cc2dc915341edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af621bdfea1fdd3f90f500b6d33c60b79"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#af621bdfea1fdd3f90f500b6d33c60b79">GaussianCopula</a> (unsigned int Dimension, const Eigen::MatrixXd &amp;CovMatr)</td></tr>
+<tr class="memdesc:af621bdfea1fdd3f90f500b6d33c60b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a Gaussian copula with the given parameters.  <a href="#af621bdfea1fdd3f90f500b6d33c60b79">More...</a><br/></td></tr>
+<tr class="separator:af621bdfea1fdd3f90f500b6d33c60b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af006e0f0cd5ad9fd89e70056bd114fbb"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_gaussian_copula.html#af006e0f0cd5ad9fd89e70056bd114fbb">ExtractSamples</a> (unsigned int NumSamples) const </td></tr>
 <tr class="memdesc:af006e0f0cd5ad9fd89e70056bd114fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates multiple simulations from the copula.  <a href="#af006e0f0cd5ad9fd89e70056bd114fbb">More...</a><br/></td></tr>
 <tr class="separator:af006e0f0cd5ad9fd89e70056bd114fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -257,15 +257,12 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 
 </div>
 </div>
-<a class="anchor" id="af406febac8286f1da2cc2dc915341edc"></a>
+<a class="anchor" id="af621bdfea1fdd3f90f500b6d33c60b79"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Multivariate::GaussianCopula::GaussianCopula </td>
+          <td class="memname">GaussianCopula::GaussianCopula </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>Dimension</em>, </td>
@@ -282,22 +279,17 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Construct a Gaussian copula with the given parameters. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Dimension</td><td>The dimensionality of the multivariate normal (supports also univariate gaussian distributions in case this is 1) </td></tr>
+    <tr><td class="paramname">Dimension</td><td>The dimensionality of the Gaussian copula </td></tr>
     <tr><td class="paramname">CovMatr</td><td>The variance-covariance</td></tr>
   </table>
   </dd>
 </dl>
-<p>Construct a multivariate normal distribution.</p>
+<p>Construct a Gaussian copula distribution.</p>
 <p>In case:</p>
 <ul>
 <li>The Dimension is less than 2</li>
@@ -455,10 +447,10 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A vector containing the coordinates of the quantile in the intervall [0;1]</dd></dl>
 <p>This function computes the inverse cumulative density function of the current distribution associated with the given probability.</p>
-<p>The solution is unique only in the univariate case.<br/>
- Generally the system of equations \( F^{-1}(Coordinates_1 \cdots Coordinates_k)=Prob \) has k-1 degrees of freedom, where k is the dimensionality of the distribution.<br/>
+<p>The solution is not unique.<br/>
+ Generally the system of equations \( C^{-1}(Coordinates_1 \cdots Coordinates_k)=Prob \) has k-1 degrees of freedom, where k is the dimensionality of the distribution.<br/>
  The additional restriction imposed to get to an unique solution is that each coordinate has equal distance from it's mean.</p>
-<p>If the probability supplied is greater than 1, less than 0 or the distribution is invalid, an empty vector is returned. </p>
+<p>If the coordinates supplied have any component that is greater than 1 or less than 0 or the distribution is invalid, an empty vector is returned. </p>
 
 <p>Implements <a class="el" href="class_multivariate_1_1_abstarct_copula.html#ab01d2adb65809c62db7b051effa2c9d0">Multivariate::AbstarctCopula</a>.</p>
 
@@ -622,7 +614,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A boolean determining if the variance covariance matrix of the distribution was changed successfully</dd></dl>
 <p>This function tries to set the variance covariance matrix of the distribution to the new one.</p>
-<p>Constructs square a matrix with number of rows equal to the dimensionality of the distribution, it is then filled with the values supplied in order according to the RowWise parameter</p>
+<p>Constructs a square matrix with number of rows equal to the dimensionality of the distribution, it is then filled with the values supplied in order according to the RowWise parameter</p>
 <p>The Variance-Covariance matrix is then standardized to have unitary diagonal</p>
 <p>In case:</p>
 <ul>
@@ -639,7 +631,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 21 2013 19:41:10 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 6 2013 16:27:09 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

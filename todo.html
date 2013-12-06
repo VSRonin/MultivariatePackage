@@ -89,12 +89,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt><a class="anchor" id="_todo000001"></a>Member <a class="el" href="class_multivariate_1_1t_distribution.html#afd81aa8777dda82d3c479a2958c56c9b">Multivariate::tDistribution::GetCumulativeDesity</a>  (const Eigen::VectorXd &amp;Coordinates) const </dt>
-<dd>Add the Genz algorithm </dd>
+<dd>Add the Genz algorithm.<br/>
+ The Gentz algorithm described in <a href="http://www.math.wsu.edu/faculty/genz/papers/mvtcmpn.pdf">Genz &amp; Bretz (2002)</a> should be implemented here.<br/>
+ Prof Genz suggested to use equation 13 and 14 to calculate T then use the algorithm on page 9 and then switch to quasi monte carlo points for the algorithm at page 14.<br/>
+ </dd>
 </dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 21 2013 19:41:10 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 6 2013 16:27:09 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

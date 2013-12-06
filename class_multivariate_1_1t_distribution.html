@@ -97,13 +97,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_multivariate_1_1t_distribution-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Multivariate::tDistribution Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="namespace_multivariate.html" title="Namespace where all classes are defined. ">Multivariate</a> Student's t Distribution.  
+<p>Multivariate Student's t Distribution  
  <a href="class_multivariate_1_1t_distribution.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="t_dist_8h_source.html">tDist.h</a>&gt;</code></p>
@@ -143,9 +144,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6803daa7543de43e85ba9ea4e80f1ab0"><td class="memItemLeft" align="right" valign="top">const Eigen::VectorXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1t_distribution.html#a6803daa7543de43e85ba9ea4e80f1ab0">GetLocationVector</a> () const </td></tr>
 <tr class="memdesc:a6803daa7543de43e85ba9ea4e80f1ab0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the location vector of the distribution.  <a href="#a6803daa7543de43e85ba9ea4e80f1ab0">More...</a><br/></td></tr>
 <tr class="separator:a6803daa7543de43e85ba9ea4e80f1ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84b9da621c974322bdad9639a855c55d"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1t_distribution.html#a84b9da621c974322bdad9639a855c55d">GetQuantile</a> (double Prob) const </td></tr>
+<tr class="memdesc:a84b9da621c974322bdad9639a855c55d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#a84b9da621c974322bdad9639a855c55d">More...</a><br/></td></tr>
+<tr class="separator:a84b9da621c974322bdad9639a855c55d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa00e3356eaff96063679892c8f3c9ad"><td class="memItemLeft" align="right" valign="top">const Eigen::MatrixXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1t_distribution.html#afa00e3356eaff96063679892c8f3c9ad">GetScaleMatrix</a> () const </td></tr>
 <tr class="memdesc:afa00e3356eaff96063679892c8f3c9ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the scale matrix of the distribution.  <a href="#afa00e3356eaff96063679892c8f3c9ad">More...</a><br/></td></tr>
 <tr class="separator:afa00e3356eaff96063679892c8f3c9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af096221641108a0a693eb63a2594f9f3"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1t_distribution.html#af096221641108a0a693eb63a2594f9f3">GetVarMatrix</a> () const </td></tr>
+<tr class="memdesc:af096221641108a0a693eb63a2594f9f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the variance matrix of the distribution.  <a href="#af096221641108a0a693eb63a2594f9f3">More...</a><br/></td></tr>
+<tr class="separator:af096221641108a0a693eb63a2594f9f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8948fccf0bfbdaf192acfd174bf40404"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1t_distribution.html#a8948fccf0bfbdaf192acfd174bf40404">SetDegreesOfFreedom</a> (unsigned int a)</td></tr>
 <tr class="memdesc:a8948fccf0bfbdaf192acfd174bf40404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the degrees of freedom of the distribution.  <a href="#a8948fccf0bfbdaf192acfd174bf40404">More...</a><br/></td></tr>
 <tr class="separator:a8948fccf0bfbdaf192acfd174bf40404"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,9 +204,6 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <tr class="memitem:a9cbc69b5d3cdd4783d3d85a225669ae9 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a9cbc69b5d3cdd4783d3d85a225669ae9">GetDimension</a> () const </td></tr>
 <tr class="memdesc:a9cbc69b5d3cdd4783d3d85a225669ae9 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the dimensionality of the distribution.  <a href="#a9cbc69b5d3cdd4783d3d85a225669ae9">More...</a><br/></td></tr>
 <tr class="separator:a9cbc69b5d3cdd4783d3d85a225669ae9 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a753d520d03a094885932a121f4f313f3 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a753d520d03a094885932a121f4f313f3">GetQuantile</a> (double Prob) const =0</td></tr>
-<tr class="memdesc:a753d520d03a094885932a121f4f313f3 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#a753d520d03a094885932a121f4f313f3">More...</a><br/></td></tr>
-<tr class="separator:a753d520d03a094885932a121f4f313f3 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabca6dd1809f76087b94b830c7c8d328 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#aabca6dd1809f76087b94b830c7c8d328">GetQuantileVector</a> (double Prob) const </td></tr>
 <tr class="memdesc:aabca6dd1809f76087b94b830c7c8d328 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability.  <a href="#aabca6dd1809f76087b94b830c7c8d328">More...</a><br/></td></tr>
 <tr class="separator:aabca6dd1809f76087b94b830c7c8d328 inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -230,9 +234,24 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <tr class="memitem:a80849dea232b278ee71e5e0a5987745f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memItemLeft" align="right" valign="top">virtual double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a80849dea232b278ee71e5e0a5987745f">ExtractSamplesCDFMatix</a> (unsigned int NumSamples) const </td></tr>
 <tr class="memdesc:a80849dea232b278ee71e5e0a5987745f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a single simulation from the distribution and returns its marginal CDF.  <a href="#a80849dea232b278ee71e5e0a5987745f">More...</a><br/></td></tr>
 <tr class="separator:a80849dea232b278ee71e5e0a5987745f inherit pub_methods_class_multivariate_1_1_abstarct_distribution"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a43419a64ce3598e1aef6c95fdc5b6429"><td class="memTemplParams" colspan="2"><a class="anchor" id="a43419a64ce3598e1aef6c95fdc5b6429"></a>
+template&lt;class F , class T &gt; </td></tr>
+<tr class="memitem:a43419a64ce3598e1aef6c95fdc5b6429"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>boost::math::tools::detail::handle_zero_derivative</b> (F f, T &amp;last_f0, const T &amp;f0, T &amp;delta, T &amp;result, T &amp;guess, const T &amp;min, const T &amp;max)</td></tr>
+<tr class="separator:a43419a64ce3598e1aef6c95fdc5b6429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a450f19e7aa97cfdaf5cf76f27396a036"><td class="memTemplParams" colspan="2"><a class="anchor" id="a450f19e7aa97cfdaf5cf76f27396a036"></a>
+template&lt;class F , class T &gt; </td></tr>
+<tr class="memitem:a450f19e7aa97cfdaf5cf76f27396a036"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>boost::math::tools::newton_raphson_iterate</b> (F f, T guess, T min, T max, int digits)</td></tr>
+<tr class="separator:a450f19e7aa97cfdaf5cf76f27396a036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aa504fc1b214285a52f28a97d04ce0f"><td class="memTemplParams" colspan="2"><a class="anchor" id="a4aa504fc1b214285a52f28a97d04ce0f"></a>
+template&lt;class F , class T &gt; </td></tr>
+<tr class="memitem:a4aa504fc1b214285a52f28a97d04ce0f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>boost::math::tools::newton_raphson_iterate</b> (F f, T guess, T min, T max, int digits, boost::uintmax_t &amp;max_iter)</td></tr>
+<tr class="separator:a4aa504fc1b214285a52f28a97d04ce0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="namespace_multivariate.html" title="Namespace where all classes are defined. ">Multivariate</a> Student's t Distribution. </p>
+<div class="textblock"><p>Multivariate Student's t Distribution </p>
 <p>This class provides the functionality of calculating the probability density value, cumulative probability density value and generate random samples from a multivariate Student's t distribution.</p>
 <p>Defining:</p>
 <ul>
@@ -461,7 +480,10 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <dl class="section return"><dt>Returns</dt><dd>The value of the cumulative density function</dd></dl>
 <p>This function computes the cumulative density function of the current distribution associated with the given coordinates.</p>
 <p>If the number of elements in Coordinates is different from the dimensionality of the distribution or the distribution is invalid, -1 is returned. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Add the Genz algorithm </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Add the Genz algorithm.<br/>
+ The Gentz algorithm described in <a href="http://www.math.wsu.edu/faculty/genz/papers/mvtcmpn.pdf">Genz &amp; Bretz (2002)</a> should be implemented here.<br/>
+ Prof Genz suggested to use equation 13 and 14 to calculate T then use the algorithm on page 9 and then switch to quasi monte carlo points for the algorithm at page 14.<br/>
+ </dd></dl>
 
 <p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a36c7ac3eef8bc504d576aa6d2d39c5b1">Multivariate::AbstarctDistribution</a>.</p>
 
@@ -558,6 +580,46 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 
 </div>
 </div>
+<a class="anchor" id="a84b9da621c974322bdad9639a855c55d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::VectorXd tDistribution::GetQuantile </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Prob</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the inverse cumulative density function of the distribution in correspondence of the supplied probability. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Prob</td><td>The probability for which the corresponding quantile must be found </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing the coordinates of the quantile</dd></dl>
+<p>This function computes the inverse cumulative density function of the current distribution associated with the given probability.</p>
+<p>The solution is unique only in the univariate case.<br/>
+ Generally the system of equations \( F^{-1}(Coordinates_1 \cdots Coordinates_k)=Prob \) has k-1 degrees of freedom, where k is the dimensionality of the distribution.<br/>
+ The additional restriction imposed to get to an unique solution is that each coordinate has equal distance from it's mean.</p>
+<p>If the probability supplied is greater than 1, less than 0 or the distribution is invalid, an empty vector is returned. </p>
+
+<p>Implements <a class="el" href="class_multivariate_1_1_abstarct_distribution.html#a753d520d03a094885932a121f4f313f3">Multivariate::AbstarctDistribution</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="afa00e3356eaff96063679892c8f3c9ad"></a>
 <div class="memitem">
 <div class="memproto">
@@ -582,6 +644,32 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 <p>Get the scale matrix of the distribution. </p>
 <dl class="section return"><dt>Returns</dt><dd>The current scale matrix of the distribution </dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_multivariate_1_1t_distribution.html#aa47df19fef75240a813e5f1ffa605112" title="Set the scale matrix of the distribution. ">SetScaleMatrix(const Eigen::MatrixXd&amp;)</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af096221641108a0a693eb63a2594f9f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::MatrixXd tDistribution::GetVarMatrix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the variance matrix of the distribution. </p>
+<dl class="section return"><dt>Returns</dt><dd>The variance matrix</dd></dl>
+<p>This function computes the variance matrix of the current distribution.</p>
+<p>Defining:</p>
+<ul>
+<li>\( v \) as the number of degrees of freedom of the distribution</li>
+<li>\( \boldsymbol{\Sigma}=\begin{bmatrix} \sigma^2_1 &amp; \cdots &amp; \sigma_{1,k}\\ \vdots &amp; \ddots &amp; \vdots \\ \sigma_{k,1} &amp; \cdots &amp; \sigma^2_k \end{bmatrix} \) as the scale matrix</li>
+</ul>
+<p>The variance matrix is defined as \( \frac{v}{v-2} \boldsymbol{\Sigma} \forall v&gt;2 \)</p>
+<p>If the degrees of freedom are less than 3 or the distribution is invalid, a null matrix is returned </p>
 
 </div>
 </div>
@@ -799,7 +887,7 @@ std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bott
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 21 2013 19:41:10 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 6 2013 16:27:09 for Multivariate Analysis Package by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
