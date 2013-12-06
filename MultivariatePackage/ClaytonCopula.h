@@ -9,11 +9,11 @@ namespace Multivariate{
 
 	Defining:
 		- \f$ k \f$ as the dimensionality of the copula
-		- \f$ \theta \f$ as the parameter that models the dependence. \f$ \theta=\frac{2 \tau}}{1- \tau} \f$ where \f$ \tau \f$ is the [Kendall's tau](http://en.wikipedia.org/wiki/Kendall_tau_rank_correlation_coefficient) statistic
+		- \f$ \theta \f$ as the parameter that models the dependence. \f$ \theta=\frac{2 \tau}{1- \tau} \f$ where \f$ \tau \f$ is the [Kendall's tau](http://en.wikipedia.org/wiki/Kendall_tau_rank_correlation_coefficient) statistic
 		- \f$ \psi(x) \f$ as \f$ \frac{x^{- \theta} -1}{\theta} \f$
 		- \f$ \psi^{-1} (x) \f$ as \f$ (1+ \theta x)^{-1/ \theta} \f$
 		
-	The Clayton copula funtion is defined as: \f$ C(x_1 , \cdots ,x_k )=\f$ \psi^{-1}( \psi(x_1) + \cdots + \psi(x_k)) \f$
+	The Clayton copula funtion is defined as: \f$ C(x_1 , \cdots ,x_k )= \psi^{-1}( \psi(x_1) + \cdots + \psi(x_k)) \f$
 
 	If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
 
@@ -56,7 +56,7 @@ namespace Multivariate{
 		\param theta The dependence parameter.
 		\details Construct a Clayton copula distribution with the dependence parameter theta.
 		
-		\f$ \theta=\frac{2 \tau}}{1- \tau} \f$ where \f$ \tau \f$ is the [Kendall's tau](http://en.wikipedia.org/wiki/Kendall_tau_rank_correlation_coefficient) statistic
+		\f$ \theta=\frac{2 \tau}{1- \tau} \f$ where \f$ \tau \f$ is the [Kendall's tau](http://en.wikipedia.org/wiki/Kendall_tau_rank_correlation_coefficient) statistic
 	
 		In case:
 		- The Dimension is less than 2
@@ -79,7 +79,7 @@ namespace Multivariate{
 		/*!
 		\param t The Kendall's tau statistic
 		\return A boolean that indicates if the parameter was changed successfully
-		\details This function tries to set \f$ \theta \f$, the dependence parameter of the distribution,  according to \f$ \theta = \frac{2 \tau}}{1- \tau}\f$
+		\details This function tries to set \f$ \theta \f$, the dependence parameter of the distribution,  according to \f$ \theta = \frac{2 \tau}{1- \tau}\f$
 		
 		If the parameter tau is not within the interval (0,1) the function will return false and the parameter will not be changed.
 		\sa SetTheta()
@@ -88,7 +88,7 @@ namespace Multivariate{
 		//! Get the implied Kendall's tau
 		/*!
 		\return The value of the Kendall's tau of the distribution
-		\details This function returns the value of the Kendall's tau statistic implied by the dependence parameter according to the relation \f$ \tau = \frac{\theta}}{2+ \theta} \f$
+		\details This function returns the value of the Kendall's tau statistic implied by the dependence parameter according to the relation \f$ \tau = \frac{\theta}{2+ \theta} \f$
 		
 		If the distribution is invalid -1.0 is returned;
 		\sa SetKendallTau()
@@ -107,8 +107,25 @@ namespace Multivariate{
 		If the coordinates supplied have any component that is greater than 1 or less than 0 or the distribution is invalid, an empty vector is returned.
 		*/
 		Eigen::VectorXd GetQuantile(double Prob)const;
-		double GetLowerTailDependence() const;//! \todo Implement GetLowerTailDependence
-		bool SetLowerTailDependence(double ltd);//! \todo Implement SetLowerTailDependence
+		//! Get the implied Lower Tail Dependence
+		/*!
+		\return The value of the Lower Tail Dependence of the distribution
+		\details This function returns the value of the Lower Tail Dependence statistic implied by the dependence parameter according to the relation \f$ \lambda_L = 2^{- \frac{1}{\theta} }\f$
+		
+		If the distribution is invalid -1.0 is returned;
+		\sa SetLowerTailDependence()
+		*/
+		double GetLowerTailDependence() const;
+		//! Set the dependence parameter through the Lower Tail Dependence
+		/*!
+		\param ltd The Lower Tail Dependence statistic
+		\return A boolean that indicates if the parameter was changed successfully
+		\details This function tries to set \f$ \theta \f$, the dependence parameter of the distribution,  according to \f$ \theta =- \frac{ln(2)}{ln(\lambda_U)}\f$
+		
+		If the parameter is not within the interval [0,1] the function will return false and the parameter will not be changed.
+		\sa SetTheta()
+		*/
+		bool SetLowerTailDependence(double ltd);
 		template <class F, class T> friend T boost::math::tools::newton_raphson_iterate(F f, T guess, T min, T max, int digits);
 		template <class F, class T>	friend T boost::math::tools::newton_raphson_iterate(F f, T guess, T min, T max, int digits, boost::uintmax_t& max_iter);
 		template <class F, class T> friend void boost::math::tools::detail::handle_zero_derivative(F f,T& last_f0,const T& f0,T& delta,T& result,T& guess,const T& min,const T& max);

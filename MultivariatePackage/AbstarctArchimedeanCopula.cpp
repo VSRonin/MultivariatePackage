@@ -105,7 +105,7 @@ Eigen::MatrixXd AbstractArchimedean::ExtractSamples(unsigned int NumSamples)cons
 	}
 	return Result;
 }
-#ifdef mvNormSamplerUnsafeMethods
+#ifdef mvPackageUnsafeMethods 
 double* AbstractArchimedean::ExtractSampleArray()const{
 	if(!AllValid) return NULL;
 	Eigen::RowVectorXd TempVector=ExtractSample();

@@ -57,3 +57,14 @@ bool ClaytonCopula::SetKendallTau(double t){
 	else TempTheta= (2.0*t)/(1.0-t);
 	return SetTheta(TempTheta);
 }
+double ClaytonCopula::GetLowerTailDependence() const{
+	if(!AllValid) return -1.0;
+	return pow(2.0,-1.0/Theta);
+}
+bool ClaytonCopula::SetLowerTailDependence(double ltd){
+	if(ltd<=0.0 || ltd>=1.0) return false;
+	if(ltd==0.0) Theta=2.0*DBL_MIN;
+	else if(ltd==1) Theta=sqrt(DBL_MAX);
+	else Theta=-log(2.0)/log(ltd);
+	return true;
+}

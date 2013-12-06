@@ -76,7 +76,7 @@ std::vector<double> AbstarctDistribution::ExtractSampleCDFVect() const{
 	for(unsigned int i=0;i<Dim;i++) Result[i]=TempVect(i);
 	return Result;
 }
-#ifdef mvNormSamplerUnsafeMethods
+#ifdef mvPackageUnsafeMethods 
 double* AbstarctDistribution::ExtractSampleCDFArray() const{
 	if(!AllValid) return NULL;
 	Eigen::RowVectorXd TempVect=ExtractSampleCDF();

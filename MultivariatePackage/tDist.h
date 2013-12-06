@@ -231,7 +231,7 @@ namespace Multivariate{
 		\sigma_{k,1} & \cdots & \sigma^2_k
 		\end{bmatrix} \f$ as the scale matrix
 		
-		The variance matrix is defined as \f$ \frac{v}{v-2} \boldsymbol{\Sigma} \forall v>2
+		The variance matrix is defined as \f$ \frac{v}{v-2} \boldsymbol{\Sigma} \forall v>2 \f$
 
 		If the degrees of freedom are less than 3 or the distribution is invalid, a null matrix is returned
 		*/

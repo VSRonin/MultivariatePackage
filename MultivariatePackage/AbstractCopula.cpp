@@ -54,7 +54,7 @@ std::vector<double>  AbstarctCopula::GetQuantileVector(double Prob)const{
 	return Result;
 }
 
-#ifdef mvNormSamplerUnsafeMethods
+#ifdef mvPackageUnsafeMethods 
 double AbstarctCopula::GetCumulativeDesity(double* Coordinates)const{
 	if(BaseDist->GetDimension()>1U){
 		Eigen::VectorXd TempVec(BaseDist->GetDimension());

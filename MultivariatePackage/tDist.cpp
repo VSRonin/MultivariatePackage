@@ -6,8 +6,10 @@
 #include <boost/math/distributions/gamma.hpp>
 using namespace Multivariate;
 double tDistribution::GetCumulativeDesity(const Eigen::VectorXd& Coordinates)const{
-	//! \todo Add the Genz algorithm
-	
+	/*! \todo Add the Genz algorithm.<br>
+	The Gentz algorithm described in [Genz & Bretz (2002)](http://www.math.wsu.edu/faculty/genz/papers/mvtcmpn.pdf) should be implemented here.<br>
+	Prof Genz suggested to use equation 13 and 14 to calculate T then use the algorithm on page 9 and then switch to quasi monte carlo points for the algorithm at page 14.<br>
+	*/
 		if(!AllValid || Coordinates.rows()!=Dim) return -1.0;
 		Eigen::MatrixXd Samples=ExtractSamples(NumSimul);
 		unsigned int Result=0;

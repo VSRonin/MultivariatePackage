@@ -49,3 +49,13 @@ Eigen::VectorXd GumbelCopula::GetQuantile(double Prob)const{
 double GumbelCopula::SimulateGeneratorInverseFourier()const{
 	return SimulateStable(1.0/Theta,1.0,pow(cos(boost::math::constants::pi<double>()/(Theta*2.0)),Theta),0,RandNumGen());
 }
+double GumbelCopula::GetUpperTailDependence() const{
+	if(!AllValid) return -1.0;
+	return 2.0-pow(2.0,1.0/Theta);
+}
+bool GumbelCopula::SetUpperTailDependence(double utd){
+	if(utd<=0.0 || utd>=1.0) return false;
+	if(utd==0.0) Theta=sqrt(DBL_MAX);
+	else Theta=log(2.0)/log(2.0-utd);
+	return true;
+}

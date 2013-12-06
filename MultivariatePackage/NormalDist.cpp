@@ -357,7 +357,7 @@ bool NormalDistribution::SetNumSimul(unsigned int a){
 	return a>0;
 }
 
-#ifdef mvNormSamplerUnsafeMethods
+#ifdef mvPackageUnsafeMethods 
 void NormalDistribution::SetMeanVector(double* mVect){
 	for(unsigned int i=0;i<Dim;i++){
 		meanVect(i)=mVect[i];

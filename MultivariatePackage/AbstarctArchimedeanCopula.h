@@ -6,6 +6,29 @@
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/math/tools/tuple.hpp>
 namespace Multivariate{
+	//! Archimedean Copulas base class
+	/*!
+	\details Class that works as an interface to Archimedean copulas.
+	
+	An Archimedean copula of dimension k is defined as:<br>
+	\f$ C(u_1 , \cdots , u_k ; \theta)=\psi^{-1}(\psi(u_1 ; \theta)+ \cdots + \psi(u_k ; \theta); \theta) \f$ <br>
+	where \f$ \theta \f$ is the dependence parameter ruling the distribution and \f$ \psi(.) \f$ is the generator function.
+	
+	To generate samples a [boost::random::mt19937](http://www.boost.org/doc/libs/1_55_0/doc/html/boost/random/mt19937.html) random number generator is used and seeded with [std::time(NULL)](http://www.cplusplus.com/reference/ctime/time/).<br>
+	If you construct multiple instances of derived classes, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
+	\note This class is abstract
+	\date November 2013
+	\license This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU Lesser General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.<br><br>
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU Lesser General Public License for more details.<br><br>
+	Here, you can find a copy of the \ref LicensePage.
+	Alternatively, see [gnu.org](http://www.gnu.org/licenses/).
+	*/
 	class AbstractArchimedean{
 	protected:
 		AbstractArchimedean(unsigned int Dimension,double theta);
@@ -83,7 +106,9 @@ namespace Multivariate{
 		/*!
 		\param NumSamples The number of simulation to run
 		\return A matrix with columns equal to the dimensionality of the copula and rows equal to the number of simulations
-		\details This is a pure virtual function. Refer to child documentation for specific implementation details
+		\details This function uses the algorithm described by [Albert W. Marshall and Ingram Olkin, Families of Multivariate Distributions, Journal of the American Statistical Association, Vol. 83, No. 403 (Sep., 1988), pp. 834-841](http://www.jstor.org/stable/2289314) to sample from the copula distribution.
+		
+		If NumSamples is less than 1 or the distribution is invalid, an empty matrix will be returned
 		*/
 		virtual Eigen::MatrixXd ExtractSamples(unsigned int NumSamples)const;
 		//! Computes the probability density function of the copula in correspondence of the supplied coordinates
@@ -150,11 +175,11 @@ namespace Multivariate{
 		\details This is equivalent to GetQuantile() but returns an std::vector intead of an Eigen::VectorXd
 		*/
 		std::vector<double> GetQuantileVector(double Prob)const;
-	#ifdef mvNormSamplerUnsafeMethods
+	#ifdef mvPackageUnsafeMethods 
 		/** \name Unsafe Methods
 		The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.
 
-		These functions are normally not compiled for safety reasons. To use them, the **mvNormSamplerUnsafeMethods** symbol must be defined at compile time
+		These functions are normally not compiled for safety reasons. To use them, the **mvPackageUnsafeMethods** symbol must be defined at compile time
 		\{
 		*/
 		//! Computes the inverse copula function in correspondence of the supplied probability

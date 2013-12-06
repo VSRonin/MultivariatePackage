@@ -84,6 +84,7 @@
     <ClCompile Include="GumbelCopula.cpp" />
     <ClCompile Include="NormalDist.cpp" />
     <ClCompile Include="SpecialFunctions.cpp" />
+    <ClCompile Include="tCopula.cpp" />
     <ClCompile Include="tDist.cpp" />
     <ClCompile Include="UniformDistribution.cpp" />
   </ItemGroup>
@@ -97,6 +98,7 @@
     <ClInclude Include="IndependenceCopula.h" />
     <ClInclude Include="NormalDist.h" />
     <ClInclude Include="SpecialFunctions.h" />
+    <ClInclude Include="tCopula.h" />
     <ClInclude Include="tDist.h" />
     <ClInclude Include="UniformDistribution.h" />
   </ItemGroup>

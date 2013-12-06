@@ -2,29 +2,8 @@
 #include <boost/math/distributions/normal.hpp>
 using namespace Multivariate;
 bool GaussianCopula::SetVarCovMatrix(const Eigen::MatrixXd& CovMatr){
-	if(CovMatr.rows()!=CovMatr.cols() || CovMatr.rows()!=LocalVersion->GetDimension()) //The Var-Cov Matrix must be squared and have as many rows as there are dimensions
-		return false;
-	if(CovMatr!=CovMatr.transpose()) //The Var-Cov Matrix must be symmetric
-		return false;
-	//The Variance Covariance matrix must be positive definite
-	if(CovMatr.determinant()<0.0)
-		return false;
-
-	Eigen::VectorXcd RelatedEigen=CovMatr.eigenvalues();
-	for (unsigned int i=0;i<LocalVersion->GetDimension();i++){
-		if(RelatedEigen(i).real()<0.0){ 
-			return false;
-		}
-	}
-	Eigen::MatrixXd AdjustdMatrix(LocalVersion->GetDimension(),LocalVersion->GetDimension());
-	for(unsigned int i=0;i<LocalVersion->GetDimension();i++){
-		for(unsigned int j=0;j<LocalVersion->GetDimension();j++){
-			if(i==j) AdjustdMatrix(i,j)=1.0;
-			else AdjustdMatrix(i,j)=CovMatr(i,j)/sqrt(CovMatr(i,i)*CovMatr(j,j));
-		}
-	}
-	LocalVersion->SetVarCovMatrix(AdjustdMatrix);
-	return true;
+	if(!LocalVersion->SetVarCovMatrix(CovMatr)) return false;
+	return LocalVersion->SetVarCovMatrix(LocalVersion->GetCorrelationMatrix());
 }
 bool GaussianCopula::SetVarCovMatrix(const std::vector<double>& mVect, bool RowWise){
 	if(mVect.size()!=LocalVersion->GetDimension()*LocalVersion->GetDimension()) return false;
@@ -67,4 +46,10 @@ Eigen::VectorXd GaussianCopula::GetQuantile(double Prob)const{
 		TempVector(i)=cdf(StandardNormal,TempVector(i));
 	}
 	return TempVector;
+}
+GaussianCopula::GaussianCopula(unsigned int Dimension,const Eigen::MatrixXd& CovMatr){
+	BaseDist=new NormalDistribution(Dimension);
+	LocalVersion=static_cast<NormalDistribution*>(BaseDist);
+	LocalVersion->SetVarCovMatrix(CovMatr);
+	LocalVersion->SetVarCovMatrix(LocalVersion->GetCorrelationMatrix());
 }

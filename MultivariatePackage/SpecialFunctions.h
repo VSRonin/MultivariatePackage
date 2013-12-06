@@ -9,7 +9,7 @@ namespace Multivariate{
 	\param Delta location parameter.
 	\param RandNumGenSeed the seed for the random number generation
 	\return A draw from a stable distribution
-	\detail This function generates a random sample from a generic stable distribution
+	\details This function generates a random sample from a generic stable distribution
 	
 	For more information, please refer to [Wikipedia](http://en.wikipedia.org/wiki/Stable_distribution) 
 	

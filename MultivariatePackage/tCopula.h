@@ -1,28 +1,29 @@
-#ifndef GaussianCopula_h__
-#define GaussianCopula_h__
+#ifndef tCopula_h__
+#define tCopula_h__
 #include "AbsaractCopula.h"
-#include "NormalDist.h"
+#include "tDist.h"
 namespace Multivariate{
-	//! Gaussian Copula Distribution
+	//! Student's t Copula Distribution
 	/*!
-	\details This class provides the functionality of calculating the probability density value, cumulative probability density value, inverse cumulative probability density and generate random samples from a Gaussian copula.
+	\details This class provides the functionality of calculating the probability density value, cumulative probability density value, inverse cumulative probability density and generate random samples from a Student's t copula.
 
 	Defining:
 		- \f$ k \f$ as the dimensionality of the copula
-		- \f$ \Phi^{-1} \f$ as the inverse of the cumulative density function of the standard normal
-		- \f$ \Phi_{\rho} \f$ as the cumulative density function of the multivariate normal with mean \f$ \textbf{0} \f$ and covariance matix \f$ \rho \f$ 
+		- \f$ v \f$ as the number of degrees of freedom of the copula
+		- \f$ \t_v^{-1} \f$ as the inverse of the cumulative density function of the student's t distribution with \f$ v \f$ degrees of freedom
+		- \f$ \t_{v , \rho} \f$ as the cumulative density function of the student's t distribution with \f$ v \f$ degrees of freedom, location \f$ \textbf{0} \f$ and scale matix \f$ \rho \f$ 
 		- \f$ \boldsymbol{\Sigma}=\begin{bmatrix}
 		\sigma^2_1 & \cdots & \sigma_{1,k}\\
 		\vdots  & \ddots & \vdots  \\
 		\sigma_{k,1} & \cdots & \sigma^2_k
-		\end{bmatrix} \f$ as the variance-covariance matrix
+		\end{bmatrix} \f$ as the scale matrix
 
 		We can define \f$ \boldsymbol{\rho}(\boldsymbol{\Sigma})=\begin{bmatrix}
 		1 & \cdots & \frac{\sigma_{1,k}}{\sigma_1 \sigma_k}\\
 		\vdots  & \ddots & \vdots  \\
 		\frac{\sigma_{k,1}}{\sigma_k \sigma_1} & \cdots & 1
 		\end{bmatrix} \f$<br>
-	The gaussian copula distribution funtion is defined as: \f$ C(\textbf{x})=\Phi_{\rho}(((2\pi)^{-\frac{k}{2}} |\boldsymbol{\Sigma}|^{-\frac{1}{2}} e^{(-\frac{1}{2} \boldsymbol{\Phi}^{-1}(\textbf{x}') \boldsymbol{\Sigma}^{-1} \boldsymbol{\Phi}^{-1}(\textbf{x}))}) \f$ for \f$ \textbf{x} \in \textbf{(0,1)} \f$
+	The t copula distribution funtion is defined as: \f$ C(\textbf{x})=\t_{v , \rho}(\t_v^{-1}(u_1), \cdots , \t_v^{-1}(u_k)) \f$ 
 
 	If you construct multiple instances of this class, to avoid the generated samples to be the same, you should supply a different seed. To do so, for example, you can call `MyDistribution.SetRandomSeed(MyDistribution.GetCurrentSeed()+1U);`
 
@@ -41,84 +42,66 @@ namespace Multivariate{
 	Here, you can find a copy of the \ref LicensePage.
 	Alternatively, see [gnu.org](http://www.gnu.org/licenses/).
 	*/
-	class GaussianCopula : public AbstarctCopula{
+	class tCopula : public AbstarctCopula{
 	private:
-		NormalDistribution *LocalVersion;
+		tDistribution *LocalVersion;
 	public:
-		//! Constructs a standard Gaussian copula
+		//! Constructs a standard t copula
 		/*!
 		\param Dimension The dimensionality of the copula
-		\details Construct a Gaussian copula with variance-covariance matrix set to the identity matrix.
+		\details Construct a t copula with variance-covariance matrix set to the identity matrix.
 	
-		In case The Dimension less than 2 the class will be considered invalid (it can be checked using `IsValid()`) and won't produce any result until the problem is fixed.
+		In case The Dimension less than 2 or the degrees of freedom are 0, the class will be considered invalid (it can be checked using `IsValid()`) and won't produce any result until the problem is fixed.
 
-		If dimension is unspecified, a bivariate copula is constructed
+		If dimension is unspecified, a bivariate copula with 1 degree of freedom  is constructed
 		*/
-		GaussianCopula(unsigned int Dimension=2U){BaseDist=new NormalDistribution(Dimension); LocalVersion=static_cast<NormalDistribution*>(BaseDist);}
-		//! Construct a Gaussian copula with the given parameters
+		tCopula(unsigned int Dimension=2U, unsigned int DegFreedom=1U){BaseDist=new tDistribution(Dimension,DegFreedom); LocalVersion=static_cast<tDistribution*>(BaseDist);}
+		//! Construct a t copula with the given parameters
 		/*!
-		\param Dimension The dimensionality of the Gaussian copula
-		\param CovMatr The variance-covariance
-		\details Construct a Gaussian copula distribution.
-	
+		\param Dimension The dimensionality of the copula
+		\param DegFreedom The degrees of freedom of the copula
+		\param ScalMatr The scale matrix
+		\details Construct a t copula distribution.
+		
+		The scale matrix is standardized to have unitary diagonal
+
 		In case:
 		- The Dimension is less than 2
-		- The variance-covariance is not square
-		- The variance-covariance is not symmetric
-		- The variance-covariance is not semi-positive definite
-		- The variance-covariance has a number of rows different from the Dimension
+		- The degrees of freedom are 0
+		- The scale matrix is not square
+		- The scale matrix is not symmetric
+		- The scale matrix is not semi-positive definite
+		- The scale matrix has a number of rows different from the Dimension
 	
 		The class will be considered invalid (it can be checked using `IsValid()`) and won't produce any result until the problem is fixed.
 		*/
-		GaussianCopula(unsigned int Dimension,const Eigen::MatrixXd& CovMatr);
-		~GaussianCopula(){delete BaseDist;}
-		//! Set the covariance matrix of the distribution
+		tCopula(unsigned int Dimension, unsigned int DegFreedom,const Eigen::MatrixXd& ScalMatr);
+		~tCopula(){delete BaseDist;}
+		//! Set the scale matrix of the distribution
 		/*!
-		\param CovMatr the new variance covariance matrix of the distribution 
-		\return A boolean determining if the variance covariance matrix of the distribution was changed successfully
-		\details This function tries to set the variance covariance matrix of the distribution to the new one.
+		\param ScalMatr the new variance scale matrix of the distribution 
+		\return A boolean determining if the scale matrix of the distribution was changed successfully
+		\details This function tries to set the scale matrix of the distribution to the new one.
 		
-		The Variance-Covariance matrix is then standardized to have unitary diagonal
+		The scale matrix is then standardized to have unitary diagonal
 
 		In case:
-		- The variance-covariance is not square
-		- The variance-covariance is not symmetric
-		- The variance-covariance is not semi-positive definite
-		- The variance-covariance has a number of rows different from the Dimension
+		- The scale matrix is not square
+		- The scale matrix is not symmetric
+		- The scale matrix is not semi-positive definite
+		- The scale matrix has a number of rows different from the Dimension
 
-		The variance covariance matrix of the distribution will not be changed and this function will return false
+		The scale matrix of the distribution will not be changed and this function will return false
 
-		\sa GetVarCovMatrix()
+		\sa GetScaleMatrix()
 		*/
-		bool SetVarCovMatrix(const Eigen::MatrixXd& CovMatr);
-		//! Set the covariance matrix of the distribution
+		bool SetScaleMatrix(const Eigen::MatrixXd& ScalMatr);
+		//! Set the scale matrix of the distribution
 		/*!
-		\param CorrelationMatrix The correlation coefficients matrix
-		\param Variances the vector of variances
-		\return A boolean determining if the variance covariance matrix of the distribution was changed successfully
-		\details This function tries to set the variance covariance matrix of the distribution according to the correlation matrix supplied.
-
-		Sets the covariance matrix to the supplied CorrelationMatrix
-
-		In case:
-		- The size of the vector of variances is different from the distribution dimensionality
-		- The correlation matrix is not symmetric
-		- The correlation matrix has elements different from 1 on the diagonal
-		- The correlation matrix has a number of rows different from the Dimension
-		- The correlation matrix is not squared
-		- The correlation matrix has off-diagonal elements greater than 1 in absolute value
-
-		The variance covariance matrix of the distribution will not be changed and this function will return false
-
-		\sa GetVarCovMatrix()
-		*/
-		bool SetVarCovMatrix(const Eigen::MatrixXd& CorrelationMatrix, const Eigen::VectorXd& Variances){return SetVarCovMatrix(CorrelationMatrix);}
-		//! Set the covariance matrix of the distribution
-		/*!
-		\param mVect a vector containing the elements of the new variance covariance matrix of the distribution
+		\param mVect a vector containing the elements of the new scale matrix of the distribution
 		\param RowWise if it's set to true (the default) the matrix will be filled by row. If it's false it will be filled by columns
-		\return A boolean determining if the variance covariance matrix of the distribution was changed successfully
-		\details This function tries to set the variance covariance matrix of the distribution to the new one.
+		\return A boolean determining if the scale matrix of the distribution was changed successfully
+		\details This function tries to set the scale matrix of the distribution to the new one.
 
 		Constructs a square matrix with number of rows equal to the dimensionality of the distribution, it is then filled with the values supplied in order according to the RowWise parameter
 
@@ -132,17 +115,33 @@ namespace Multivariate{
 
 		The variance covariance matrix of the distribution will not be changed and this function will return false
 
-		\sa GetVarCovMatrix()
+		\sa GetScaleMatrix()
 		*/
-		bool SetVarCovMatrix(const std::vector<double>& mVect, bool RowWise=true);
-		//! Get the standardized covariance matrix of the distribution
+		bool SetScaleMatrix(const std::vector<double>& mVect, bool RowWise=true);
+		//! Get the standardized scale matrix of the distribution
 		/*!
-		\return The current variance-covariance matrix of the distribution
-		\sa SetVarCovMatrix(const Eigen::MatrixXd&)
-		\sa SetVarCovMatrix(const std::vector<double>&,bool)
-		\sa SetVarCovMatrix(const Eigen::MatrixXd&, const Eigen::VectorXd&)
+		\return The current scale matrix of the distribution
+		\sa SetScaleMatrix(const Eigen::MatrixXd&)
+		\sa SetScaleMatrix(const std::vector<double>&,bool)
 		*/
-		const Eigen::MatrixXd& GetVarCovMatrix() const {return LocalVersion->GetVarCovMatrix();}
+		const Eigen::MatrixXd& GetScaleMatrix() const {return LocalVersion->GetScaleMatrix();}
+		//! Set the degrees of freedom of the distribution
+		/*!
+		\param a The number of degrees of freedom of the distribution
+		\return A boolean determining if the degrees of freedom of the distribution were changed successfully
+		\details This function tries to set the degrees of freedom of the distribution to the new ones.
+
+		In case a is less than 1 the degrees of freedom of the distribution will not be changed and this function will return false
+
+		\sa GetDegreesOfFreedom()
+		*/
+		bool SetDegreesOfFreedom(unsigned int a);
+		//! Get the degrees of freedom of the distribution
+		/*!
+		\return The current degrees of freedom of the distribution
+		\sa SetDegreesOfFreedom()
+		*/
+		unsigned int GetDegreesOfFreedom() const {return LocalVersion->GetDegreesOfFreedom();}
 		//! Generates multiple simulations from the copula
 		/*!
 		\param NumSamples The number of simulation to run
@@ -191,4 +190,4 @@ namespace Multivariate{
 		using Multivariate::AbstarctCopula::GetCumulativeDesity;
 	};
 }
-#endif // GaussianCopula_h__
+#endif // tCopula_h__

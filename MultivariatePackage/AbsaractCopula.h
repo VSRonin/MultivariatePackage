@@ -136,11 +136,11 @@ namespace Multivariate{
 		\details This is equivalent to GetQuantile() but returns an std::vector intead of an Eigen::VectorXd
 		*/
 		std::vector<double> GetQuantileVector(double Prob)const;
-#ifdef mvNormSamplerUnsafeMethods
+#ifdef mvPackageUnsafeMethods 
 		/** \name Unsafe Methods
 		The methods in this group use unsafe memory access or return arrays allocated on the heap that must be manually deleted.
 
-		These functions are normally not compiled for safety reasons. To use them, the **mvNormSamplerUnsafeMethods** symbol must be defined at compile time
+		These functions are normally not compiled for safety reasons. To use them, the **mvPackageUnsafeMethods** symbol must be defined at compile time
 		\{
 		*/
 		//! Computes the inverse copula function in correspondence of the supplied probability
